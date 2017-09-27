@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.situ.mall.dao.CategoryDao">
+  		<resultMap type="Category" id="CategoryMap">
+  			<id column="id" property="id"/>
+  			<result column="parent_id" property="parentId"/>
+  			<result column="name" property="name"/>
+  			<result column="status" property="status"/>
+  			<result column="sort_order" property="sortOrder"/>
+  			<result column="create_time" property="createTime" javaType="java.sql.Date" jdbcType="DATE"/>
+  			<result column="update_time" property="updateTime" javaType="java.sql.Date" jdbcType="DATE"/>
+  		</resultMap>
+  		<insert id="addParentCategory" parameterType="Category">
+  			insert into category(parent_id,name,status,sort_order,create_time,update_time) values(0,name,status,sortOrder,createTime);
+  		</insert>
+  		<insert id="addSunCategory" parameterType="Category">
+  			insert into category(parent_id,name,status,sort_order,create_time,update_time) values(id,name,status,sortOrder,createTime);
+  		</insert>
+  		<select id="findAllParentCategory" resultMap="CategoryMap">
+  			select id,parent_id,name,status,sort_order,create_time,update_time from category where parent_id = 0;
+  		</select>
+  		<select id="findSunCategoryByParentId" parameterType="int" resultMap="CategoryMap">
+  			select id,parent_id,name,status,sort_order,create_time,update_time from category where parent_id = #{parentId};
+  		</select>
+  		<select id="findAll" resultMap="CategoryMap">
+  			select id,parent_id,name,status,sort_order,create_time,update_time from category;
+  		</select>
+  </mapper>
