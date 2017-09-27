@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <title>Insert title here</title>
+	<%@include file="../common/use.jsp" %> 
 <script type="text/javascript">
 $(function() {
 	$("#categoryId option[value='${searchCondition.product.categoryId}']").prop("selected",true);
@@ -38,7 +39,6 @@ $(function() {
 </script>
 </head>
 <body>
-	<%@include file="../common/use.jsp" %>
 	<%@include file="../common/logn.jsp" %>
 	<div class="container">
 		
@@ -112,7 +112,7 @@ $(function() {
 							<td>${product.category.name}</td>
 							<td>${product.name }</td>
 							<td>${product.subtitle}</td>
-							 <td><img alt="" src="/pic/"${product.mainImage}"></td>
+							 <td><img alt="" src="/pic/${product.mainImage}" width="80" height="60" ></td>
 							<td>${product.subImages}</td>
 							<td>${product.detail}</td>
 							<td>${product.price}</td>

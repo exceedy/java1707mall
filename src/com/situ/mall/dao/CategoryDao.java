@@ -7,7 +7,7 @@ import com.situ.mall.pojo.Category;
 public interface CategoryDao {
 	List<Category> findAll();
 	List<Category> findAllParentCategory();
-	List<Category> findSunCategoryByParentId();
+	List<Category> findSunCategoryByParentId(int categoryId);
 	int addParentCategory(Category category);
 	int addSunCategory(Category category);
 	

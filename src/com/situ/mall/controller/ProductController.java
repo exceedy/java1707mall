@@ -82,6 +82,11 @@ public class ProductController {
 	@RequestMapping(value="addProduct")
 	public String addProgory(Product product) {
 		boolean result = productService.addProduct(product);
-		return "redirect:/progory/pageList.action";
+		return "redirect:/product/pageList.action";
+	}
+	
+	@RequestMapping(value="toUpdateProduct")
+	public String toUpdateProduct(Integer id) {
+		return "";
 	}
 }

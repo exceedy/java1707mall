@@ -10,4 +10,6 @@ public interface ICategoryService {
 
 	List<Category> findAll();
 
+	List<Category> findCategory(int categoryId);
+
 }

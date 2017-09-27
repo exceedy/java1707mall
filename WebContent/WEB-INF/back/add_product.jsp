@@ -6,10 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${pageContext.request.contextPath }/css/js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/css/js/jquery.form.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/lib/bootstrap/css/bootstrap.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath }/css/lib/bootstrap/js/bootstrap.min.js" ></script>
+
+	<%@include file="../common/use.jsp" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/thirds/lib/bootstrap/css/bootstrap.css" />
 <script type="text/javascript">
 		$(function() {
 			$("#name").blur(function () {
@@ -37,12 +36,42 @@
 					dataType:"json",
 					type:"post",
 					success : function (data) {
-						$("#imgId").attr("src","/pic/" + data.fileName)
+						$("#imgId").attr("src","/pic/" + data.fileName);
+						$("#mainImage").val(data.fileName);
 					}
 			};
 			$("#file-add").ajaxSubmit(options);
 		}
+		$(function () {
+			$.ajax({
+				url:"${pageContext.request.contextPath}/category/parenCategoryList.action",
+				dataType:"json",
+				success:function (data,textStatus,ajax) {
+					var html = "<option>-- 请选择 --</option>"
+					for (var i = 0; i < data.length; i++) {
+						html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
+					}
+					$("#ParentCategory").html(html);
+				}
+			});
+		});
 		
+		function selectCategory (Obj) {
+			var parentId = $(Obj).val();
+			$("#Category option:gt(0)").remove();
+			$.ajax({
+				url:"${pageContext.request.contextPath}/category/categoryList.action",
+				dataTypr:"json",
+				data:"parentId="+parentId,
+				success:function (data,textStatus,ajax) {
+					var html = "<option>-- 请选择 --</option>";
+					for (var i =0; i < data.length; i++) {
+						html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
+					}
+					$("#Category").html(html);
+				}
+			});
+		}
 </script>
 <style type="text/css">
 	.from_b{
@@ -74,8 +103,18 @@
 		                </li>
 		            </ul>
 	
-				<form class="form_b" action="<%= request.getContextPath()%>/product/addStudent.action" 
+				<form class="form_b" action="${path}/product/addProduct.action" 
 				id = "file-add" enctype="multipart/form-data" method="post"> 
+						<div class="input-group input-group-sm">
+ 						 <span class="input-group-addon" id="sizing-addon3">分类</span>
+ 						 <select id="ParentCategory" onchange="selectCategory(this)">
+ 						 	<option value="">-- 请选择 --</option>
+ 						 </select>
+ 						 <select id="Category" name="categoryId">
+ 						 	<option value="">-- 请选择 --</option>
+ 						 </select>
+					</div>
+				
 					<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">商品名称</span>
   						<input type="text" id="name" name="name" class="form-control" placeholder="商品名称" aria-describedby="sizing-addon3">
@@ -83,30 +122,29 @@
 					<span id="nameInfo"></span><br>
 					<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">商品副标题</span>
-  						<input type="text"  name="gender" class="form-control" placeholder="性别" aria-describedby="sizing-addon3">
+  						<input type="text"  name="subtitle" class="form-control" placeholder="商品副标题" aria-describedby="sizing-addon3">
 					</div>
 					<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">商品详情</span>
-  						<input type="text"  name="age" class="form-control" placeholder="年龄" aria-describedby="sizing-addon3">
+  						<input type="text"  name="detail" class="form-control" placeholder="商品详情" aria-describedby="sizing-addon3">
 					</div><div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">价格</span>
-  						<input type="text"  name="address" class="form-control" placeholder="地址" aria-describedby="sizing-addon3">
+  						<input type="text"  name="price" class="form-control" placeholder="价格" aria-describedby="sizing-addon3">
 					</div>
 					<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">库存数量</span>
-  						<input type="text"  name="birthday" class="form-control" placeholder="生日" aria-describedby="sizing-addon3">
+  						<input type="text"  name="stock" class="form-control" placeholder="库存数量" aria-describedby="sizing-addon3">
 					</div>
 					<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">商品状态</span>
-  						<select  name="banji.id" class="form-control" placeholder="商品状态" aria-describedby="sizing-addon3">
-  							<option value="">不限</option>
-  							<option value="1">${banji.name}</option>
-  							<option value="2">${banji.name}</option>
+  						<select  name="status" class="form-control" placeholder="商品状态" aria-describedby="sizing-addon3">
+  							<option value="1">在售</option>
+  							<option value="2">下架</option>
   						</select>
-  						
 					</div>
-						上传头像
-						<img alt="" id="imgId" src="">
+						商品图片
+						<img alt="" id="imgId" src="" width="50px" height="20px">
+						<input type="hidden" name="mainImage" value="" id="mainImage">
   						<input type="file" name="pritrueFile" onchange="uploadPic()"/>
 					<input class="btn btn-primary" type="submit" value="添加">
 				</form>

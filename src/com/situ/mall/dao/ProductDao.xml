@@ -98,7 +98,7 @@
   		</select>
   		
   		<insert id="addProduct" parameterType="Product">
-  			insert into product(category_id,name,subtitle,detail,price,stock,status,create_time,update_time,main_image,sub_images) values(categoryId,name,subtitle,detail,price,stock,status,now(),now(),mainImage,subImages);
+  			insert into product(category_id,name,subtitle,detail,price,stock,status,create_time,update_time,main_image,sub_images) values(#{categoryId},#{name},#{subtitle},#{detail},#{price},#{stock},#{status},now(),now(),#{mainImage},#{subImages});
   		</insert> 
   		<delete id="deleteProduct" parameterType="int">
   			delete from product where id = #{id};

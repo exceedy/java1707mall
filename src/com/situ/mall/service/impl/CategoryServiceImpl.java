@@ -25,4 +25,8 @@ public class CategoryServiceImpl implements ICategoryService{
 		return categorMapper.findAll();
 	}
 
+	public List<Category> findCategory(int categoryId) {
+		return categorMapper.findSunCategoryByParentId(categoryId);
+	}
+
 }

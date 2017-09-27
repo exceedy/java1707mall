@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.mall.pojo.Category;
 import com.situ.mall.service.ICategoryService;
@@ -37,5 +38,19 @@ public class CategoryController {
 		model.addAttribute("listParentCategory", listParentCategory);
 		model.addAttribute("listCategory",listCategory);
 		return "category_show";
+	}
+	
+	@RequestMapping(value="parenCategoryList")
+	@ResponseBody
+	public List<Category> parenCategoryList() {
+		List<Category> list = categoryService.findParentCategory();
+		return list; 
+	}
+	
+	@RequestMapping(value="categoryList")
+	@ResponseBody
+	public List<Category> categoryList(int parentId) {
+		List<Category> list =  categoryService.findCategory(parentId);
+		return list;
 	}
 }
