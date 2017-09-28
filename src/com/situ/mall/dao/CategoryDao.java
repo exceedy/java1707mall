@@ -10,5 +10,6 @@ public interface CategoryDao {
 	List<Category> findSunCategoryByParentId(int categoryId);
 	int addParentCategory(Category category);
 	int addSunCategory(Category category);
+	int deleteCategory(Integer id);
 	
 }

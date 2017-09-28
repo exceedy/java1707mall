@@ -19,11 +19,11 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li class="active">
-		        	<a href="${pageContext.request.contextPath}/student/pageList.action">
+		        	<a href="${pageContext.request.contextPath}/product/pageList.action">
 		        	<span class="glyphicon glyphicon-user"></span> 
 		        	商品管理</a></li>
 		        <li>
-		        	<a href="${pageContext.request.contextPath}/banji/pageList.action">
+		        	<a href="${pageContext.request.contextPath}/category/findAllCategory.action">
 		        	<span class="glyphicon glyphicon-home"></span>
 		        	分类管理</a></li>
 		        	

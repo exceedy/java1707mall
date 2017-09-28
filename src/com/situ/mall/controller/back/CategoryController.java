@@ -63,4 +63,17 @@ public class CategoryController {
 		boolean result = categoryService.addParentCategory(category);
 		return "redirect:/category/findAllCategory.action";
 	}
+	
+	@RequestMapping(value="addSunCategory")
+	public String addPSunCategory(Category category) {
+		boolean result = categoryService.addSunCategory(category);
+		return "redirect:/category/findAllCategory.action";
+	}
+	
+	@RequestMapping(value="deleteCateger")
+	public String deleteCategory(Integer id) {
+		boolean result = categoryService.deleteCategory(id);
+		return "redurect:/category/fimdAllCategory.action";
+	}
+	
 }

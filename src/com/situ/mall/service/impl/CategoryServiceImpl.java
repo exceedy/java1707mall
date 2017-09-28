@@ -15,22 +15,32 @@ import com.situ.mall.service.ICategoryService;
 public class CategoryServiceImpl implements ICategoryService{
 
 	@Autowired
-	private CategoryDao categorMapper;
+	private CategoryDao categoryMapper;
 
 	public List<Category> findParentCategory() {
-		return categorMapper.findAllParentCategory();
+		return categoryMapper.findAllParentCategory();
 	}
 
 	public List<Category> findAll() {
-		return categorMapper.findAll();
+		return categoryMapper.findAll();
 	}
 
 	public List<Category> findCategory(int categoryId) {
-		return categorMapper.findSunCategoryByParentId(categoryId);
+		return categoryMapper.findSunCategoryByParentId(categoryId);
 	}
 
 	public boolean addParentCategory(Category category) {
-		int result  = categorMapper.addParentCategory(category);
+		int result  = categoryMapper.addParentCategory(category);
+		return result > 0 ? true : false;
+	}
+
+	public boolean addSunCategory(Category category) {
+		int result = categoryMapper.addSunCategory(category);
+		return result > 0 ? true : false;
+	}
+
+	public boolean deleteCategory(Integer id) {
+		int result = categoryMapper.deleteCategory(id);
 		return result > 0 ? true : false;
 	}
 

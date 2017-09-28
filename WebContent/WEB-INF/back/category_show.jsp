@@ -84,12 +84,13 @@
 							<c:if test="${category.parentId == parentCategory.id}">
 								<td>
 									${category.name}
+									<a class="glyphicon glyphicon-remove" href="javascript:deleteCategory(${category.id})"></a>
 								</td>	
 							
 							</c:if>
 						</c:forEach>
 					<%-- <td><a class="btn btn-primary" href="${path}/category/toUpdateCategory.action?id=${Category.id}">修改</a></td> --%>
-					<td><a class="btn btn-danger" href="javascript:deleteCategory(${Category.id})">删除</a></td>
+					<td><a class="btn btn-danger" href="javascript:deleteCategory(${parentCategory.id})">删除</a></td>
 				</tr>
 				</c:forEach>
 				</table>

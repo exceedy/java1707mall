@@ -20,12 +20,12 @@
 		      <ul class="nav navbar-nav">
 		        <li >
 		        
-		        	<a href="${pageContext.request.contextPath}/student/pageList.action">
+		        	<a href="${pageContext.request.contextPath}/product/pageList.action">
 		        	<span class="glyphicon glyphicon-user"></span>
 		        	学生管理<span class="sr-only">(current)</span></a></li>
 		        	
 		        <li class="active">
-		        	<a href="${pageContext.request.contextPath}/banji/pageList.action">
+		        	<a href="${pageContext.request.contextPath}/category/findAllCategory.action">
 		        	<span class="glyphicon glyphicon-home"></span>
 		        	班级管理</a></li>
 		        	

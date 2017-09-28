@@ -62,7 +62,7 @@
 				</form>
 				<form class="form_b" action="${path}/category/addSunCategory.action" method="post"> 
 					<div class="input-group input-group-sm">
-						<select id="parentCategory" name="parendId" onchange="selectSunCategory(this)">
+						<select  id="parentCategory" name="parentId">
 							<option>-- 请选择 --</option>
 						</select>
  						 <span class="input-group-addon" id="sizing-addon3">添加二级分类</span>

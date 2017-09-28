@@ -15,4 +15,8 @@ public interface ICategoryService {
 
 	boolean addParentCategory(Category category);
 
+	boolean addSunCategory(Category category);
+
+	boolean deleteCategory(Integer id);
+
 }
