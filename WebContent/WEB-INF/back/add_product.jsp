@@ -44,7 +44,7 @@
 		}
 		$(function () {
 			$.ajax({
-				url:"${pageContext.request.contextPath}/category/parenCategoryList.action",
+				url:"${pageContext.request.contextPath}/category/parentCategoryList.action",
 				dataType:"json",
 				success:function (data,textStatus,ajax) {
 					var html = "<option>-- 请选择 --</option>"

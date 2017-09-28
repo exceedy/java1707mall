@@ -39,9 +39,9 @@ public class CategoryController {
 		return "category_show";
 	}
 	
-	@RequestMapping(value="parenCategoryList")
+	@RequestMapping(value="parentCategoryList")
 	@ResponseBody
-	public List<Category> parenCategoryList() {
+	public List<Category> parentCategoryList() {
 		List<Category> list = categoryService.findParentCategory();
 		return list; 
 	}

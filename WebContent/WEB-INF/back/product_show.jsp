@@ -15,6 +15,9 @@ $(function() {
 $(function() {
 	$("#status option[value='${searchCondition.product.status}']").prop("selected",true);
 }); 
+function status() {
+	
+}
 	function goPage(pageIndex) {
 		$("#pageIndex").val(pageIndex);
 		$("#serviceForm").submit();

@@ -40,6 +40,19 @@
 			});
 		}
 		
+		function uploadPic() {
+			var options = {
+					url:"${pageContext.request.contextPath}/upload/uploadPic.action",
+					dataType:"json",
+					type:"post",
+					success : function (data) {
+						$("#imgId").attr("src","/pic/" + data.fileName);
+						$("#mainImage").val(data.fileName);
+					}
+			};
+			$("#file-add").ajaxSubmit(options);
+		}
+		
 </script>
 <title>Insert title here</title>
 </head>
@@ -64,7 +77,7 @@
 		                </li>
 		            </ul>
 		
-				<form action="<%=request.getContextPath()%>/product/updateProduct.action" method="post">
+				<form action="<%=request.getContextPath()%>/product/updateProduct.action"  method="post">
 				<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">分类</span>
  						 <select  class="form-control" id="ParentCategory" onchange="selectCategory(this)">
@@ -111,7 +124,10 @@
 								<option value="1">在售</option>
 								<option value="2">下架</option>
 						</select>
-						
+					商品图片
+						<img alt="" id="imgId" src="/pic/${product.mainImage}" width="50px" height="20px">
+						<input type="hidden" name="mainImage" value="" id="mainImage">
+  						<input type="file" name="pritrueFile" onchange="uploadPic()"/>
 					<input class="btn btn-primary" type="submit" value="修改">
 				</form>
 			</div>
