@@ -103,4 +103,17 @@ public class ProductController {
 		boolean result = productService.deleteProduct(id);
 		return "redirect:/product/pageList.action";
 	}
+	
+	public String deleteAll(Integer[] selectIds) {
+		for (Integer id : selectIds) {
+			productService.deleteProduct(id);
+		}
+		return "redirect:/product/pageList.action";
+	}
+	
+	@RequestMapping(value="updateStatus")
+	public String updateStatus() {
+		
+		return "";
+	}
 }
