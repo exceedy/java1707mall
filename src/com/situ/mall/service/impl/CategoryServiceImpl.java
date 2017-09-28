@@ -29,4 +29,9 @@ public class CategoryServiceImpl implements ICategoryService{
 		return categorMapper.findSunCategoryByParentId(categoryId);
 	}
 
+	public boolean addParentCategory(Category category) {
+		int result  = categorMapper.addParentCategory(category);
+		return result > 0 ? true : false;
+	}
+
 }

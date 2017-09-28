@@ -1,4 +1,4 @@
-package com.situ.mall.controller;
+package com.situ.mall.controller.back;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -86,7 +86,21 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="toUpdateProduct")
-	public String toUpdateProduct(Integer id) {
-		return "";
+	public String toUpdateProduct(Integer id, Model model) {
+		Product product = productService.findById(id);
+		model.addAttribute("product", product);
+		return "update_product";
+	}
+	
+	@RequestMapping(value="updateProduct")
+	public String updateProduct(Product product) {
+		boolean retule = productService.updateProduct(product);
+		return "redirect:/product/pageList.action";
+	}
+	
+	@RequestMapping(value="deleteProduct")
+	public String deleteProduct(Integer id) {
+		boolean result = productService.deleteProduct(id);
+		return "redirect:/product/pageList.action";
 	}
 }

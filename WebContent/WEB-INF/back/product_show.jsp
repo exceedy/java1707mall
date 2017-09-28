@@ -28,7 +28,7 @@ $(function() {
 			$("#mainform").submit();
 		}
 	}
-	function deleteStudent(id) {
+	function deleteProduct(id) {
 		var isDel = confirm("确定删除？");
 		if(isDel) {
 			location.href = "${path}/product/deleteproduct.action?id="+id;
@@ -102,6 +102,7 @@ $(function() {
 					</tr>
 					<tr>
 						<td><input type="button" value="批量删除" onclick="deleteAll();" /></td>
+						<td><input type="button" value="批量上下架" onclick="status();" /></td>
 						<td><a class="btn btn-primary" href="${path}/product/toAddproduct.action">添加</a></td>
 						
 					</tr>
@@ -128,9 +129,13 @@ $(function() {
 							<td>${product.createTime}</td>
 							<td>${product.updateTime}</td>
 							<%-- <td>${product.banji.name}</td> --%>
-							<td><a class="btn btn-primary" href="${path}/product/toUpdateproduct.action?id=${product.id}">修改</a></td>
+							<td><a class="btn btn-primary" href="${path}/product/toUpdateProduct.action?id=${product.id}">修改</a></td>
 							<%-- <td><a href="${path}/product/deleteStudent&id=${product.id}">删除</a></td> --%>
-							<td><a class="btn btn-danger" href="javascript:deleteStudent(${product.id})">删除</a></td>
+							<td><a class="btn btn-danger" href="javascript:deleteProduct(${product.id})">删除</a></td>
+							<td>
+								<input type="checkbox" name="statusIds" value="1"/>上架
+								<input type="checkbox" name="statusIds" value="2"/>下架
+							</td>
 						</tr>
 						</c:forEach>
 					</table>

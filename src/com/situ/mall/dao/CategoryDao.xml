@@ -13,10 +13,10 @@
   			<result column="update_time" property="updateTime" javaType="java.sql.Date" jdbcType="DATE"/>
   		</resultMap>
   		<insert id="addParentCategory" parameterType="Category">
-  			insert into category(parent_id,name,status,sort_order,create_time,update_time) values(0,name,status,sortOrder,createTime);
+  			insert into category(parent_id,name,status,sort_order,create_time,update_time) values(0,#{name},#{status},#{sortOrder},now(),now());
   		</insert>
   		<insert id="addSunCategory" parameterType="Category">
-  			insert into category(parent_id,name,status,sort_order,create_time,update_time) values(id,name,status,sortOrder,createTime);
+  			insert into category(parent_id,name,status,sort_order,create_time,update_time) values(#{parentId},#{name},#{status},#{sortOrder},now(),now());
   		</insert>
   		<select id="findAllParentCategory" resultMap="CategoryMap">
   			select id,parent_id,name,status,sort_order,create_time,update_time from category where parent_id = 0;

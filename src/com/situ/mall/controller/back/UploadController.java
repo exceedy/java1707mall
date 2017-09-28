@@ -1,4 +1,4 @@
-package com.situ.mall.controller;
+package com.situ.mall.controller.back;
 
 import java.io.File;
 import java.io.IOException;

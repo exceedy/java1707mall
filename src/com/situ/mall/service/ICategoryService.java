@@ -12,4 +12,7 @@ public interface ICategoryService {
 
 	List<Category> findCategory(int categoryId);
 
+
+	boolean addParentCategory(Category category);
+
 }

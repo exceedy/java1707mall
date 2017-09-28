@@ -6,8 +6,8 @@ public class Category {
 		private Integer id;
 		private Integer parentId;
 		private String name;
-		private Integer status;
-		private Integer sortOrder;
+		private Integer status = 1;
+		private Integer sortOrder = null;
 		private Date createTime;
 		private Date updateTime;
 		

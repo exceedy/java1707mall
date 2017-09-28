@@ -107,10 +107,10 @@
 				id = "file-add" enctype="multipart/form-data" method="post"> 
 						<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">分类</span>
- 						 <select id="ParentCategory" onchange="selectCategory(this)">
+ 						 <select  class="form-control" id="ParentCategory" onchange="selectCategory(this)">
  						 	<option value="">-- 请选择 --</option>
  						 </select>
- 						 <select id="Category" name="categoryId">
+ 						 <select  class="form-control" id="Category" name="categoryId">
  						 	<option value="">-- 请选择 --</option>
  						 </select>
 					</div>

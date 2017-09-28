@@ -47,12 +47,14 @@ public interface ProductDao {
 	/**
 	 * 修改商品信息
 	 * @param product
+	 * @return 
 	 */
-	void updateProduct(Product product);
+	int updateProduct(Product product);
 	/**
 	 * 删除商品
 	 * @param id
+	 * @return 
 	 */
-	void deleteProduct(int id);
+	int deleteProduct(int id);
 	
 }

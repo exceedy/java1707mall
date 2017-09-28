@@ -53,4 +53,18 @@ public class ProductServiceImpl implements IProductService{
 		return result > 0 ? true : false;
 	}
 
+	public Product findById(Integer id) {
+		return productDao.findById(id);
+	}
+
+	public boolean updateProduct(Product product) {
+		int retult = productDao.updateProduct(product);
+		return retult > 0 ? true : false;
+	}
+
+	public boolean deleteProduct(Integer id) {
+		int result = productDao.deleteProduct(id);
+		return result > 0 ? true : false;
+	}
+
 }

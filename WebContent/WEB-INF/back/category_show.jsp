@@ -19,10 +19,10 @@
 <script type="text/javascript">
 	
 	
-	function deletebanji(id) {
+	function deleteCategory(id) {
 		var isDel = confirm("确定删除?");
 		if (isDel) {
-			location.href = "${path}/category/deleteBanji.action?id="+id;
+			location.href = "${path}/category/deleteCategory.action?id="+id;
 		}
 	};
 	function selectAlls() {
@@ -42,13 +42,13 @@
 </head>
 <body>
 			<%@include file = "../common/use.jsp" %>
-			<%@include file="../common/banji.jsp" %>
+			<%@include file="../common/category_logo.jsp" %>
 	<div class="container">
 		    <div class="row">
 		        <div class="col-md-2">
 		            <div class="list-group">
 		                <a href="${path}/category/pageList.action" class="list-group-item active">分类管理</a>
-		                <a href="${path}/category/toAddBanji.action" class="list-group-item ">添加分类</a>
+		                <a href="${path}/category/toAddCategory.action" class="list-group-item ">添加分类</a>
 		            </div>
 		        </div>
 		        <div class="col-md-10">
@@ -57,13 +57,13 @@
 		                    <a href="${path}/category/pageList.action">分类列表</a>
 		                </li>
 		                <li  >
-		                	<a href="${path}/category/toAddBanji.action">添加分类</a>
+		                	<a href="${path}/category/toAddCategory.action">添加分类</a>
 		                </li>
 		            </ul>
 		            
 		            <form id="pageList" action="${path}/category/pageList.action">
 		            	<input type="hidden" name="pageIndex" id="pageIndex"/>
-		            	分类名称：<input type="text" name = "banji.name" value="${searchCondition.banji.name}"/>
+		            	分类名称：<input type="text" name = "Category.name" value="${searchCondition.Category.name}"/>
 		            	<input type="submit" value="搜索">
 		            </form>
 			<form id="delForm" action="${path}/category/deleteAll.action">
@@ -79,7 +79,7 @@
 					<tr>
 					<td><input type="checkbox" name="selectId" value="${parentCategory.id}"/></td>
 					<td><b>${parentCategory.name}</b></td>
-					<%-- <td>${banji.count}</td> --%>
+					<%-- <td>${Category.count}</td> --%>
 						<c:forEach items="${listCategory}" var="category">
 							<c:if test="${category.parentId == parentCategory.id}">
 								<td>
@@ -88,8 +88,8 @@
 							
 							</c:if>
 						</c:forEach>
-					<%-- <td><a class="btn btn-primary" href="${path}/category/toUpdateBanji.action?id=${banji.id}">修改</a></td> --%>
-					<%-- <td><a class="btn btn-danger" href="javascript:deletebanji(${banji.id})">删除</a></td> --%>
+					<%-- <td><a class="btn btn-primary" href="${path}/category/toUpdateCategory.action?id=${Category.id}">修改</a></td> --%>
+					<td><a class="btn btn-danger" href="javascript:deleteCategory(${Category.id})">删除</a></td>
 				</tr>
 				</c:forEach>
 				</table>

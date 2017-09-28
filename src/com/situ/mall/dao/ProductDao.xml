@@ -105,8 +105,8 @@
   		</delete>
   		
   		<select id="findById" parameterType="int" resultMap="ProductMap">
-  			select product.id,category.name AS category_name,product.name,product.subtitle,stock,product.status,product.create_time 
-  			from product inner join category on product.category_id = category.id where product.id = #{id};
+  			select product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
+			from product inner join category on product.category_id = category.id where product.id = #{id};
   		</select>
   		
   		<update id="updateProduct" parameterType="Product">
@@ -127,10 +127,17 @@
   				<if test="status != null">
   					status = #{status},
   				</if>
-  				<if test="updateTime != null and !&quot;&quot;.equals(updateTime.trim())">
-  					update_time = #{updateTime},
+  				<if test="mainImage != null and !&quot;&quot;.equals(mainImage.trim())">
+  					main_image = #{mainImage},
+  				</if>
+  				<if test="subImages != null and !&quot;&quot;.equals(subImages.trim())">
+  					sub_images = #{subImages},
+  				</if>
+  				<if test="detail != null and !&quot;&quot;.equals(detail.trim())">
+  					detail = #{detail},
   				</if>
   			</set>
+  			,update_time = now()
   			where id = #{id}
   		</update>
   </mapper>

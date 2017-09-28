@@ -1,4 +1,4 @@
-package com.situ.mall.controller;
+package com.situ.mall.controller.back;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,7 +19,6 @@ import com.situ.mall.service.ICategoryService;
 @Controller
 @RequestMapping(value="category")
 public class CategoryController {
-
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(
@@ -52,5 +51,16 @@ public class CategoryController {
 	public List<Category> categoryList(int parentId) {
 		List<Category> list =  categoryService.findCategory(parentId);
 		return list;
+	}
+	
+	@RequestMapping(value="toAddCategory")
+	public String toAddCategory() {
+		return "add_category";
+	}
+	
+	@RequestMapping(value="addParentCategory")
+	public String addParentCategory(Category category) {
+		boolean result = categoryService.addParentCategory(category);
+		return "redirect:/category/findAllCategory.action";
 	}
 }
