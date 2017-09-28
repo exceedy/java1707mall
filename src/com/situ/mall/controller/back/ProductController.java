@@ -111,9 +111,32 @@ public class ProductController {
 		return "redirect:/product/pageList.action";
 	}
 	
-	@RequestMapping(value="updateStatus")
-	public String updateStatus() {
-		
-		return "";
+	@RequestMapping(value="updateStatusUp")
+	public String updateStatusUp(Integer id) {
+		int status = 1;
+		boolean result = productService.updateStatus(id,status);
+		return "redirect:/product/pageList.action";
+	}
+	@RequestMapping(value="updateStatusDown")
+	public String updateStatusDown(Integer id) {
+		int status = 2;
+		boolean result = productService.updateStatus(id,status);
+		return "redirect:/product/pageList.action";
+	}
+	
+	@RequestMapping(value="updateAllStatusUp")
+	public String updateAllStatusUp(Integer[] selectIds) {
+		for (Integer id : selectIds) {
+			productService.updateStatus(id, 1);
+		}
+		return "redirect:/product/pageList.action";
+	}
+	
+	@RequestMapping(value="updateAllStatusDown")
+	public String updateAllStatusDown(Integer[] selectIds) {
+		for (Integer id : selectIds) {
+			productService.updateStatus(id, 2);
+		}
+		return "redirect:/product/pageList.action";
 	}
 }

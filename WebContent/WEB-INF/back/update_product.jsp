@@ -12,7 +12,7 @@
 		});
 		$(function () {
 			$.ajax({
-				url:"${pageContext.request.contextPath}/category/parenCategoryList.action",
+				url:"${pageContext.request.contextPath}/category/parentCategoryList.action",
 				dataType:"json",
 				success:function (data) {
 					var html = "<option>-- 请选择 --</option>";
@@ -52,6 +52,9 @@
 			};
 			$("#file-add").ajaxSubmit(options);
 		}
+		$(function () {
+			$("#imgId").attr("src","/pic/${product.mainImage}")
+		})
 		
 </script>
 <title>Insert title here</title>
@@ -77,7 +80,8 @@
 		                </li>
 		            </ul>
 		
-				<form action="<%=request.getContextPath()%>/product/updateProduct.action"  method="post">
+				<form action="<%=request.getContextPath()%>/product/updateProduct.action" 
+				id = "file-add" enctype="multipart/form-data" method="post">
 				<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">分类</span>
  						 <select  class="form-control" id="ParentCategory" onchange="selectCategory(this)">
@@ -125,7 +129,7 @@
 								<option value="2">下架</option>
 						</select>
 					商品图片
-						<img alt="" id="imgId" src="/pic/${product.mainImage}" width="50px" height="20px">
+						<img alt="" id="imgId" src="" width="50px" height="20px">
 						<input type="hidden" name="mainImage" value="" id="mainImage">
   						<input type="file" name="pritrueFile" onchange="uploadPic()"/>
 					<input class="btn btn-primary" type="submit" value="修改">

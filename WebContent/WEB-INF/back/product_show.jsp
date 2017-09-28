@@ -22,12 +22,13 @@ function status() {
 		$("#pageIndex").val(pageIndex);
 		$("#serviceForm").submit();
 	}
-	function seleteAll() {
-		$("input[name=selectIds]").prop("checked".$("#seleteAlls").is(":checked"));
+	function selectAll() {
+		$("input[name=selectIds]").prop("checked",$("#selectAlls").is(":checked"));
 	}
 	function deleteAll() {
 		var isDel = confirm("确定删除？");
 		if(isDel) {
+			$("#mainform").attr("action","${path}/product/deleteAll.action");
 			$("#mainform").submit();
 		}
 	}
@@ -35,6 +36,32 @@ function status() {
 		var isDel = confirm("确定删除？");
 		if(isDel) {
 			location.href = "${path}/product/deleteproduct.action?id="+id;
+		}
+	}
+	function updateStatusUp(id) {
+		var isDel = confirm("确定上架？");
+		if(isDel) {
+			location.href = "${path}/product/updateStatusUp.action?id="+id;
+		}
+	}
+	function updateStatusDown(id) {
+		var isDel = confirm("确定下架？");
+		if(isDel) {
+			location.href = "${path}/product/updateStatusDown.action?id="+id;
+		}
+	}
+	function updateAllStatusUp() {
+		var isDel = confirm("确定上架？");
+		if(isDel) {
+			$("#mainform").attr("action","${path}/product/updateAllStatusUp.action");
+			$("#mainform").submit();
+		}
+	}
+	function updateAllStatusDown() {
+		var isDel = confirm("确定下架？");
+		if(isDel) {
+			$("#mainform").attr("action","${path}/product/updateAllStatusDown.action");
+			$("#mainform").submit();
 		}
 	}
 	
@@ -86,10 +113,10 @@ function status() {
 							<input type="submit" value="查询" class="btn btn-primary"/>
 					</form>
 				</div>
-			<form action="${path}/product/deleteAll" id="mainform" method="post">
+			<form action="" id="mainform" method="post">
 				<table  class="table table-striped table-bordered table-hover">
 					<tr>
-						<td><input type="checkbox" id="selectAlls" onclick="selectAll();"/></td>
+						<td><input type="checkbox" id="selectAlls" onclick="selectAll()"/></td>
 						<td>id</td>
 						<td>分类</td>
 						<td>商品名称</td>
@@ -104,14 +131,15 @@ function status() {
 						<td>更新时间</td>
 					</tr>
 					<tr>
-						<td><input type="button" value="批量删除" onclick="deleteAll();" /></td>
-						<td><input type="button" value="批量上下架" onclick="status();" /></td>
+						<td><input class="btn btn-danger" type="button" value="批量删除" onclick="deleteAll();" /></td>
+						<td><input class="btn btn-primary" type="button" value="批量上架" onclick="updateAllStatusUp();" /></td>
+						<td><input class="btn btn-danger" type="button" value="批量下架" onclick="updateAllStatusDown();" /></td>
 						<td><a class="btn btn-primary" href="${path}/product/toAddproduct.action">添加</a></td>
 						
 					</tr>
 					<c:forEach items="${pageBean.list}" var="product">
 						<tr>
-							<td><input type="checkbox" name="selectIds" value="${product.id}"/></td>
+							<td><input type="checkbox" name="selectIds" value="${product.id}"></td>
 							<td>${product.id}</td>
 							<td>${product.category.name}</td>
 							<td>${product.name }</td>
@@ -135,10 +163,8 @@ function status() {
 							<td><a class="btn btn-primary" href="${path}/product/toUpdateProduct.action?id=${product.id}">修改</a></td>
 							<%-- <td><a href="${path}/product/deleteStudent&id=${product.id}">删除</a></td> --%>
 							<td><a class="btn btn-danger" href="javascript:deleteProduct(${product.id})">删除</a></td>
-							<td>
-								<input type="checkbox" name="statusIds" value="1"/>上架
-								<input type="checkbox" name="statusIds" value="2"/>下架
-							</td>
+							<td><a class="btn btn-primary" href="javascript:updateStatusUp(${product.id})">上架</a></td>
+							<td><a class="btn btn-danger" href="javascript:updateStatusDown(${product.id})">下架</a></td>
 						</tr>
 						</c:forEach>
 					</table>

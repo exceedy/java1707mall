@@ -18,4 +18,6 @@ public interface IProductService {
 
 	boolean deleteProduct(Integer id);
 
+	boolean updateStatus(Integer id, int status);
+
 }

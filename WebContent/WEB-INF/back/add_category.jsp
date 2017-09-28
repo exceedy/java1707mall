@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	$(function () {
 		$.ajax({
-			url:"${path}/category/parenCategoryList.action",
+			url:"${path}/category/parentCategoryList.action",
 			dataType:"json",
 			success:function (data) {
 				var html = "<option>-- 请选择 --</option>";
@@ -62,7 +62,7 @@
 				</form>
 				<form class="form_b" action="${path}/category/addSunCategory.action" method="post"> 
 					<div class="input-group input-group-sm">
-						<select  id="parentCategory" name="parentId">
+						<select class="form-control input-group-addon" id="parentCategory" name="parentId">
 							<option>-- 请选择 --</option>
 						</select>
  						 <span class="input-group-addon" id="sizing-addon3">添加二级分类</span>

@@ -56,5 +56,12 @@ public interface ProductDao {
 	 * @return 
 	 */
 	int deleteProduct(int id);
+	/**
+	 * 修改状态
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	int updateStatus(@Param(value="id")Integer id, @Param(value="status")int status);
 	
 }

@@ -140,4 +140,13 @@
   			,update_time = now()
   			where id = #{id}
   		</update>
+  		
+  		<update id="updateStatus" >
+  			update product <set>
+  			<if test="status != null and status != 0">
+  				status	= #{status},
+  			</if> 
+  			</set> 
+  			where id  = #{id};
+  		</update>
   </mapper>
