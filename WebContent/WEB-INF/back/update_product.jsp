@@ -10,7 +10,7 @@
 		$(function(){
 			$("#status option[value='${product.status}']").prop("selected",true);
 		});
-		$(function () {
+		/* $(function () {
 			$.ajax({
 				url:"${pageContext.request.contextPath}/category/parentCategoryList.action",
 				dataType:"json",
@@ -22,7 +22,7 @@
 					$("#ParentCategory").html(html);
 				}
 			});
-		});
+		}); */
 		function selectCategory (Obj) {
 			var parentId = $(Obj).val();
 			$("#Category option:gt(0)").remove();
@@ -36,6 +36,7 @@
 						html += "<option value='"+data[i].id+"'>" + data[i].name + "</option>";
 					}
 					$("#Category").html(html);
+					//$("#ParentCategory option [value='${product.category.parentId}']").prop("selected",true);
 				}
 			});
 		}
@@ -55,6 +56,8 @@
 		$(function () {
 			$("#imgId").attr("src","/pic/${product.mainImage}")
 		})
+		
+		
 		
 </script>
 <title>Insert title here</title>
@@ -86,9 +89,21 @@
  						 <span class="input-group-addon" id="sizing-addon3">分类</span>
  						 <select  class="form-control" id="ParentCategory" onchange="selectCategory(this)">
  						 	<option value="">-- 请选择 --</option>
+ 						 	<c:forEach items="${list}" var="category">
+ 						 		<c:if test="${category.id == product.category.parentId}">
+ 						 		<option value="${category.id}" selected="selected">${category.name}</option>
+ 						 		</c:if>
+ 						 		<option value="${category.id}" >${category.name}</option>
+ 						 	</c:forEach>
  						 </select>
  						 <select  class="form-control" id="Category" name="categoryId">
- 						 	<option value="">-- 请选择 --</option>
+ 						 		<option value="" >-- 请选择 --</option>
+ 						 	<c:forEach items="${sunCategoryList}" var="sunCategory">
+ 						 		<c:if test="${sunCategory.id == product.categoryId}">
+ 						 		<option value="${sunCategory.id}" selected="selected">${sunCategory.name}</option>
+ 						 		</c:if>
+ 						 		<option value="${sunCategory.id}" >${sunCategory.name}</option>
+ 						 	</c:forEach>
  						 </select>
  						 </div>
 				<div class="input-group input-group-sm">

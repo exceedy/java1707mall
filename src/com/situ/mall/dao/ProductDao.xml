@@ -17,7 +17,9 @@
 			<result column="create_time" property="createTime" javaType="java.sql.Date" jdbcType="DATE"/>
 			<result column="update_time" property="updateTime" javaType="java.sql.Date" jdbcType="DATE"/>
 			<association property="category" javaType="Category">
+			<id column="category_id" property="id"/>
 			<result column="category_name" property="name"/>
+			<result column="parent_id" property="parentId"/>
 			</association>
   		</resultMap>
   		
@@ -63,7 +65,7 @@
   		</select>
   		
   		<select id="getSearchConditionList" parameterType="SearchCondition" resultMap="ProductMap">
-  			select product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
+  			select product.id,category.id as category_id,category.parent_id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
 			from product inner join category on product.category_id = category.id 
 			<where>
 				<if test="product.name != null and !&quot;&quot;.equals(product.name.trim())">
@@ -105,7 +107,7 @@
   		</delete>
   		
   		<select id="findById" parameterType="int" resultMap="ProductMap">
-  			select product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
+  			select product.id,category_id,category.id as category_id,category.parent_id as parent_id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
 			from product inner join category on product.category_id = category.id where product.id = #{id};
   		</select>
   		

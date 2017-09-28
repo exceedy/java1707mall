@@ -87,7 +87,12 @@ public class ProductController {
 	
 	@RequestMapping(value="toUpdateProduct")
 	public String toUpdateProduct(Integer id, Model model) {
+		List<Category> list = categoryService.findParentCategory();
 		Product product = productService.findById(id);
+		int preantId = product.getCategory().getParentId();
+		List<Category> sunCategoryList = categoryService.findCategory(preantId);
+		model.addAttribute("list", list);
+		model.addAttribute("sunCategoryList", sunCategoryList);
 		model.addAttribute("product", product);
 		return "update_product";
 	}
