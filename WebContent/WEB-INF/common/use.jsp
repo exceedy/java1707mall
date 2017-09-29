@@ -7,3 +7,6 @@
 <link rel="stylesheet" href="${path}/thirds/lib/bootstrap/css/bootstrap.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/thirds/js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/thirds/js/jquery.form.js"></script>
+<script type="text/javascript">  
+     var path="${pageContext.request.contextPath}";  
+</script>

@@ -9,6 +9,9 @@
 
 	<%@include file="../common/use.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/thirds/lib/bootstrap/css/bootstrap.css" />
+<link href="${path}/thirds/lib/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="${path}/thirds/lib/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="${path}/thirds/lib/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript">
 		$(function() {
 			$("#name").blur(function () {
@@ -36,11 +39,11 @@
 					dataType:"json",
 					type:"post",
 					success : function (data) {
-						$("#imgId").attr("src","/pic/" + data.fileName);
+						$("#imgId").attr("src",data.url);
 						$("#mainImage").val(data.fileName);
 					}
 			};
-			$("#file-add").ajaxSubmit(options);
+			$("#form-add").ajaxSubmit(options);
 		}
 		$(function () {
 			$.ajax({
@@ -72,6 +75,39 @@
 				}
 			});
 		}
+		var myKindEditor ;
+		KindEditor.ready(function(K) {
+			var kingEditorParams = {
+					//指定上传文件参数名称
+					filePostName  : "pictureFile",
+					//指定上传文件请求的url。
+					uploadJson : path+'/upload/uploadPic.action',
+					//上传类型，分别为image、flash、media、file
+					dir : "image"
+			}
+			var editor = K.editor(kingEditorParams);
+			//多图片上传
+			K('#picFileUpload').click(function() {
+				editor.loadPlugin('multiimage', function() {
+					editor.plugin.multiImageDialog({
+						clickFn : function(urlList) {
+							console.log(urlList);
+							var div = K('#J_imageView');
+							var imgArray = [];
+							div.html('');
+							K.each(urlList, function(i, data) {
+								imgArray.push(data.url);
+								div.append('<img src="' + data.url + '" width="80" height="50">');
+							});
+							$("#subImages").val(imgArray.join(","));
+							editor.hideDialog();
+						}
+					});
+				});
+			});
+			//富文本编辑器
+			myKindEditor = KindEditor.create('#form-add[name=detail]', kingEditorParams);
+		});
 </script>
 <style type="text/css">
 	.from_b{
@@ -104,7 +140,7 @@
 		            </ul>
 	
 				<form class="form_b" action="${path}/product/addProduct.action" 
-				id = "file-add" enctype="multipart/form-data" method="post"> 
+				id = "form-add" enctype="multipart/form-data" method="post"> 
 						<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">分类</span>
  						 <select  class="form-control" id="ParentCategory" onchange="selectCategory(this)">
@@ -124,10 +160,7 @@
  						 <span class="input-group-addon" id="sizing-addon3">商品副标题</span>
   						<input type="text"  name="subtitle" class="form-control" placeholder="商品副标题" aria-describedby="sizing-addon3">
 					</div>
-					<div class="input-group input-group-sm">
- 						 <span class="input-group-addon" id="sizing-addon3">商品详情</span>
-  						<input type="text"  name="detail" class="form-control" placeholder="商品详情" aria-describedby="sizing-addon3">
-					</div><div class="input-group input-group-sm">
+					<div>
  						 <span class="input-group-addon" id="sizing-addon3">价格</span>
   						<input type="text"  name="price" class="form-control" placeholder="价格" aria-describedby="sizing-addon3">
 					</div>
@@ -145,7 +178,17 @@
 						商品图片
 						<img alt="" id="imgId" src="" width="50px" height="20px">
 						<input type="hidden" name="mainImage" value="" id="mainImage">
-  						<input type="file" name="pritrueFile" onchange="uploadPic()"/>
+  						<input type="file" name="pictureFile" onchange="uploadPic()"/>
+  						<div class="form-group">
+				  	<label>商品图片</label>
+				  	 <a href="javascript:void(0)" class="picFileUpload" id="picFileUpload">上传图片</a>
+	                 <input type="hidden" name="subImages" id="subImages"/>
+	                 <div id="J_imageView"></div>
+				  </div>
+				  <div class="form-group">
+				  	<label>商品描述</label>
+				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail"></textarea>
+				  </div>
 					<input class="btn btn-primary" type="submit" value="添加">
 				</form>
 			</div>

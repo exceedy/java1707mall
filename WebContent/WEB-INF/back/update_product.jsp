@@ -47,14 +47,14 @@
 					dataType:"json",
 					type:"post",
 					success : function (data) {
-						$("#imgId").attr("src","/pic/" + data.fileName);
+						$("#imgId").attr("src","http://owyy75gow.bkt.clouddn.com/" + data.fileName);
 						$("#mainImage").val(data.fileName);
 					}
 			};
 			$("#file-add").ajaxSubmit(options);
 		}
 		$(function () {
-			$("#imgId").attr("src","/pic/${product.mainImage}")
+			$("#imgId").attr("src","http://owyy75gow.bkt.clouddn.com//${product.mainImage}")
 		})
 		
 		
