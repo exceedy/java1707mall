@@ -1,15 +1,26 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
+<%@include file="../common/front.jsp"%>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>注册</title>
-<link href="css/zhuce.css" rel="stylesheet">
+<link href="${path}/thirds/css/zhuce.css" rel="stylesheet">
 </head>
-
+	<script type="text/javascript">
+		function twoPassword() {
+			var password = $("#password").val();
+			var twoPassword = $("#twoPassword").val();
+			if (twoPassword != password) {
+				$("#update").attr("placeholder","密码不相同，请重新输入");
+			}
+		}
+	</script>
 <body>
 <div class="top">
 	<div class="div1">
-    	<img src="image/LOGO.png">
+    	<img src="${path}/thirds//image/LOGO.png">
     </div>
     <div class="div2">
     	<ul>
@@ -20,20 +31,24 @@
     </div>
 </div>
 <div class="cen">
-	<div class="div1"><img src="image/110.png">
+	<div class="div1"><img src="${path}/thirds//image/110.png">
 	<div class="div2">
     <ul>
     	<li class="li1">用户注册</li>
     	<li>已有账号<a class="a1" href="denglu.html">在此登录</a></li>
     </ul>
-    <input class="in1" type="text">
-    <input class="in2" type="text">
-    <input class="in3" type="button" value="获取短信验证吗">
-    <input class="in4" type="text">
-    <input class="in5" type="text">
-    <input class="in6" type="button" value="同意协议并注册">
+    <form action="${path}/login/register.shtml">
+    <input class="in1" name="userName" placeholder="账户" type="text">
+    <input class="in4"  name="password" placeholder="密码" id="password" type="text">
+    <input class="in2" placeholder="手机号" name="phone" type="text">
+    <!-- <input class="in3" type="button" value="获取短信验证吗"> -->
+    <input class="in4" name="email" placeholder="email" id="password" type="text">
+    <!-- <input class="in5" id="twoPassword" onblur="twoPassword()" placeholder="重复密码" type="text"> -->
+    <!-- <input  class="in7"  id="update"  placeholder="" type="text" readonly> -->
+    <input class="in6" type="submit" value="同意协议并注册">
     <a class="a2">《获取优选用户协议》</a>
-
+    </form>
+</div>
 </div>
 </div>
 <div class="gy">

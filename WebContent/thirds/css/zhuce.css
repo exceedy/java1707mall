@@ -42,7 +42,7 @@ input{ margin:0;
 		left:50%;
 		margin-left:-950px;}
 .cen .div2{ width:350px;
-			height:400px;
+			height:500px;
 			position:absolute;
 			left:718px;
 			top:40px;
@@ -94,6 +94,12 @@ input{ margin:0;
 					height:40px;
 					background:#f41443;
 					color:#ffffff;
+					margin-top:20px;
+					margin-left:10px;}
+.cen .div2 .in7{	width:10px;
+					height:10px;
+					float:left;
+					color:#f41443;
 					margin-top:20px;
 					margin-left:10px;}
 .cen .div2 .a2{ clear:left;

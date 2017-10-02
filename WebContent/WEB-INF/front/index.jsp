@@ -17,7 +17,7 @@
         </div>
     	<div class="box2">
         	<ul>
-            	<li><a class="login" href="">请登录</a></li>
+            	<li><a class="login" href="${path}/login/toLogin.shtml">请登录</a></li>
             	<li><a href="">快速注册</a></li>
             	<li><a class="sc" href="">我的收藏</a></li>
             	<li><a class="wd" href="">我的订单</a></li>
@@ -120,8 +120,10 @@ $(".sctu").hide().eq(0).show();
 					a=$(this).index();
 					$(".yuan li").removeClass("dqx").eq(a).addClass("dqx");
 					}
-					
 	)
+	$(function () {
+		${""}
+	});
     </script>
 
 
