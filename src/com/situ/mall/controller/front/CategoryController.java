@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.situ.mall.pojo.Campaign;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.ICategoryService;
@@ -32,5 +31,12 @@ public class CategoryController {
 		model.addAttribute("productList", productList);
 		return "category_list";
 	}
+	
+	@RequestMapping(value="toProduct.shtml")
+	public String toProduct(Integer id, Model model) {
+		Product product = productService.findById(id);
+		model.addAttribute("product", product);
+		return "details";
+	} 
 	
 }

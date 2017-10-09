@@ -6,9 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>详情页</title>
 <%@ include file="../common/front.jsp" %>
-<link href="css/xiangqing.css" rel="stylesheet">
+<link href="${path}/thirds/css/xiangqing.css" rel="stylesheet">
 </head>
-
+<script type="text/javascript">
+	$(function () {
+		var subImages = "${product.subImages}";
+		var subImage = subImages.split(",");
+		for (var i = 0; i < subImage.length; i++) {
+			$("#subImages").append("<img src='  ${subImage[i]}'>");
+		}
+	});
+</script>
 <body>
 <div class="top">
 	<div class="top-cen">
@@ -31,7 +39,7 @@
  </div>
  <div class="sou">
     <div class="sou-left">
-        <img src="image/LOGO.png">
+        <img src="${path}/thirds/image/LOGO.png">
     </div>
   	<div class="sou-cen">
         <input class="in1" type="text">
@@ -88,15 +96,15 @@
 	<div class="xq-left">
    		<ul>
    			<li class="li1">
-            	<!-- <img src="image/70.png"> -->
-            	<img src="http://owyy75gow.bkt.clouddn.com/${product.mainImage}">
+            	<!-- <img src="${path}/thirds/image/70.png"> -->
+            	<img src="${product.mainImage}">
             </li>
-   			<li class="li2">
-            	<img class="img" src="http://owyy75gow.bkt.clouddn.com/${product.subImages}">
-            	<img class="img" src="image/bg2.png">
-                <img class="img" src="image/bg3.png">
-                <img class="img" src="image/bg4.png">
-                <img class="img0" src="image/17.png">
+   			<li class="li2" id="subImages">
+            	<%-- <img class="img" src="${product.subImages}">
+            	<img class="img" src="${path}/thirds/image/bg2.png">
+                <img class="img" src="${path}/thirds/image/bg3.png">
+                <img class="img" src="${path}/thirds/image/bg4.png">
+                <img class="img0" src="${path}/thirds/image/17.png"> --%>
             </li>
    			<li class="li3">
             	<a class="a1" href="">关注</a>
@@ -113,7 +121,7 @@
         <div class="box2">
         	<ul>
         		<li>
-                	<img src="image/117.png">
+                	<img src="${path}/thirds/image/117.png">
                 </li>
         		<li>全靓淘实物商品通用</li>
         		<li><a class="a" href="">去刮券</a></li>
@@ -164,15 +172,15 @@
         <ul class="ul4">
         	<li>增值保障</li>
         	<li class="li1">
-            	<img src="image/cu.png">
+            	<img src="${path}/thirds/image/cu.png">
                 屏碎保1年 ￥66
             </li>
         	<li class="li1">
-            	<img src="image/124.png">
+            	<img src="${path}/thirds/image/124.png">
                 1年内换新 ￥86
             </li>
         	<li class="li1">
-            	<img src="image/125.png">
+            	<img src="${path}/thirds/image/125.png">
                 屏碎保2年 ￥96
             </li>
         </ul>
@@ -211,36 +219,36 @@
     <div class="dow1">
     	<ul>
     		<li class="li1">
-            	<img src="image/112.png"><br>
+            	<img src="${path}/thirds/image/112.png"><br>
                 派滋 华为畅享6S钢化膜<br>
                 畅享6S手机贴膜 高清透
             </li>
     		<li>
-            	<img src="image/131.png"><br>
+            	<img src="${path}/thirds/image/131.png"><br>
                 机灵猫 畅享6S手机壳女<br>
                 防摔带支架保护套<br>
                 <input type="checkbox"><span>￥18.00</span>
             </li>
     		<li>
-            	<img src="image/137.png"><br>
+            	<img src="${path}/thirds/image/137.png"><br>
                 机灵猫 畅享6S手机壳女<br>
                 防摔带支架保护套<br>
                 <input type="checkbox"><span>￥26.00</span>
             </li>
     		<li>
-            	<img src="image/132.png"><br>
+            	<img src="${path}/thirds/image/132.png"><br>
                 品胜	 Tvpe C/Micro <br>
                 USB/Lightning接口三<br>
                 <input type="checkbox"><span>￥29.00</span>
             </li>
     		<li>
-            	<img src="image/133.png"><br>
+            	<img src="${path}/thirds/image/133.png"><br>
                 品胜 iPad充电器 移动电<br>
                 源充电<br>
                 <input type="checkbox"><span>￥35.00</span>
             </li>
     		<li class="dayu">
-            	<img src="image/134.png"><br>
+            	<img src="${path}/thirds/image/134.png"><br>
                 罗马式（POMOSS）<br>
                 LED数显屏 移动<br>
                 <input type="checkbox"><span>￥108.00</span>
@@ -255,8 +263,8 @@
     	</ul>
     </div>
 </div>
-
-<div>
+<div class="clearfix"></div>
+<div class="detail">
 	${product.detail}
 </div>
 

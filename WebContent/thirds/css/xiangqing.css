@@ -471,4 +471,9 @@ h4{ margin:0;}
 		height:80px;
 		padding-top:10px;}
 .zh-jz p{ color:#707070;
-		line-height:30px;}	
+		line-height:30px;}
+.detail{
+	float: right;
+	width: 900px;
+	text-align: center;
+}	
