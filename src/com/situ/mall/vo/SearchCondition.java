@@ -1,15 +1,35 @@
 package com.situ.mall.vo;
 
+import com.situ.mall.pojo.Campaign;
 import com.situ.mall.pojo.Product;
 
 public class SearchCondition<T> {
 	private Integer pageIndex;
 	private Integer pageSize;
 	private Product product;
+	private Campaign campaign;
 	
 	
 	public SearchCondition() {
 		super();
+	}
+
+	
+	public SearchCondition(Integer pageIndex, Integer pageSize, Campaign campaign) {
+		super();
+		this.pageIndex = pageIndex;
+		this.pageSize = pageSize;
+		this.campaign = campaign;
+	}
+
+
+	public Campaign getCampaign() {
+		return campaign;
+	}
+
+
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
 	}
 
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.situ.mall.dao.CampaignDao">
+  	<resultMap type="Campaign" id="CampaignMap">
+  		<id column="id" property="id"/>
+  		<result column="name" property="name"/>
+  		<result column="sub_img" property="subImage"/>
+  		<result column="status" property="status"/>
+  	</resultMap>
+  	
+  	<select id="pageList" resultMap="CampaignMap" parameterType="SearchCondition">
+  		select id,name,sub_img,status from campaign 
+  		<where>
+  			<if test="campaign != null and campaign.name != null and !&quot;&quot;.equals(campaign.name.trim())">
+  				and name like '%${campaign.name}%'
+  			</if>
+  			<if test="campaign != null and status != null and status != 0">
+  				and status = #{campaign.status}
+  			</if>
+  		</where>
+  		limit #{pageIndex},#{pageSize};
+  	</select>
+  	<select id="findAll" resultMap="CampaignMap">
+  		select id,name,sub_img,status from campaign where status = 1;
+  	</select>
+  	
+  	<select id="getCount" parameterType="SearchCondition" resultType="int">
+  			select count(*)
+  		<where>
+  			<if test="campaign != null and campaign.name != null and !&quot;&quot;.equals(campaign.name.trim())">
+  				and name like '%${campaign.name}%'
+  			</if>
+  			<if test="campaign != null and status != null and status != 0">
+  				and status = #{campaign.status}
+  			</if>
+  		</where>
+  	</select>
+  	<insert id="addCampaign" parameterType="Campaign">
+  		insert into campaign(name,sub_img,status) values(#{name},#{subImage},1);
+  	</insert>
+  	
+  	<delete id="deleteCampaign" parameterType="int">
+  		delete from campaign where id = #{id};
+  	</delete>
+  	
+  	<update id="updateStatus" >
+  		update campaign <set>
+  			<if test="status != null and status != 0">
+  				status = #{status},
+  			</if>
+  		</set>
+  			where id = #{id};
+  	</update>
+  	
+  	<update id="updateCampaign" parameterType="Campaign">
+  		update campaign 
+  		<set>
+  			<if test="name != null and !&quot;&quot;.equals(name)">
+  				name = #{name},
+  			</if>
+  			<if test="subImage != null and !&quot;&quot;.equals(subImage)">
+  				sub_img = #{subImage},
+  			</if>
+  		</set>
+  			where id = #{id}
+  	</update>
+  	
+  	<select id="findById" parameterType="int" resultMap="CampaignMap">
+  		select id,name,sub_img,status from campaign where id  = #{id};
+  	</select>
+  </mapper>

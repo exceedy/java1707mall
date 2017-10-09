@@ -31,7 +31,8 @@ public class LoginController {
 			if (user.getUserName().equals(resultUser.getUserName() ) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", user);
-				path =  "index";
+				
+				path =  "redirect:/index.shtml";
 			} else {
 				path = "register";
 			}

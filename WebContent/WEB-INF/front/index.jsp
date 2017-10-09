@@ -18,7 +18,7 @@
     	<div class="box2">
         	<ul>
             	<li><a class="login" href="${path}/login/toLogin.shtml">请登录</a></li>
-            	<li><a href="">快速注册</a></li>
+            	<li><a href="${path}/login/toRegister.shtml">快速注册</a></li>
             	<li><a class="sc" href="">我的收藏</a></li>
             	<li><a class="wd" href="">我的订单</a></li>
             	<li><a class="sj" href="">手机靓淘</a></li>
@@ -69,24 +69,26 @@
     </div>
 </div>
 <div class="sc-box">
-	<img class="sctu" src="${path}/thirds/image/tu9.png">
-    <img class="sctu" src="${path}/thirds/image/tu1.png">
-    <img class="sctu" src="${path}/thirds/image/tu11.png">
-    <img class="sctu" src="${path}/thirds/image/tu10.png">
+	<c:forEach items="${campaignList}" var="campaign">
+		<img class="sctu" name="campaign" src="${campaign.subImage}">
+	</c:forEach>
+    <%-- <img class="sctu" name="campaign" src="${path}/thirds/image/tu1.png">
+    <img class="sctu" name="campaign" src="${path}/thirds/image/tu11.png">
+    <img class="sctu" name="campaign" src="${path}/thirds/image/tu10.png"> --%>
     <ul class="yuan">
         		<li class="dqx"></li>
+        		<c:forEach begin="2" end="${campaignList.size()}" >
         		<li></li>
-        		<li></li>
-        		<li ></li>
+			</c:forEach>
     </ul>
 	<div class="boxc">
     	<div class="div1">
     		<c:forEach items="${list}" var="parentCategory">
 					<ul>
-						<li class="gongy"><a>${parentCategory.name}</a></li>
+						<li ><a class="gongy">${parentCategory.name}</a></li>
     						<c:forEach items="${sunCategoryList}" var="sunCategory">
 								<c:if test="${parentCategory.id ==  sunCategory.parentId}">
-									<li><a href="">${sunCategory.name}</a></li>
+									<li><a href="${path}/category/tofindAllProduct.shtml?sunCategoryId=${sunCategory.id}">${sunCategory.name}</a></li>
 								</c:if>
     						</c:forEach>
 					</ul>
@@ -121,9 +123,21 @@ $(".sctu").hide().eq(0).show();
 					$(".yuan li").removeClass("dqx").eq(a).addClass("dqx");
 					}
 	)
-	$(function () {
-		${""}
-	});
+var a = 0;
+	function campaign () {
+		var num = document.getElementsByName("campaign").length;
+		if (a < num - 1) {
+			a = a + 1;
+		  $(".sctu").hide().eq(a).show();
+		  $(".yuan li").removeClass("dqx").eq(a).addClass("dqx");
+		  delay(2000);
+		} else {
+			a = 0;
+			$(".sctu").hide().eq(a).show();
+			$(".yuan li").removeClass("dqx").eq(a).addClass("dqx");
+		}
+	}
+    setInterval(campaign,2000)
     </script>
 
 

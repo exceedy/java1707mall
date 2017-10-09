@@ -1,8 +1,11 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>详情页</title>
+<%@ include file="../common/front.jsp" %>
 <link href="css/xiangqing.css" rel="stylesheet">
 </head>
 
@@ -14,8 +17,8 @@
         </div>
         <div class="top-right">
         	<ul>
-        		<li><a class="dl" href="">请登录</a></li>
-        		<li><a href="">快速注册</a></li>
+        		<li><a class="dl" href="${path }/login/toLogin.shtml">请登录</a></li>
+        		<li><a href="${path }/login/toLogin.shtml">快速注册</a></li>
         		<li><a class="sc" href="">我的收藏</a></li>
         		<li><a class="wd" href="">我的订单</a></li>
         		<li><a class="sj" href="">手机靓淘</a></li>
@@ -42,6 +45,7 @@
          	<li><a href="">1元800M</a></li>
          </ul>
      </div>
+     
      <div class="sou-right">
      	<a class="gw" href="">去购物车结算</a>
         <div class="xl"></div>
@@ -84,10 +88,11 @@
 	<div class="xq-left">
    		<ul>
    			<li class="li1">
-            	<img src="image/70.png">
+            	<!-- <img src="image/70.png"> -->
+            	<img src="http://owyy75gow.bkt.clouddn.com/${product.mainImage}">
             </li>
    			<li class="li2">
-            	<img class="img" src="image/bg1.png">
+            	<img class="img" src="http://owyy75gow.bkt.clouddn.com/${product.subImages}">
             	<img class="img" src="image/bg2.png">
                 <img class="img" src="image/bg3.png">
                 <img class="img" src="image/bg4.png">
@@ -102,8 +107,8 @@
     </div>
     <div class="xq-ri">
     	<div class="box1">
-        	<h4>华为 畅享6S 金色 移动联通电信4G手机 双卡双待</h4>
-            <span>骁龙芯片！金属机身！享看又享玩！付款否7天到货</span>
+        	<h4><!-- 华为 畅享6S 金色 移动联通电信4G手机 双卡双待 -->${product.name}</h4>
+            <span><!-- 骁龙芯片！金属机身！享看又享玩！付款否7天到货 -->${product.subtitle}</span>
         </div>
         <div class="box2">
         	<ul>
@@ -115,7 +120,7 @@
         	</ul>
         	<ul class="ul1">
         		<li>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</li>
-        		<li><span  class="li0">￥1499.00</span><del>￥1999</del></li>
+        		<li><span  class="li0">￥${product.price}</span><del>￥1999</del></li>
         		
         	</ul>
         	<ul class="ul2">
@@ -250,6 +255,11 @@
     	</ul>
     </div>
 </div>
+
+<div>
+	${product.detail}
+</div>
+
 <div class="bz">
 	<div class="div1">
     	<span>品质保</span>障<br>

@@ -22,14 +22,16 @@
 			<result column="parent_id" property="parentId"/>
 			</association>
   		</resultMap>
-  		
+  		<!-- 查看分页商品 -->
   		<select id="getPageList" resultMap="ProductMap">
   			SELECT product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time
   			FROM product INNER JOIN category ON product.category_id = category.id limit #{pageIndex},#{pageSize};
   		</select>
+  		<!-- 获取数量 -->
   		<select id="getCount" resultType="int">
   			SELECT COUNT(*) FROM product INNER JOIN category ON product.category_id = category.id;
   		</select>
+  		<!-- 获取多条件查询数量 -->
   		<select id="getSearchConditionCount" parameterType="SearchCondition" resultType="int">
   			select count(*) 
 			from product inner join category on product.category_id = category.id 
@@ -63,7 +65,7 @@
 				</if>
 			</where>
   		</select>
-  		
+  		<!-- 获取多条件查询的商品集合 -->
   		<select id="getSearchConditionList" parameterType="SearchCondition" resultMap="ProductMap">
   			select product.id,category.id as category_id,category.parent_id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
 			from product inner join category on product.category_id = category.id 
@@ -98,19 +100,20 @@
 			</where>
 			limit #{pageIndex},#{pageSize}
   		</select>
-  		
+  		<!-- 添加商品 -->
   		<insert id="addProduct" parameterType="Product">
   			insert into product(category_id,name,subtitle,detail,price,stock,status,create_time,update_time,main_image,sub_images) values(#{categoryId},#{name},#{subtitle},#{detail},#{price},#{stock},#{status},now(),now(),#{mainImage},#{subImages});
   		</insert> 
+  		<!-- 删除商品 -->
   		<delete id="deleteProduct" parameterType="int">
   			delete from product where id = #{id};
   		</delete>
-  		
+  		<!-- 根据id查看商品 -->
   		<select id="findById" parameterType="int" resultMap="ProductMap">
   			select product.id,category_id,category.id as category_id,category.parent_id as parent_id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time 
 			from product inner join category on product.category_id = category.id where product.id = #{id};
   		</select>
-  		
+  		<!-- 修改商品信息 -->
   		<update id="updateProduct" parameterType="Product">
   			update product 
   			<set>
@@ -142,7 +145,7 @@
   			,update_time = now()
   			where id = #{id}
   		</update>
-  		
+  		<!-- 修改商品状态 -->
   		<update id="updateStatus" >
   			update product <set>
   			<if test="status != null and status != 0">
@@ -151,4 +154,13 @@
   			</set> 
   			where id  = #{id};
   		</update>
+  		
+  		<!-- 根据分类id查询商品 -->
+  		<select id="getCategoryProductPageList" parameterType="int" resultMap="ProductMap">
+  			SELECT product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time
+  			FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{id} limit #{pageIndex},#{pageSize};
+  		</select>
+  		<select id="getCategoryProductCount" resultType="int" parameterType="id">
+  			SELECT COUNT(*) FROM product INNER JOIN category ON product.category_id = category.id where product.category = #{id};
+  		</select>
   </mapper>

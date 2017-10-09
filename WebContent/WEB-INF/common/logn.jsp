@@ -29,9 +29,9 @@
 		        	
 		        
 		        <li>
-		        	<a href="${pageContext.request.contextPath}/coures/pageList.action">
+		        	<a href="${pageContext.request.contextPath}/campaign/searchConditionSelect.action">
 		        	<span class="glyphicon glyphicon-book"></span>
-		        	管理</a></li>
+		        	广告管理</a></li>
 		        <li>
 		        	<a href="${pageContext.request.contextPath}/manager/pageList.action">
 		        	<span class="glyphicon glyphicon-tags"></span>

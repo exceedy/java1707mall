@@ -128,8 +128,8 @@ img{ display:block;}
 			margin-left:15px;
 			line-height:30px;}
 .sc-box li{ float:left;}
-.sc-box .gongy{ color:#333;
-				font-size:18px;
+.sc-box .gongy{ color:red;
+				font-size:14px;
 				margin-left:15px;
 				line-height:32px;}
 .sc-box .yuan{ width:150px;
