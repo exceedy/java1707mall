@@ -156,11 +156,11 @@
   		</update>
   		
   		<!-- 根据分类id查询商品 -->
-  		<select id="getCategoryProductPageList" parameterType="int" resultMap="ProductMap">
+  		<select id="getCategoryProduct" parameterType="int" resultMap="ProductMap">
   			SELECT product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time
-  			FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{id} limit #{pageIndex},#{pageSize};
+  			FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{categoryId};
   		</select>
-  		<select id="getCategoryProductCount" resultType="int" parameterType="id">
-  			SELECT COUNT(*) FROM product INNER JOIN category ON product.category_id = category.id where product.category = #{id};
+  		<select id="getCategoryProductCount" resultType="int" parameterType="int">
+  			SELECT COUNT(*) FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{categoryId};
   		</select>
   </mapper>

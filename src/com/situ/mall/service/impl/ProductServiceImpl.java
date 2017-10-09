@@ -69,7 +69,11 @@ public class ProductServiceImpl implements IProductService{
 
 	public boolean updateStatus(Integer id, int status) {
 		int result = productDao.updateStatus(id,status);
-		return false;
+		return result > 0 ? true : false ;
+	}
+
+	public List<Product> getCategoryProduct(Integer categoryId) {
+		return productDao.getCategoryProduct(categoryId);
 	}
 
 }

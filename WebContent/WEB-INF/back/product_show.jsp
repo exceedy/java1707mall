@@ -144,7 +144,7 @@ function status() {
 							<td>${product.category.name}</td>
 							<td>${product.name }</td>
 							<td>${product.subtitle}</td>
-							 <td><img alt="" src="http://owyy75gow.bkt.clouddn.com/${product.mainImage}" width="80" height="60" ></td>
+							 <td><img alt="" src="${product.mainImage}" width="80" height="60" ></td>
 							<%-- <td>${product.subImages}</td> --%>
 							<td>${product.detail}</td>
 							<td>${product.price}</td>

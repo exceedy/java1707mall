@@ -210,7 +210,7 @@
 						<h3 class="menu_head current">${parentCategory.name}</h3>
 						<div style="display:block" class="menu_body">
 							<c:forEach items="${sunCategoryList}" var="sunCategory">
-								<c:if test="${sunCategory.parentId = parentCategory.id}">
+								<c:if test="${sunCategory.parentId == parentCategory.id}">
 									<a href="${path}/category/tofindAllProduct.shtml?sunCategoryId=${sunCategory.id}">${sunCategory.name}</a>
 								</c:if>
 							</c:forEach>
