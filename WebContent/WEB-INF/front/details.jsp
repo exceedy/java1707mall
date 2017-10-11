@@ -80,6 +80,11 @@
 			$("#subImg").append("<div class='Xcontent09'><img src=" + subImg[num] + "></div>");
 		}
 	});
+	
+	function toShop(productId) {
+		var amount = $("#amount").val();
+		window.location.href="${path}/cart/addCartItems.shtml?productId="+productId+"&amount="+amount;
+	}
 	</script>
 	<script type="text/javascript">
         $(document).ready(function(){
@@ -262,12 +267,12 @@
 				<p class="Xcontent31">数量</p>
 				<div class="Xcontent32"><img src="${path}/thirds/image/shangpinxiangqing/X15.png"></div>
 				<form>
-					<input class="input" name="" value="1"></form>
+					<input class="input" name="amount" id="amount" value="1"></form>
 				<div class="Xcontent33"><img src="${path}/thirds/image/shangpinxiangqing/16.png"></div>
 
 			</div>
 			<div class="Xcontent34"><a href="#">立即购买</a></div>
-			<div class="Xcontent35"><a href="#">加入购物车</a></div>
+			<div class="Xcontent35"><a href="#" onclick="toShop(${product.id})">加入购物车</a></div>
 
 		</ol>
 
