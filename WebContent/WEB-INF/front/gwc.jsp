@@ -11,7 +11,7 @@
 </head>
  	<script type="text/javascript">
  		function addAmount(productId,stock) {
- 			var amount = $("#amount").val();
+ 			var amount = $("#amount"+productId).val();
  			amount++;
  			if (amount == stock) {
  				alter("最多只能购买"+stock+"件");
@@ -20,7 +20,7 @@
  			location.href="${path}/cart/addCartItems.shtml?productId=" + productId + "&amount="+1;
  		}
  		function minusAmount(productId) {
- 			var amount = $("#amount").val();
+ 			var amount = $("#amount"+productId).val();
  			amount--;
  			if (amount == 0) {
  				delItems(productId);
@@ -33,6 +33,27 @@
  			if (isExit) {
  				location.href="${path}/cart/deleteCartItems.shtml?productId="+productId;
  			}
+ 		}
+ 		function selectAll () {
+ 			$("input[name=selectIds]").prop("checked",$("#selectAll").is(":checked"));
+ 			totalPrice();
+ 		}
+ 		function totalPrice() {
+ 			var selectId  = $("input[name='selectIds']:checked");//只获得被选中的name是selectIds的checkbox对象
+ 			var selectIds = [];
+ 			for (var i = 0; i < selectId.length; i++) {
+ 				selectIds.push(selectId[i].value);//将他们的值赋值给数组
+ 			}
+	 			$.ajax({
+		 				url:"${path}/cart/totalPrice.shtml",
+		 				data:"selectIds=" + selectIds,
+		 				dataType:"json",
+		 				success:function (data) {
+		 					var totalPrive = data.totalPrive;
+		 					var html= "<span id='totalPrice'>"+totalPrive+"</span>";
+		 					$("#totalPrice").html(html);
+		 				}
+		 			});
  		}
 	</script> 
 <body>
@@ -90,7 +111,7 @@
     	<div class="dow-left">
         	<ul>
         		<li>
-                	<input id="selectAll" onclick="selectAll()" type="checkbox">
+                	<input id="selectAll" onchange="selectAll()" type="checkbox">
                     全选
                 </li>
         		<li>商品</li>
@@ -126,7 +147,7 @@
 	            <a class="a3" href="">去凑单></a>
 	        </div>
 	        <div class="hg-dow">
-	        	<input id="selectIds" name="selectIds" value="${items.product.id}" type="checkbox">
+	        	<input id="selectIds" onchange="totalPrice()" name="selectIds" value="${items.product.id}" type="checkbox">
 	            <div class="hg-left">
 	            	<div class="div1">
 	                	<img src="${items.product.mainImage}">
@@ -144,9 +165,9 @@
 	            		<li><del>￥1699.00</del><br>￥${items.product.price}</li>
 	            		<li>
 		                    <input class="in1" onclick="minusAmount(${items.product.id})" type="button" value="-">
-		                    <input class="in2" id="amount"  type="text" readonly value="${items.amount}">
+		                    <input class="in2" id="amount${items.product.id}"  type="text" readonly value="${items.amount}">
 		                    <input class="in3" onclick="addAmount(${items.product.id},${items.product.stock})" type="button" value="+">
-	            		<li class="li1">￥${items.product.price * items.amount}</li>
+	            		<li class="li1" >￥${items.product.price * items.amount}</li>
 	            		<li>
 	                    	<img class="img1" onclick="delItems(${items.product.id})" src="${path}/thirds/image/166.png">
 	                    </li>
