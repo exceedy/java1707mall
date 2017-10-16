@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.situ.mall.pojo.User;
+
 public class LoginFilter implements Filter {
 
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -23,12 +25,25 @@ public class LoginFilter implements Filter {
 		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		HttpSession session = req.getSession(false);
-		if (session != null) {
-			doFilter(request, response, chain);
+		
+		String uri = req.getRequestURI();
+		if (uri != null && uri.startsWith("/Java1707Mall/order")) {
+			HttpSession session = req.getSession(false);
+			if (session != null) {
+				User user = (User) session.getAttribute("user");
+				if (user == null) {
+					resp.sendRedirect(req.getContextPath() + "/login/toLogin.shtml");
+					return;
+				} else {
+					chain.doFilter(request, response);
+				}
+			} else {
+				chain.doFilter(request, response);
+			}
 		} else {
-			resp.encodeRedirectURL(req.getContextPath() + "/login/toLogin.shtml");
+			chain.doFilter(request, response);
 		}
+		
 	}
 
 	public void destroy() {

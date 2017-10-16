@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -137,30 +138,30 @@ public class CartController {
 					}
 					
 					
-					if (null != cart) {
-						cart.delteItems(productId);
-						
-						StringWriter stringWriter = new StringWriter();
-						try {
-							objectMapper.writeValue(stringWriter,cart);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						cookie.setValue(stringWriter.toString());
-						//为了覆盖原cookie所以要让路径和cookie存活时间一致
-						cookie.setPath("/");
-						cookie.setMaxAge(60 * 60 *24 * 7 );
-						resp.addCookie(cookie);
 					}
 				}
 			}
+		if (null != cart) {
+			cart.delteItems(productId);
+			
+			StringWriter stringWriter = new StringWriter();
+			try {
+				objectMapper.writeValue(stringWriter,cart);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Cookie cookie = new Cookie("cart_items_list",stringWriter.toString());
+			//为了覆盖原cookie所以要让路径和cookie存活时间一致
+			cookie.setPath("/");
+			cookie.setMaxAge(60 * 60 *24 * 7 );
+			resp.addCookie(cookie);
 			}
 		return "redirect:/cart/addCartItems.shtml";
 	}
 	
 	@RequestMapping(value="totalPrice.shtml")
 	@ResponseBody
-	private Map<String,Integer> totalPrice(Integer[] selectIds, HttpServletRequest req) {
+	private Map<String,Integer> totalPrice(Integer[] selectIds, HttpServletRequest req, HttpServletResponse resp) {
 		Map<String,Integer> map = new HashMap<String, Integer>();
 		CartVo cart = null;
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -189,13 +190,15 @@ public class CartController {
 									//相等就计算该商品的数量与价格的总和
 									Product productTemp = productService.findById(id);
 									totalPrice += (cartItems.getAmount() * productTemp.getPrice().intValue());
-								}
 							}
 						}
 					}
 				}
 			}
 		}
+			
+		}
+		
 		//将计算好的总价放入map 
 		map.put("totalPrive", totalPrice);
 		return map;

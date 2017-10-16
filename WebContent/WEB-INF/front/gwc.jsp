@@ -55,6 +55,10 @@
 		 				}
 		 			});
  		}
+ 		
+ 		function toOrder () {
+ 			location.href="${path}/order/toAddOrder.shtml";
+ 		}
 	</script> 
 <body>
 <div class="top">
@@ -136,211 +140,46 @@
     <div class="yh-ab">
     <a href=""><img src="${path}/thirds/image/157.png"></a>
     </div>
-    <c:forEach items="${cart.itemsList}" var="items">
-		<div class="hg">
-	    	<div class="hg-ab">
-	        	<img src="${path}/thirds/image/158.png">
-	        </div>
-	        <div class="hg-top">
-	        	<a class="a1" href="">活动商品购满￥105.00,即可加价换购商品一件></a>
-	            <a class="a2" href="">查看换购品</a>
-	            <a class="a3" href="">去凑单></a>
-	        </div>
-	        <div class="hg-dow">
-	        	<input id="selectIds" onchange="totalPrice()" name="selectIds" value="${items.product.id}" type="checkbox">
-	            <div class="hg-left">
-	            	<div class="div1">
-	                	<img src="${items.product.mainImage}">
-	                </div>
-	                ${items.product.name}
-	                <p class="p1">
-	                	<img src="${path}/thirds/image/160.png">
-	                	支持7天无理由退货</p>
-	                <p class="p2">
-	                	<img src="${path}/thirds/image/161.png">
-	                选包装</p>
-	            </div>
-	            <div class="hg-right">
-	            	<ul>
-	            		<li><del>￥1699.00</del><br>￥${items.product.price}</li>
-	            		<li>
-		                    <input class="in1" onclick="minusAmount(${items.product.id})" type="button" value="-">
-		                    <input class="in2" id="amount${items.product.id}"  type="text" readonly value="${items.amount}">
-		                    <input class="in3" onclick="addAmount(${items.product.id},${items.product.stock})" type="button" value="+">
-	            		<li class="li1" >￥${items.product.price * items.amount}</li>
-	            		<li>
-	                    	<img class="img1" onclick="delItems(${items.product.id})" src="${path}/thirds/image/166.png">
-	                    </li>
-	            	</ul>
-	            </div>
-	        </div>
-	    </div>	
-    </c:forEach>
-   <%--  <div class="hg">
-    	<div class="hg-ab">
-        	<img src="${path}/thirds/image/158.png">
-        </div>
-        <div class="hg-top">
-        	<a class="a1" href="">活动商品购满￥105.00,即可加价换购商品一件></a>
-            <a class="a2" href="">查看换购品</a>
-            <a class="a3" href="">去凑单></a>
-        </div>
-        <div class="hg-dow">
-        	<input type="checkbox">
-            <div class="hg-left">
-            	<div class="div1">
-                	<img src="${path}/thirds/image/162.png">
-                </div>
-                小熊（Bear）加湿器JSQ-A50U1 5L大容量静音卧室办公室加湿器
-                <p class="p1">
-                	<img src="${path}/thirds/image/160.png">
-                	支持7天无理由退货</p>
-                <p class="p2">
-                	<img src="${path}/thirds/image/161.png">
-                选包装</p>
-            </div>
-            <div class="hg-right">
-            	<ul>
-            		<li><del>￥199.00</del><br>￥109.00</li>
-            		<li>
-                    	<input class="in1" type="button" value="-">
-                        <input class="in2" type="text">
-                        <input class="in3"  type="button" value="+">
-                    </li>
-            		<li class="li1">￥109.00</li>
-            		<li>
-                    	<img class="img1" src="${path}/thirds/image/166.png">
-                    </li>
-            	</ul>
-            </div>
-        </div>
-    </div>	
-    <div class="hg">
-    	<div class="hg-ab">
-        	<img src="${path}/thirds/image/158.png">
-        </div>
-        <div class="hg-top">
-        	<a class="a1" href="">活动商品购满￥105.00,即可加价换购商品一件></a>
-            <a class="a2" href="">查看换购品</a>
-            <a class="a3" href="">去凑单></a>
-        </div>
-        <div class="hg-dow">
-        	<input type="checkbox">
-            <div class="hg-left">
-            	<div class="div1">
-                	<img src="${path}/thirds/image/163.png">
-                </div>
-                	罗马仕（ROMOSS） sense6Plus 移动电源/充电宝
-                <p class="p1">
-                	<img src="${path}/thirds/image/160.png">
-                	支持7天无理由退货</p>
-                <p class="p2">
-                	<img src="${path}/thirds/image/161.png">
-                选包装</p>
-            </div>
-            <div class="hg-right">
-            	<ul>
-            		<li><del>￥199.00</del><br>￥109.00</li>
-            		<li>
-                    	<input class="in1" type="button" value="-">
-                        <input class="in2" type="text">
-                        <input class="in3"  type="button" value="+">
-                    </li>
-            		<li class="li1">￥109.00</li>
-            		<li>
-                    	<img class="img1" src="${path}/thirds/image/166.png">
-                    </li>
-            	</ul>
-            </div>
-        </div>
-    </div>	
-    <div class="hg">
-    	<div class="hg-ab">
-        	<img src="${path}/thirds/image/158.png">
-        </div>
-        <div class="hg-top">
-        	<a class="a1" href="">活动商品购满￥105.00,即可加价换购商品一件></a>
-            <a class="a2" href="">查看换购品</a>
-            <a class="a3" href="">去凑单></a>
-        </div>
-        <div class="hg-dow">
-        	<input type="checkbox">
-            <div class="hg-left">
-            	<div class="div1">
-                	<img src="${path}/thirds/image/164.png">
-                </div>
-                华为 畅想6S 银色 移动联通电信4G手机 高配版
-                <p class="p1">
-                	<img src="${path}/thirds/image/160.png">
-                	支持7天无理由退货</p>
-                <p class="p2">
-                	<img src="${path}/thirds/image/161.png">
-                选包装</p>
-            </div>
-            <div class="hg-right">
-            	<ul>
-            		<li><del>￥1699.00</del><br>￥1299.00</li>
-            		<li>
-                    	<input class="in1" type="button" value="-">
-                        <input class="in2" type="text">
-                        <input class="in3"  type="button" value="+">
-                    </li>
-            		<li class="li1">￥1299.00</li>
-            		<li>
-                    	<img class="img1" src="${path}/thirds/image/166.png">
-                    </li>
-            	</ul>
-            </div>
-        </div>
-    </div>	
-     --%>
-<%--     <div class="ltzy-xb">
-    	<input type="checkbox">
-        <a href="">西边数码专营店</a>
-        <div class="xb-ab">
-    <a href=""><img src="${path}/thirds/image/157.png"></a>
-    </div>
-    <div class="hg">
-    	<div class="hg-ab">
-        	<img src="${path}/thirds/image/158.png">
-        </div>
-        <div class="hg-top">
-        	<a class="a1" href="">活动商品购满￥105.00,即可加价换购商品一件></a>
-            <a class="a2" href="">查看换购品</a>
-            <a class="a3" href="">去凑单></a>
-        </div>
-        <div class="hg-dow">
-        	<input type="checkbox">
-            <div class="hg-left">
-            	<div class="div1">
-                	<img src="${path}/thirds/image/164.png">
-                </div>
-                华为 畅想6S 银色 移动联通电信4G手机 高配版
-                <p class="p1">
-                	<img src="${path}/thirds/image/160.png">
-                	支持7天无理由退货</p>
-                <p class="p2">
-                	<img src="${path}/thirds/image/161.png">
-                选包装</p>
-            </div>
-            <div class="hg-right">
-            	<ul>
-            		<li><del>￥1699.00</del><br>￥1299.00</li>
-            		<li>
-                    	<input class="in1" type="button" value="-">
-                        <input class="in2" type="text">
-                        <input class="in3"  type="button" value="+">
-                    </li>
-            		<li class="li1">￥1299.00</li>
-            		<li>
-                    	<img class="img1" src="${path}/thirds/image/166.png">
-                    </li>
-            	</ul>
-            </div>
-        </div>
-    </div>
-    </div>
- --%>
+	    <c:forEach items="${cart.itemsList}" var="items">
+			<div class="hg">
+		    	<div class="hg-ab">
+		        	<img src="${path}/thirds/image/158.png">
+		        </div>
+		        <div class="hg-top">
+		        	<a class="a1" href="">活动商品购满￥105.00,即可加价换购商品一件></a>
+		            <a class="a2" href="">查看换购品</a>
+		            <a class="a3" href="">去凑单></a>
+		        </div>
+		        <div class="hg-dow">
+		        	<input id="selectIds" onchange="totalPrice()" name="selectIds" value="${items.product.id}" type="checkbox">
+		            <div class="hg-left">
+		            	<div class="div1">
+		                	<img src="${items.product.mainImage}">
+		                </div>
+		                ${items.product.name}
+		                <p class="p1">
+		                	<img src="${path}/thirds/image/160.png">
+		                	支持7天无理由退货</p>
+		                <p class="p2">
+		                	<img src="${path}/thirds/image/161.png">
+		                选包装</p>
+		            </div>
+		            <div class="hg-right">
+		            	<ul>
+		            		<li><del>￥1699.00</del><br>￥${items.product.price}</li>
+		            		<li>
+			                    <input class="in1" onclick="minusAmount(${items.product.id})" type="button" value="-">
+			                    <input class="in2" id="amount${items.product.id}"  type="text" readonly value="${items.amount}">
+			                    <input class="in3" onclick="addAmount(${items.product.id},${items.product.stock})" type="button" value="+">
+		            		<li class="li1" >￥${items.product.price * items.amount}</li>
+		            		<li>
+		                    	<img class="img1" onclick="delItems(${items.product.id})" src="${path}/thirds/image/166.png">
+		                    </li>
+		            	</ul>
+		            </div>
+		        </div>
+		    </div>	
+	    </c:forEach>
 </div>
 <div class="qx">
 	<div class="qx-left">
@@ -348,7 +187,7 @@
     </div>
     <div class="qx-right">
     	总金额（以免运费）：￥<span id="totalPrice">0.0</span>
-        <input type="button" value="立即结算">
+        <input onclick="toOrder()"  type="button" value="立即结算">
     </div>
 </div>
 

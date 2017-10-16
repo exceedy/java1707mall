@@ -30,7 +30,7 @@ public class LoginController {
 		if (user != null && resultUser != null) {
 			if (user.getUserName().equals(resultUser.getUserName() ) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute("user", resultUser);
 				
 				path =  "redirect:/index.shtml";
 			} else {

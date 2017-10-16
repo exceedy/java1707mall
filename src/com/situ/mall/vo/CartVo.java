@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class CartVo {
 	private List<CartItemsVo> itemsList = new ArrayList<CartItemsVo>();
 	
@@ -27,6 +29,24 @@ public class CartVo {
 		}
 	}
 
+	public void delteItems(Integer productId) {
+		Iterator<CartItemsVo> iterator = itemsList.iterator();
+		while (iterator.hasNext()) {
+			CartItemsVo cartItems = iterator.next();
+			if (cartItems.getProduct().getId() == productId) {
+				iterator.remove();
+			}
+		}
+	}
+	
+	@JsonIgnore
+	public double getTotalPrice() {
+		Double totalPrice = 0.0;
+		for (CartItemsVo item : itemsList) {
+			totalPrice += item.getAmount() * item.getProduct().getPrice().doubleValue();
+		}
+		return totalPrice;
+	}
 	public List<CartItemsVo> getItemsList() {
 		return itemsList;
 	}
@@ -50,15 +70,6 @@ public class CartVo {
 		return "Cart [itemsList=" + itemsList + ", productId=" + productId + "]";
 	}
 
-	public void delteItems(Integer productId) {
-		Iterator<CartItemsVo> iterator = itemsList.iterator();
-		while (iterator.hasNext()) {
-			CartItemsVo cartItems = iterator.next();
-			if (cartItems.getProduct().getId() == productId) {
-				iterator.remove();
-			}
-		}
-	}
 
 
 

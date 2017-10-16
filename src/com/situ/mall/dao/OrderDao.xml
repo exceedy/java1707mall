@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.situ.mall.dao.OrderDao">
+  	<resultMap type="Order" id="OrderMap">
+  		 <id column="id" property="id"/> 
+  		 <result column="order_no" property="orderNo"/>
+  		 <result column="user_id" property="userId"/> 
+  		 <result column="shipping_id" property="shippingId"/>  
+  		 <result column="payment" property="payment"/>  
+  		 <result column="payment_type" property="paymentType"/>
+  		  <result column="postage" property="postage"/>  
+  		  <result column="status" property="status"/> 
+  		  <result column="payment_time" property="paymentTime" javaType="java.sql.Date" jdbcType="DATE"/> 
+  		  <result column="send_time" property="sendTime"/> 
+  		  <result column="end_time" property="endTime"/> 
+  		  <result column="close_time" property="closeTime"/> 
+  		  <result column="create_time" property="createTime"/> 
+  		  <result column="update_time" property="updateTime"/>
+  		  <collection property="list" ofType="OrderItem" >
+	  		  	<id column="orderitem_id" property="id"/>
+	  			<result column="orderitem_user_id" property="userId"/>
+	  			<result column="orderitem_order_no" property="orderNo"/>
+	  			<result column="orderitem_product_id" property="productId"/>
+	  			<result column="orderitem_product_image" property="productImage"/>
+	  			<result column="orderitem_product_name" property="productName"/>
+	  			<result column="orderitem_current_unit_price" property="currentUnitPrice"/>
+	  			<result column="orderitem_quantity" property="quantity"/>
+	  			<result column="orderitem_total_price" property="totalPrice"/>
+	  			<result column="orderitem_update_time" property="updateTime"/>
+	  			<result column="orderitem_create_time" property="createTime"/>
+  		  </collection>
+  		</resultMap>
+  		 <resultMap type="OrderItem" id="OrderItemMap">
+  			<id column="id" property="id"/>
+  			<result column="user_id" property="userId"/>
+  			<result column="order_no" property="orderNo"/>
+  			<result column="product_id" property="productId"/>
+  			<result column="product_image" property="productImage"/>
+  			<result column="product_name" property="productName"/>
+  			<result column="current_unit_price" property="currentUnitPrice"/>
+  			<result column="quantity" property="quantity"/>
+  			<result column="total_price" property="totalPrice"/>
+  			<result column="update_time" property="updateTime"/>
+  			<result column="create_time" property="createTime"/>
+  		</resultMap> 
+  		 <select id="findOrderItem" parameterType="int" resultMap="OrderItemMap">
+  			select order_item.id,order_item.user_id,order_item.order_no,order_item.product_id,order_item.product_name,order_item.product_image,order_item.current_unit_price,
+  			order_item.quantity,order_item.total_price,order_item.create_time,order_item.update_time
+  			from order_item where order_no = #{orderNo};
+  		</select> 
+  		<select id="findOrder" resultMap="OrderMap" parameterType="int">
+  			select orders.id,orders.order_no,orders.user_id,orders.shipping_id,orders.payment_type,
+  			orders.payment,orders.status,orders.payment_time,orders.send_time,orders.end_time,orders.close_time,
+  			orders.create_time,orders.update_time,
+  			order_item.id as orderitem_id,order_item.user_id as orderitem_user_id,order_item.product_id as orderitem_produce_id,
+  			order_item.product_name as orderitem_product_name,order_item.product_image as orderitem_product_image,
+  			order_item.current_unit_price as orderitem_current_unit_price,
+  			order_item.quantity as orderitem_quantity,order_item.total_price as orderitem_total_price ,
+  			order_item.create_time as orderitem_create_time,order_item.update_time as orderitem_update_time
+  			from orders inner join order_item on orders.order_no = order_item.order_no 
+  			where orders.user_id = #{userId};
+  		</select>
+  		<select id="findAll" resultMap="OrderMap">
+  			select orders.id,orders.order_no,orders.user_id,orders.shipping_id,orders.payment_type,
+  			orders.payment,orders.status,orders.payment_time,orders.send_time,orders.end_time,orders.close_time,
+  			orders.create_time,orders.update_time from orders;
+  		</select>
+  		<insert id="addOrder" parameterType="Order">
+  			insert into orders(order_no,user_id,shipping_id,payment_type,
+  			payment,status,payment_time,send_time,end_time,close_time,create_time,
+  			update_time) 
+  			values(#{orderNo},#{userId},#{shippingId},#{paymentType},
+  			#{payment},#{status},#{paymentTime},#{sendTime},#{endTime},#{closeTime},now(),now());
+  		</insert>
+  		
+  		<insert id="addOrderItem" parameterType="OrderItem">
+  			insert into order_item(user_id,order_no,product_id,product_name,product_image,current_unit_price,
+  			quantity,total_price,create_time,update_time) value(#{userId},#{orderNo},#{productId},#{productName},#{productImage},#{currentUnitPrice},
+  			#{quantity},#{totalPrice},now(),now());
+  		</insert>
+  </mapper>

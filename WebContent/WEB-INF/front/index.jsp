@@ -20,7 +20,7 @@
             	<li><a class="login" href="${path}/login/toLogin.shtml">请登录</a></li>
             	<li><a href="${path}/login/toRegister.shtml">快速注册</a></li>
             	<li><a class="sc" href="">我的收藏</a></li>
-            	<li><a class="wd" href="">我的订单</a></li>
+            	<li><a class="wd" href="${path }/order/toOrederItems.shtml">我的订单</a></li>
             	<li><a class="sj" href="">手机靓淘</a></li>
             	<li><a href="">我的积分</a></li>
             	<li><a href="">我的评价</a></li>
@@ -49,7 +49,7 @@
         </ul>
     </div>
 	<div class="box3">
-    	<a class="car" href="">去购物车结算</a>
+    	<a class="car" href="${path}/cart/addCartItems.shtml">去购物车结算</a>
     	<div class="narrw"></div>
     </div>
     <div class="clearfix"></div>

@@ -6,13 +6,25 @@ public class CartItemsVo {
 	private Product product;
 	
 	private Integer amount;
-
+	
+	private Integer checked;
+	
+	
 	public Product getProduct() {
 		return product;
 	}
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+	
+
+	public Integer getChecked() {
+		return checked;
+	}
+
+	public void setChecked(Integer checked) {
+		this.checked = checked;
 	}
 
 	public Integer getAmount() {
@@ -25,7 +37,7 @@ public class CartItemsVo {
 
 	@Override
 	public String toString() {
-		return "Items [product=" + product + ", amount=" + amount + "]";
+		return "CartItemsVo [product=" + product + ", amount=" + amount + ", checked=" + checked + "]";
 	}
 	
 	
