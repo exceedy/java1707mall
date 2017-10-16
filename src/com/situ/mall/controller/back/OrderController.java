@@ -1,5 +1,6 @@
 package com.situ.mall.controller.back;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -27,9 +28,13 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="toOrderItem")
-	public String toOrderItem(BigInteger orderNo, Model model) {
-		List<OrderItem> orderItems = orderService.findOrderItem(orderNo.intValue());
+	public String toOrderItem(BigDecimal orderNo, Model model) {
+		System.out.println(orderNo);
+		List<OrderItem> orderItems = orderService.findOrderItem(orderNo);
 		model.addAttribute("orderItems", orderItems);
+		model.addAttribute("orderNo", orderNo);
 		return "order_items";
 	}
+	
+	
 }

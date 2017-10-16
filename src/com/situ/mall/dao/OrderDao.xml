@@ -45,7 +45,7 @@
   			<result column="update_time" property="updateTime"/>
   			<result column="create_time" property="createTime"/>
   		</resultMap> 
-  		 <select id="findOrderItem" parameterType="int" resultMap="OrderItemMap">
+  		 <select id="findOrderItem" parameterType="BigDecimal" resultMap="OrderItemMap">
   			select order_item.id,order_item.user_id,order_item.order_no,order_item.product_id,order_item.product_name,order_item.product_image,order_item.current_unit_price,
   			order_item.quantity,order_item.total_price,order_item.create_time,order_item.update_time
   			from order_item where order_no = #{orderNo};

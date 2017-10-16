@@ -12,6 +12,8 @@
 <link href="${path}/thirds/lib/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" charset="utf-8" src="${path}/thirds/lib/kindeditor/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="${path}/thirds/lib/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="${path}/thirds/js/layer/layer.js"></script>
+
 <script type="text/javascript">
 		$(function() {
 			$("#name").blur(function () {
@@ -108,6 +110,34 @@
 			//富文本编辑器
 			myKindEditor = KindEditor.create('#form-add[name=detail]', kingEditorParams);
 		});
+		
+		function toAddProduct() {
+			var option = {
+				url:"${path}/product/addProduct.action",	
+				data:$("#form-add").serialize(),
+				dataType:"json",
+				success:function(data) {
+					if (data.status == 0) {
+						layer.confirm(
+								'添加成功',
+								{btn:['关闭','返回首页']},
+								function  (index) {
+									layer.colse(index);
+								},
+								function () {
+									location.href="${path}/product/pageList.action"
+								}
+								);
+					} else {
+						layer.msg('添加失败');
+					}
+				}
+			}
+			$.ajax(option);
+		}
+		function closeForm() {
+			$("#form-add")[0].reset();
+		}
 </script>
 <style type="text/css">
 	.from_b{
@@ -139,7 +169,7 @@
 		                </li>
 		            </ul>
 	
-				<form class="form_b" action="${path}/product/addProduct.action" 
+				<form class="form_b" action="" 
 				id = "form-add" enctype="multipart/form-data" method="post"> 
 						<div class="input-group input-group-sm">
  						 <span class="input-group-addon" id="sizing-addon3">分类</span>
@@ -189,7 +219,8 @@
 				  	<label>商品描述</label>
 				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail"></textarea>
 				  </div>
-					<input class="btn btn-primary" type="submit" value="添加">
+					<input class="btn btn-primary" type="button" value="添加" onclick="toAddProduct()">
+					<input class="btn btn-primary" type="button" value="清空信息" onclick="closeForm()">
 				</form>
 			</div>
 		</div>

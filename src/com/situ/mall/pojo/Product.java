@@ -1,9 +1,10 @@
 package com.situ.mall.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Product {
+public class Product implements Serializable {
 		private Integer id;//商品id
 		
 		private Integer categoryId;//分类id

@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.situ.mall.common.ServletRespone;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.ICategoryService;
@@ -80,9 +82,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="addProduct")
-	public String addProgory(Product product) {
-		boolean result = productService.addProduct(product);
-		return "redirect:/product/pageList.action";
+	@ResponseBody
+	public ServletRespone addProgory(Product product) {
+		System.out.println(product);
+		ServletRespone servletRespone = productService.addProduct(product);
+		return servletRespone;
 	}
 	
 	@RequestMapping(value="toUpdateProduct")
@@ -104,9 +108,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="deleteProduct")
-	public String deleteProduct(Integer id) {
-		boolean result = productService.deleteProduct(id);
-		return "redirect:/product/pageList.action";
+	@ResponseBody
+	public ServletRespone deleteProduct(Integer id) {
+		return  productService.deleteProduct(id);
 	}
 	
 	public String deleteAll(Integer[] selectIds) {

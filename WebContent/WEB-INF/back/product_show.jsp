@@ -35,13 +35,29 @@ function status() {
 	function deleteProduct(id) {
 		var isDel = confirm("确定删除？");
 		if(isDel) {
-			location.href = "${path}/product/deleteproduct.action?id="+id;
+			location.href = "${path}/product/deleteProduct.action?id="+id;
 		}
 	}
 	function updateStatusUp(id) {
 		var isDel = confirm("确定上架？");
 		if(isDel) {
-			location.href = "${path}/product/updateStatusUp.action?id="+id;
+			var option = {
+					url:"${path}/product/updateStatusUp.action",
+					data:"id="+id,
+					dataType:"json",
+					success:function (data) {
+						if (data.status == 0) {
+							layer.msg(
+									'删除成功'
+									);
+						}
+						else {
+							layer.msg('删除失败');
+						}
+						
+					}
+					
+			}
 		}
 	}
 	function updateStatusDown(id) {

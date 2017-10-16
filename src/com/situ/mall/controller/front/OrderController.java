@@ -108,7 +108,7 @@ public class OrderController {
 		Date date = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		String dateStr = simpleDateFormat.format(date);
-		BigInteger orderNo = new BigInteger(dateStr);
+		BigDecimal orderNo = new BigDecimal(dateStr);
 		
 		order.setOrderNo(orderNo);
 		

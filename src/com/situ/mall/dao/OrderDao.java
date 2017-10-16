@@ -1,5 +1,6 @@
 package com.situ.mall.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.situ.mall.pojo.Order;
@@ -13,7 +14,7 @@ public interface OrderDao {
 	
 	 List<Order> findOrder(Integer userId);
 	
-	List<OrderItem> findOrderItem(Integer OrderNo);
+	List<OrderItem> findOrderItem(BigDecimal OrderNo);
 
 	List<Order> findAll();
 }

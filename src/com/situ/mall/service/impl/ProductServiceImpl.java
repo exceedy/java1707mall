@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.situ.mall.common.ServletRespone;
 import com.situ.mall.dao.ProductDao;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
@@ -48,9 +49,18 @@ public class ProductServiceImpl implements IProductService{
 		return pageBean;
 	}
 
-	public boolean addProduct(Product product) {
+	public ServletRespone addProduct(Product product) {
 		int result = productDao.addProduct(product);
-		return result > 0 ? true : false;
+	try {
+		if (result > 0) {
+			return ServletRespone.creatSuccess("添加成功");
+		} else {
+			return ServletRespone.creatError("添加失败");
+			
+		}
+	} catch (Exception e) {
+		return ServletRespone.creatError("添加失败");
+	}	
 	}
 
 	public Product findById(Integer id) {
@@ -62,9 +72,18 @@ public class ProductServiceImpl implements IProductService{
 		return retult > 0 ? true : false;
 	}
 
-	public boolean deleteProduct(Integer id) {
-		int result = productDao.deleteProduct(id);
-		return result > 0 ? true : false;
+	public ServletRespone deleteProduct(Integer id) {
+		try {
+			int result = productDao.deleteProduct(id);
+			if (result > 0) {
+				return ServletRespone.creatSuccess("删除成功");
+				
+			} else {
+				return ServletRespone.creatError("删除失败");
+			}
+		} catch (Exception e) {
+			return ServletRespone.creatError("删除失败");
+		}
 	}
 
 	public boolean updateStatus(Integer id, int status) {

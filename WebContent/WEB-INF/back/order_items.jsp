@@ -92,43 +92,33 @@ function status() {
 		                </li>
 		            </ul>
 		            <!-- 高级搜索 -->
-			<form action="" id="mainform" method="post">
-				<table  class="table table-striped table-bordered table-hover">
-						<div class="box-bd">
-									<dl class="checkout-goods-list">
-										<dt class="clearfix">
-											<span class="col col-1">商品名称</span>
-											<span class="col col-1">商品名称</span>
-											<span class="col col-2">购买价格</span>
-											<span class="col col-3">购买数量</span>
-											<span class="col col-4">小计（元）</span>
-										</dt>
-							<c:forEach items="${orderItems}" var="orderItem">
-										
-										<dd class="item clearfix">
-											<div class="item-row">
-												<div class="col col-1">
-													<div class="g-pic">
-														<img src="${orderItem.productImage}" width="40" height="40" />
-													</div>
-													<div class="g-info">
-														<a href="#" target="_blank">
-															${orderItem.productName}
-														</a>
-													</div>
-												</div>
-
-												<div class="col col-2"><input type="hidden" name="currentUnitPrice" value="${items.product.price}">${orderItem.currentUnitPrice}元</div>
-												<div class="col col-3">${orderItem.quantity}</div>
-												<div class="col col-4">${orderItem.totalPrice}元</div>
-											</div>
-										</dd>
-										</c:forEach>
-									</dl>
-									</div>
+		            <div class="panel panel-default">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading">订单号：${orderNo}</div>
 						
-					</table>
-				</form>
+						  <!-- Table -->
+						  <table  class="table table-striped table-bordered table-hover">
+								<tr>
+									<td>id</td>
+									<td>商品图片</td>
+									<td>商品名称</td>
+									<td>商品价格</td>
+									<td>商品数量</td>
+									<td>总价</td>
+								</tr>
+								<c:forEach items="${orderItems}" var="orderItem">
+									<tr>
+										<td><input type="checkbox" id="selectAlls" onclick="selectAll()"/></td>
+									<td>${orderItem.id}</td>
+									<td><img alt="" src="${orderItem.productImage}" style="width: 55px;height: 55px"></td>
+									<td>${orderItem.productName}</td>
+									<td>${orderItem.currentUnitPrice}</td>
+									<td>${orderItem.quantity}</td>
+									<td>${orderItem.totalPrice}</td>
+								</tr>
+								</c:forEach>
+						  </table>
+						</div>
 			</div>
 		</div>
 	</div>

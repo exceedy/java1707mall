@@ -1,5 +1,6 @@
 package com.situ.mall.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class OrderServiceImpl implements IOrderService{
 		return orderDao.findOrder(userId);
 	}
 
-	public List<OrderItem> findOrderItem(Integer OrderNo) {
+	public List<OrderItem> findOrderItem(BigDecimal OrderNo) {
 		return orderDao.findOrderItem(OrderNo);
 	}
 
