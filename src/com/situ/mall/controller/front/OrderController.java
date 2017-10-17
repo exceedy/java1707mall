@@ -113,7 +113,7 @@ public class OrderController {
 		order.setOrderNo(orderNo);
 		
 		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("user"); 
 		order.setUserId(user.getId());
 		
 		Integer status = 10;

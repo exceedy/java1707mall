@@ -17,8 +17,14 @@
         </div>
     	<div class="box2">
         	<ul>
-            	<li><a class="login" href="${path}/login/toLogin.shtml">请登录</a></li>
-            	<li><a href="${path}/login/toRegister.shtml">快速注册</a></li>
+        		<c:if test="${empty user}">
+	            	<li><a class="login" href="javascript:login()">请登录</a></li>
+    	        	<li><a href="${path}/login/toRegister.shtml">快速注册</a></li>
+        		</c:if>
+        		<c:if test="${!empty user}">
+	            	<li><a class="login" href="${path}/login/toLogin.shtml">${user.userName}</a></li>
+    	        	<li><a href="javascript:out()">注销</a></li>
+        		</c:if>
             	<li><a class="sc" href="">我的收藏</a></li>
             	<li><a class="wd" href="${path }/order/toOrederItems.shtml">我的订单</a></li>
             	<li><a class="sj" href="">手机靓淘</a></li>
@@ -130,7 +136,6 @@ var a = 0;
 			a = a + 1;
 		  $(".sctu").hide().eq(a).show();
 		  $(".yuan li").removeClass("dqx").eq(a).addClass("dqx");
-		  delay(2000);
 		} else {
 			a = 0;
 			$(".sctu").hide().eq(a).show();
@@ -373,5 +378,29 @@ var a = 0;
         <p>京工网安备&nbsp;&nbsp;11010102001226|京ICP证111033号|食品流通许可证&nbsp;&nbsp;SP1101051110165515(1-1)|营业执照</p>
     </div>
 </div>
+<script type="text/javascript">
+	function login () {
+		layer.open({
+		    type: 2,
+		      title: '登录',
+		      maxmin: true,
+		      shadeClose: true, //点击遮罩关闭层
+		      area : ['800px' , '520px'],
+		      content: 'login/login.shtml'
+		});
+	}
+	function out() {
+		var option = {
+				url:"${path}/login/out.shtml",
+				dataType:"json",
+				success:function (data) {
+					if (data.status == 0) {
+						window.parent.location.reload();
+					}
+				}
+		}
+		$.ajax(option);
+	}
+</script>
 </body>
 </html>

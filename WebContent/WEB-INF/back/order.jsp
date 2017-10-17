@@ -66,7 +66,25 @@ function status() {
 	}
 	
 	function toOrder(orderNo) {
-		location.href="${path}/orderBack/toOrderItem.action?orderNo="+orderNo;
+		var li = layer.load();
+		var option = {
+				url:"${path}/orderBack/toOrderItem.action",
+				dataType:"json",
+				success:function (data) {
+					layer.close(li);
+					if (data.status == 0) {
+						layer.open({
+							type: 2,
+							title: '订单子表',
+							maxmin: true,
+							shadeClose: true, //点击遮罩关闭层
+							area : ['800px' , '520px'],
+							content: 'orderItem.action?orderNo='+orderNo
+					})
+				}
+		}
+	}
+		$.ajax(option);
 	}
 </script>
 </head>

@@ -76,21 +76,9 @@ function status() {
 </script>
 </head>
 <body>
-	<%@include file="../common/logn.jsp" %>
 	<div class="container">
 		
 		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${path}/product/pageList.action" class="list-group-item active">商品管理</a>
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${path}/product/pageList.action">商品列表</a>
-		                </li>
-		            </ul>
 		            <!-- 高级搜索 -->
 		            <div class="panel panel-default">
 						  <!-- Default panel contents -->
@@ -108,7 +96,6 @@ function status() {
 								</tr>
 								<c:forEach items="${orderItems}" var="orderItem">
 									<tr>
-										<td><input type="checkbox" id="selectAlls" onclick="selectAll()"/></td>
 									<td>${orderItem.id}</td>
 									<td><img alt="" src="${orderItem.productImage}" style="width: 55px;height: 55px"></td>
 									<td>${orderItem.productName}</td>

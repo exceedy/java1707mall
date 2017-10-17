@@ -132,33 +132,16 @@
             };
             var miniCartDisable=true;
             
-           /*  function addShipping() {
-            	$.ajax({
-            		url:"${path}/shipping/toAddShipping.shtml",
-            		data:"josn",
-            		success:function(data) {
-            			var num = data.num;
-            			if (num < 3) {
-            			var html = $("#J_editAddrBox").html();
-            			$("#J_useNewAddr").html(html);
-            			}
-            		}
-            	});
-            } */
             function addShipping () {
-            	location.href="${path}/shipping/toAddShipping.shtml";
-            }
-            function cancelAddShipping() {
-            	$.ajax({
-            		success:function() {
-            			var html = $("#J_editAddrBox").html;
-            			$("#J_useNewAddr").html(html);
-            		}
+            	var li = layer.load();
+            	layer.open({
+            		type:2,
+            		title:"添加地址",
+            		 maxmin: true,
+           		     shadeClose: true, //点击遮罩关闭层
+           		     area : ['800px' , '520px'],
+           		     content: 'order/toAddShipping.shtml'
             	});
-            }
-            function toAddShipping () {
-            	$("#checkoutForm").attr("action","${path}/shipping/addShipping.shtml");
-            	$("#checkoutForm").submit();
             }
 		</script>
 		<div class="container">
@@ -202,60 +185,6 @@
 											使用新地址
 										</div>
 									</div>
-									<!-- <input type="hidden" name="newAddress[type]" id="newType" value="common">
-									<input type="hidden" name="newAddress[consignee]" id="newConsignee">
-									<input type="hidden" name="newAddress[province]" id="newProvince">
-									<input type="hidden" name="newAddress[city]" id="newCity">
-									<input type="hidden" name="newAddress[district]" id="newCounty">
-									<input type="hidden" name="newAddress[address]" id="newStreet">
-									<input type="hidden" name="newAddress[zipcode]" id="newZipcode">
-									<input type="hidden" name="newAddress[tel]" id="newTel">
-									<input type="hidden" name="newAddress[tag_name]" id="newTag">
-									点击弹出新增/收货地址界面start
-									<div class="xm-edit-addr-box" id="J_editAddrBox">
-									
-										<div class="bd">
-											<div class="item">
-												<label>收货人姓名<span></span></label>
-												<input type="text" name="receiverName" id="Consignee" class="input" placeholder="收货人姓名" maxlength="15" autocomplete='off'>
-												<p class="tip-msg tipMsg"></p>
-											</div>
-											<div class="item">
-												<label>联系电话<span>*</span></label>
-												<input type="text" name="receiverProvince" class="input" id="Telephone" placeholder="11位手机号" autocomplete='off'>
-												<p class="tel-modify-tip" id="telModifyTip"></p>
-												<p class="tip-msg tipMsg"></p>
-											</div>
-											<div class="item">
-												<label>地址<span>*</span></label>
-												<select name="receiverProvince" id="Provinces" class="select-1">
-													<option>省份/自治区</option>
-													<option>--山东省--</option>
-												</select>
-												<select name="receiverCity"  id="Citys" class="select-2" disabled>
-													<option>城市/地区/自治州</option>
-													<option>--青岛市--</option>
-												</select>
-												<select name="receiverDistrict"  id="Countys" class="select-3" disabled>
-													<option>区/县</option>
-													<option>--城阳区--</option>
-												</select>
-												<textarea   name="receiverAddress" class="input-area" id="Street" placeholder="路名或街道地址，门牌号"></textarea>
-												<p class="tip-msg tipMsg"></p>
-											</div>
-											<div class="item">
-												<label>邮政编码<span>*</span></label>
-												<input type="text" name="receiverZip" id="Zipcode" class="input" placeholder="邮政编码"  autocomplete='off'>
-												<p class="zipcode-tip" id="zipcodeTip"></p>
-												<p class="tip-msg tipMsg"></p>
-											</div>
-										</div>
-										<div class="ft clearfix">
-											<button  type="button" onclick="cancelAddShipping()" class="btn btn-lineDake btn-small " id="J_editAddrCancel">取消</button>
-											<button type="button" onclick="toAddShipping()" class="btn btn-primary  btn-small " id="J_editAddrOk">保存</button>
-										</div>
-										</div>
-									</div> -->
 							<!-- 收货地址 END-->
 									<!--点击弹出新增/收货地址界面end-->
 									<div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
