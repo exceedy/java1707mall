@@ -26,10 +26,11 @@
 	<div class="div1"><img src="${path}/thirds/image/beijing.png">
 	<div class="div2">
     	<ul>
-    		<li><a class="a1" href="">密码登录</a></li>
     		<li><a class="a2" href="">扫码登录</a></li>
+    		<li><a class="a1" href="">密码登录</a></li>
     	</ul>
     	<form action="${path}/login/loginIndex.shtml">
+    		<input type="hidden" name="returnUrl" value="${returnUrl}">
 	        <input class="in1" name="userName" placeholder="账号" required type="text" >
 	        <input class="in2" name="password" required placeholder="密码" type="text">
 	        <input class="in3" type="submit" value="登录">

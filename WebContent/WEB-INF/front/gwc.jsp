@@ -61,24 +61,7 @@
  		}
 	</script> 
 <body>
-<div class="top">
-	<div class="top-cen">
-    	<div class="div1">欢迎来到靓淘</div>
-        <div class="div2">
-        	<ul>
-        		<li><a class="dl" href="">请登录</a></li>
-        		<li><a href="">快速注册</a></li>
-        		<li><a class="sc" href="">我的收藏</a></li>
-        		<li><a class="wd" href="">我的订单</a></li>
-        		<li><a class="lt" href="">手机靓淘</a></li>
-        		<li><a href="">我的积分</a></li>
-        		<li><a href="">我的评价</a></li>
-               
-        	</ul>
-        </div>
-    </div> 
-    <div class="clearfix"></div>
-</div>
+<%@include file="../common/front_top_logo.jsp" %>
 <!--搜索-->
 <div class="sou">
 	<div class="div1">
@@ -206,7 +189,7 @@
         	<span>帮助中心</span><br>
             您的购物指南
         </div>
-    	<div class="div4">
+    	<div class="div4" >
         	<span>七天无条件退款</span><br>
             为您提供售后无忧保障
         </div>
@@ -233,5 +216,13 @@
         <p>京工网安备&nbsp;&nbsp;11010102001226|京ICP证111033号|食品流通许可证&nbsp;&nbsp;SP1101051110165515(1-1)|营业执照</p>
     </div>
 </div>
+
+<script type="text/javascript">
+	function login () {
+		var path =  "cart/addCartItems.shtml";
+				location.href="${path}/login/toLogin.shtml?returnUrl="+path;
+				
+	}
+</script>
 </body>
 </html>

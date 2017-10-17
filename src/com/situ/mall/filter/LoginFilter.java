@@ -32,7 +32,7 @@ public class LoginFilter implements Filter {
 			if (session != null) {
 				User user = (User) session.getAttribute("user");
 				if (user == null) {
-					resp.sendRedirect(req.getContextPath() + "/login/toLogin.shtml");
+					resp.sendRedirect(req.getContextPath() + "/login/toLogin.shtml?returnUrl=order//toAddOrder.shtml");
 					return;
 				} else {
 					chain.doFilter(request, response);

@@ -21,20 +21,21 @@ public class LoginController {
 	private ILoginService loginService;
 	
 	@RequestMapping(value="/toLogin.shtml")
-	public String toLogin() {
+	public String toLogin(String returnUrl,Model model) {
+		model.addAttribute("returnUrl", returnUrl);
 		return "login";
 	}
 	
 	@RequestMapping(value="/loginIndex.shtml")
-	public String login(Model model, HttpServletRequest req, User user) {
+	public String login(Model model, HttpServletRequest req, User user,String returnUrl) {
 		String path = null;
 		User resultUser = loginService.getUser(user);
 		if (user != null && resultUser != null) {
 			if (user.getUserName().equals(resultUser.getUserName()) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", resultUser);
-				if (user.getRole() == 1) {
-					path =  "redirect:/index.shtml";
+				if (resultUser.getRole() == 1) {
+					path =  "redirect:/"+returnUrl;
 				} else {
 					path = "redirect:/product/pageList";
 				}

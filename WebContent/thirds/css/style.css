@@ -19,37 +19,7 @@ img{ display:block;}
 .clearfix{ clear:both;}
 
 /*头部*/
-.bg-box{ height:28px;
-		 border-bottom:1px solid #CCCCCC;}
-.box{ width:1100px;
-	  margin:auto;}
-.box .box1{ 
-			
-			float:left;}
-.box .box2{ float:right;}
-.box li{ float:left;
-		margin-left:30px;}
-.box a{ color:#808080;
-		 line-height:28px;}
-.box .wel{ line-height:28px;
-		  color:#808080;}
-.box .login{ background-image:url(../image/zhanghu2.png);
-			 background-repeat:no-repeat;
-			 padding-left:17px;
-			 background-position:2% center;}
-.box .sc{ background-image:url(../image/xin.png);
-           background-repeat:no-repeat;
-		   background-position:5% center;
-		   padding-left:17px;}
-.box .wd{ background-image:url(../image/narrow-down.png);
-			background-repeat:no-repeat;
-			padding-right:17px;
-			background-position:right 5% center;
-			}
-.box .sj{ background-image:url(../image/phone.png);
-			background-repeat:no-repeat;
-			padding-left:17px;
-			background-position:5% center;}
+
 			/*logo区*/
 .logo-box{ width:1100px;
  		   height:100px;

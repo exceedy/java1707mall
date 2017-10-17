@@ -147,7 +147,7 @@
 		<div class="container">
 			<div class="checkout-box">
 				<form  id="checkoutForm" action="${path}/order/addOrder.shtml" method="post">
-					<div class="checkout-box-bd">
+							<div class="checkout-box-bd">
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
 						<input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
 						<!-- 收货地址 -->

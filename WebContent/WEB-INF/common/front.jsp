@@ -7,6 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/thirds/js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/thirds/js/jquery.form.js"></script>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/thirds/js/layer/layer.js"></script>
+<link rel="stylesheet" href="${path}/thirds/css/front_top_logo.css">
 <script type="text/javascript">  
      var path="${pageContext.request.contextPath}";  
 </script>
