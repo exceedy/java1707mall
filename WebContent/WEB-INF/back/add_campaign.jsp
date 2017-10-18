@@ -120,24 +120,9 @@
 </head>
 
 <body>
-	<%@include file="../common/logn.jsp" %>
 	<div class="container">
 		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${pageContext.request.contextPath}/campaign/searchConditionSelect.action" class="list-group-item ">广告管理</a>
-		                <a href="${pageContext.request.contextPath}/campaign/toAddCampaign.action" class="list-group-item active">添加广告</a>
-		            </div>
-		        </div>
 		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li >
-		                    <a href="${pageContext.request.contextPath}/campaign/searchConditionSelect.action">广告列表</a>
-		                </li>
-		                <li class="active" >
-		                	<a href="${pageContext.request.contextPath}/campaign/toAddCampaign.action">添加广告</a>
-		                </li>
-		            </ul>
 	
 				<form class="form_b" action="${path}/campaign/addCampaign.action" 
 				id = "form-add" enctype="multipart/form-data" method="post"> 

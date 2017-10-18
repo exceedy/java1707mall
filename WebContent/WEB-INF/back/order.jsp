@@ -89,21 +89,9 @@ function status() {
 </script>
 </head>
 <body>
-	<%@include file="../common/logn.jsp" %>
 	<div class="container">
 		
 		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${path}/product/pageList.action" class="list-group-item active">商品管理</a>
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${path}/product/pageList.action">商品列表</a>
-		                </li>
-		            </ul>
 		            <!-- 高级搜索 -->
 			<form action="" id="mainform" method="post">
 				<table  class="table table-striped table-bordered table-hover">

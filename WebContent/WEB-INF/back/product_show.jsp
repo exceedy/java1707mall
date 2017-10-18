@@ -84,26 +84,10 @@ function status() {
 	
 </script>
 </head>
-<body>
-	<%@include file="../common/logn.jsp" %>
+<body >
 	<div class="container">
-		
 		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${path}/product/pageList.action" class="list-group-item active">商品管理</a>
-		                <a href="${path}/product/toAddproduct.action" class="list-group-item ">添加商品</a>
-		            </div>
-		        </div>
 		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${path}/product/pageList.action">商品列表</a>
-		                </li>
-		                <li  >
-		                	<a href="${path}/product/toAddProduct.action">添加商品</a>
-		                </li>
-		            </ul>
 		            <!-- 高级搜索 -->
 				<div class="container">
 					<form class="form-inline" action="${path}/product/searchConditionSelect.action?pageSize=${searchCondition.pageSize}" id="serviceForm" >
@@ -131,28 +115,26 @@ function status() {
 				</div>
 			<form action="" id="mainform" method="post">
 				<table  class="table table-striped table-bordered table-hover">
+				<tr>
+						<td><input class="btn btn-danger" type="button" value="批量删除" onclick="deleteAll();" /></td>
+						<td><input class="btn btn-primary" type="button" value="批量上架" onclick="updateAllStatusUp();" /></td>
+						<td><input class="btn btn-danger" type="button" value="批量下架" onclick="updateAllStatusDown();" /></td>
+					</tr>
 					<tr>
-						<td><input type="checkbox" id="selectAlls" onclick="selectAll()"/></td>
+						<td><input type="checkbox" id="selectAlls" class="checkbox-inline" onclick="selectAll()"/></td>
 						<td>id</td>
 						<td>分类</td>
 						<td>商品名称</td>
 						<td>商品副标题</td>
 						<td>产品主图</td>
 						<!-- <td>图片地址</td> -->
-						<td>商品详情</td>
 						<td>价格</td>
 						<td>库存数量</td>
 						<td>商品状态</td>
 						<td>创建时间</td>
 						<td>更新时间</td>
 					</tr>
-					<tr>
-						<td><input class="btn btn-danger" type="button" value="批量删除" onclick="deleteAll();" /></td>
-						<td><input class="btn btn-primary" type="button" value="批量上架" onclick="updateAllStatusUp();" /></td>
-						<td><input class="btn btn-danger" type="button" value="批量下架" onclick="updateAllStatusDown();" /></td>
-						<td><a class="btn btn-primary" href="${path}/product/toAddproduct.action">添加</a></td>
-						
-					</tr>
+					
 					<c:forEach items="${pageBean.list}" var="product">
 						<tr>
 							<td><input type="checkbox" name="selectIds" value="${product.id}"></td>
@@ -162,7 +144,6 @@ function status() {
 							<td>${product.subtitle}</td>
 							 <td><img alt="" src="${product.mainImage}" width="80" height="60" ></td>
 							<%-- <td>${product.subImages}</td> --%>
-							<td>${product.detail}</td>
 							<td>${product.price}</td>
 							<td>${product.stock}</td>
 							<td>
@@ -223,6 +204,7 @@ function status() {
                				  <a href="javascript:void(0);" aria-label="Previous">
                    				<span aria-hidden="true">&raquo;</span>
 				        		</a>
+				      	</li>
 				    	</c:if>
 				    	<c:if test="${pageBean.pageIndex != pageBean.totalPage}">
 				    		<li>

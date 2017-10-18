@@ -29,10 +29,12 @@ public class LoginFilter implements Filter {
 		String uri = req.getRequestURI();
 		if (uri != null && uri.startsWith("/Java1707Mall/order")) {
 			HttpSession session = req.getSession(false);
+			String returnUrl = req.getServletPath();
 			if (session != null) {
 				User user = (User) session.getAttribute("user");
 				if (user == null) {
-					resp.sendRedirect(req.getContextPath() + "/login/toLogin.shtml?returnUrl=order//toAddOrder.shtml");
+					req.setAttribute("returnUrl", returnUrl);
+					resp.sendRedirect(req.getContextPath() + "/login/toLogin.shtml");
 					return;
 				} else {
 					chain.doFilter(request, response);

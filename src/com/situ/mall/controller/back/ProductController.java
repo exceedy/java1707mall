@@ -113,6 +113,7 @@ public class ProductController {
 		return  productService.deleteProduct(id);
 	}
 	
+	@RequestMapping(value="deleteAll")
 	public String deleteAll(Integer[] selectIds) {
 		for (Integer id : selectIds) {
 			productService.deleteProduct(id);
@@ -147,5 +148,10 @@ public class ProductController {
 			productService.updateStatus(id, 2);
 		}
 		return "redirect:/product/pageList.action";
+	}
+	
+	@RequestMapping(value="index")
+	public String index() {
+		return "index";
 	}
 }

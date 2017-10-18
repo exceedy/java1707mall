@@ -37,7 +37,7 @@ public class LoginController {
 				if (resultUser.getRole() == 1) {
 					path =  "redirect:/"+returnUrl;
 				} else {
-					path = "redirect:/product/pageList";
+					path = "redirect:/product/index.action";
 				}
 			} else {
 				path = "register";

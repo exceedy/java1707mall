@@ -137,7 +137,7 @@
 		        	<input id="selectIds" onchange="totalPrice()" name="selectIds" value="${items.product.id}" type="checkbox">
 		            <div class="hg-left">
 		            	<div class="div1">
-		                	<img src="${items.product.mainImage}">
+		                	<a href="${path}/category/toProduct.shtml?productId=${cart.productId}"><img src="${items.product.mainImage}"></a>
 		                </div>
 		                ${items.product.name}
 		                <p class="p1">

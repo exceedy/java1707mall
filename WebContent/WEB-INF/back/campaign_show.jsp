@@ -69,25 +69,9 @@ function status() {
 </script>
 </head>
 <body>
-	<%@include file="../common/logn.jsp" %>
 	<div class="container">
 		
 		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${path}/campaign/searchConditionSelect.action" class="list-group-item active">广告管理</a>
-		                <a href="${path}/campaign/toAddCampaign.action" class="list-group-item ">添加广告</a>
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${path}/campaign/searchConditionSelect.action">广告列表</a>
-		                </li>
-		                <li  >
-		                	<a href="${path}/campaign/toAddCampaign.action">添加广告</a>
-		                </li>
-		            </ul>
 		            <!-- 高级搜索 -->
 				<div class="container">
 					<form class="form-inline" action="${path}/campaign/searchConditionSelect.action?pageSize=${searchCondition.pageSize}" id="serviceForm" >

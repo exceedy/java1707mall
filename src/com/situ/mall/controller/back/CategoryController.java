@@ -70,7 +70,7 @@ public class CategoryController {
 		return "redirect:/category/findAllCategory.action";
 	}
 	
-	@RequestMapping(value="deleteCateger")
+	@RequestMapping(value="deleteCategorys")
 	public String deleteCategory(Integer id) {
 		boolean result = categoryService.deleteCategory(id);
 		return "redurect:/category/fimdAllCategory.action";

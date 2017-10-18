@@ -42,24 +42,9 @@
 </head>
 <body>
 			<%@include file = "../common/use.jsp" %>
-			<%@include file="../common/category_logo.jsp" %>
 	<div class="container">
 		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${path}/category/pageList.action" class="list-group-item active">分类管理</a>
-		                <a href="${path}/category/toAddCategory.action" class="list-group-item ">添加分类</a>
-		            </div>
-		        </div>
 		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${path}/category/pageList.action">分类列表</a>
-		                </li>
-		                <li  >
-		                	<a href="${path}/category/toAddCategory.action">添加分类</a>
-		                </li>
-		            </ul>
 		            
 		            <form id="pageList" action="${path}/category/pageList.action">
 		            	<input type="hidden" name="pageIndex" id="pageIndex"/>

@@ -35,7 +35,7 @@ public class OrderController {
 		return ServletRespone.creatSuccess();
 	}
 	@RequestMapping(value="orderItem")
-	public String toOrderItem(BigDecimal orderNo, Model model) {
+	public String toOrderItem(Long orderNo, Model model) {
 		List<OrderItem> orderItems = orderService.findOrderItem(orderNo);
 		model.addAttribute("orderItems", orderItems);
 		model.addAttribute("orderNo", orderNo);
