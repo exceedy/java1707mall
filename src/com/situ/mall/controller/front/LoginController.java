@@ -35,7 +35,7 @@ public class LoginController {
 				HttpSession session = req.getSession();
 				session.setAttribute("user", resultUser);
 				if (resultUser.getRole() == 1) {
-					path =  "redirect:/"+returnUrl;
+					path =  "redirect:"+returnUrl;
 				} else {
 					path = "redirect:/product/index.action";
 				}
