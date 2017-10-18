@@ -1,6 +1,5 @@
 package com.situ.mall.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class OrderItem {
@@ -8,7 +7,7 @@ public class OrderItem {
 	
 	private Integer userId;//用户id
 	
-	private BigDecimal orderNo;//订单编号
+	private Long orderNo;//订单编号
 	
 	private Integer productId;//商品id
 	
@@ -28,7 +27,7 @@ public class OrderItem {
 	
 	
 
-	public OrderItem(Integer userId, BigDecimal orderNo, Integer productId, String productName, String productImage,
+	public OrderItem(Integer userId, Long orderNo, Integer productId, String productName, String productImage,
 			Double currentUnitPrice, Integer qiantity, Integer totaklprice, Date createTime, Date updateTime) {
 		super();
 		this.userId = userId;
@@ -53,7 +52,7 @@ public class OrderItem {
 
 
 
-	public OrderItem(Integer id, Integer userId, BigDecimal orderNo, Integer productId, String productName,
+	public OrderItem(Integer id, Integer userId, Long orderNo, Integer productId, String productName,
 			String productImage, Double currentUnitPrice, Integer qiantity, Integer totaklprice, Date createTime,
 			Date updateTime) {
 		super();
@@ -96,13 +95,13 @@ public class OrderItem {
 
 
 
-	public BigDecimal getOrderNo() {
+	public Long getOrderNo() {
 		return orderNo;
 	}
 
 
 
-	public void setOrderNo(BigDecimal orderNo) {
+	public void setOrderNo(Long orderNo) {
 		this.orderNo = orderNo;
 	}
 

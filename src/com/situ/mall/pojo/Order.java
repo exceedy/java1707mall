@@ -1,14 +1,12 @@
 package com.situ.mall.pojo;
 
-import java.math.BigDecimal;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 public class Order {
 	private Integer id;//订单id
 	
-	private BigDecimal orderNo;//订单号
+	private Long orderNo;//订单号
 	
 	private Integer userId;//用户id
 	
@@ -73,7 +71,7 @@ public class Order {
 
 
 
-	public Order(Integer id, BigDecimal orderNo, Integer userId, Integer shippingId, Integer payment, Integer status,
+	public Order(Integer id, Long orderNo, Integer userId, Integer shippingId, Integer payment, Integer status,
 			Integer paymentType, Integer postage, Date paymentTime, Date sendTime, Date endTime, Date closeTime,
 			Date createTime, Date updateTime, List<OrderItem> list) {
 		super();
@@ -102,7 +100,7 @@ public class Order {
 	}
 
 
-	public Order(Integer id, BigDecimal orderNo, Integer userId, Integer shippingId, Integer payment, Integer status,
+	public Order(Integer id, Long orderNo, Integer userId, Integer shippingId, Integer payment, Integer status,
 			Integer paymentType, Integer postage, Date paymentTime, Date senTime, Date endTime, Date close,
 			Date createTime, Date updateTime) {
 		super();
@@ -124,7 +122,7 @@ public class Order {
 
 
 
-	public Order(Integer id, Integer paymentType, BigDecimal orderNo, Integer userId, Integer shippingId, Integer status, Date createTime,
+	public Order(Integer id, Integer paymentType, Long orderNo, Integer userId, Integer shippingId, Integer status, Date createTime,
 			Date updateTime) {
 		super();
 		this.id = id;
@@ -139,7 +137,7 @@ public class Order {
 
 
 
-	public Order(BigDecimal orderNo,Integer paymentType, Integer userId, Integer shippingId, Integer status, Date createTime,
+	public Order(Long orderNo,Integer paymentType, Integer userId, Integer shippingId, Integer status, Date createTime,
 			Date updateTime) {
 		super();
 		this.orderNo = orderNo;
@@ -159,13 +157,13 @@ public class Order {
 
 
 
-	public BigDecimal getOrderNo() {
+	public Long getOrderNo() {
 		return orderNo;
 	}
 
 
 
-	public void setOrderNo(BigDecimal orderNo) {
+	public void setOrderNo(Long orderNo) {
 		this.orderNo = orderNo;
 	}
 

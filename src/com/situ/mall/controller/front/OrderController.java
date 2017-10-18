@@ -2,7 +2,6 @@ package com.situ.mall.controller.front;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,9 +19,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.situ.mall.common.ServletRespone;
 import com.situ.mall.pojo.Order;
 import com.situ.mall.pojo.OrderItem;
 import com.situ.mall.pojo.Product;
@@ -105,10 +106,7 @@ public class OrderController {
 		
 		order.setPaymentType(paymentType);
 		
-		Date date = new Date();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-		String dateStr = simpleDateFormat.format(date);
-		BigDecimal orderNo = new BigDecimal(dateStr);
+		Long orderNo = System.currentTimeMillis();
 		
 		order.setOrderNo(orderNo);
 		
@@ -199,5 +197,11 @@ public class OrderController {
 		}
 		
 		return "order_items";
+	}
+	
+	@RequestMapping(value="deleteOrder")
+	@ResponseBody
+	public ServletRespone deleteOrder(Long orderNo) {
+		return orderService.deleteOrder(orderNo);
 	}
 }

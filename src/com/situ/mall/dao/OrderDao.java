@@ -14,7 +14,11 @@ public interface OrderDao {
 	
 	 List<Order> findOrder(Integer userId);
 	
-	List<OrderItem> findOrderItem(BigDecimal OrderNo);
+	List<OrderItem> findOrderItem(Long OrderNo);
 
 	List<Order> findAll();
+
+	int deleteOrder(Long orderNo);
+
+	void deleteOrderItems(Long orderNo);
 }

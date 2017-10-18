@@ -219,7 +219,7 @@
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	删除订单</div>
+																	<a href="javascript:deleteOrder(${order.orderNo})">删除订单</a></div>
 															</li>
 														</div>
 													</div>
@@ -260,5 +260,26 @@
 		</div>
 
 	</body>
-
+<script type="text/javascript">
+	function deleteOrder (orderNo) {
+		var option = {
+				url:"${path}/order/deleteOrder.shtml",
+				data:"orderNo="+orderNo,
+				dataType:"json",
+				success:function (data) {
+					if (data.statua == 0 ) {
+						layer.msg(data.msg);
+					} else {
+						layer.msg(data.msg);
+					}
+				}
+		}
+		layer.confirm("确定删除？",{
+			btu:["yes","no"]},
+			function () {
+						window.location.reload();
+				$.ajax(option);
+		})
+	}
+</script>
 </html>
