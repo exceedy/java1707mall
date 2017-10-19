@@ -184,7 +184,7 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="" target="_blank">靓淘首页</a></li>
+				<li style="background:#d1201e"><a href="${path}/index.shtml" target="_blank">靓淘首页</a></li>
 				<li><a href="" target="_blank">女士护肤 </a></li>
 				<li><a href="" target="_blank">男士护肤</a></li>
 				<li><a href="" target="_blank">洗护染发</a></li>
@@ -309,7 +309,7 @@
 				</div>
 				<div class="time-border-list pc-search-list clearfix">
 					<ul class="clearfix">
-						<c:forEach items="${productList}" var="product">
+						<c:forEach items="${pageBean.list}" var="product">
 							<li>
 								<a href="${path}/category/toProduct.shtml?id=${product.id}"> <img src="${product.mainImage}" width=100%></a>
 								<p class="head-name"><a href="${path}/category/toProduct.shtml?id=${product.id}">${product.name}</a> </p>
@@ -342,18 +342,30 @@
 					</ul>
 					<div class="clearfix">
 						<div class="fr pc-search-g">
-							<a class="fl pc-search-f" href="#">上一页</a>
-							<a href="#" class="current">1</a>
-							<a href="javascript:;">2</a>
-							<a href="javascript:;">3</a>
-							<a href="javascript:;">4</a>
-							<a href="javascript:;">5</a>
-							<a href="javascript:;">6</a>
-							<a href="javascript:;">7</a>
-							<span class="pc-search-di">…</span>
-							<a title="使用方向键右键也可翻到下一页哦！" class="pc-search-n" href="javascript:;" onclick="SEARCH.page(3, true)">下一页</a>
+						<c:if test="${pageBean.pageIndex > 1}">
+								<a class="fl pc-search-f" href="${path}/category/tofindAllProduct.shtml?pageIndex=${pageBean.pageIndex - 1}">上一页</a>
+						</c:if>
+						<c:if test="${pageBean.pageIndex == 1}">
+								<a class="fl pc-search-f" href="javascript:void(0);" aria-label="Previous">上一页</a>
+						</c:if>
+							<c:forEach begin="1" end="${pageBean.totalPage}" var="page">
+								<c:if test="${page == pageBean.pageIndex}">
+									<a href="${path}/category/tofindAllProduct.shtml?pageIndex=${page}" class="current"><b>${page}</b></a>
+								</c:if>
+								<c:if test="${page != pageBean.pageIndex}">
+									<a href="${path}/category/tofindAllProduct.shtml?pageIndex=${page}" class="current">${page}</a>
+								</c:if>
+							</c:forEach>
+							<!-- <span class="pc-search-di">…</span> -->
+							<c:if test="${pageBean.pageIndex == pageBean.totalPage}">
+								<a title="使用方向键右键也可翻到下一页哦！" class="pc-search-n" href="javascript:void(0);" aria-label="Previous" >下一页</a>
+							</c:if>
+							<c:if test="${pageBean.pageIndex < pageBean.totalPage}">
+								<a title="使用方向键右键也可翻到下一页哦！" class="pc-search-n" href="javascript:;" onclick="SEARCH.page(3, true)">下一页</a>
+							</c:if>
+								
 							<span class="pc-search-y">
-                        <em>  共20页    到第</em>
+                        <em>  共${pageBean.totalPage}页    到第</em>
                         <input class="pc-search-j" placeholder="1" type="text">
                         <em>页</em>
                         <a href="#" class="confirm">确定</a>

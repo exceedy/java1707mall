@@ -66,8 +66,17 @@ public interface ProductDao {
 	/**
 	 * 根据分类查询商品
 	 * @param categoryId
+	 * @param pageSize 
+	 * @param sunCategoryId 
 	 * @return
 	 */
-	List<Product> getCategoryProduct(Integer categoryId);
+	List<Product> getCategoryProduct(@Param(value="pageIndex") Integer pageIndex, @Param(value="categoryId") Integer categoryId, @Param(value="pageSize") Integer pageSize);
+	
+	/**
+	 * 获取分类下商品的数量
+	 * @param sunCategoryId
+	 * @return
+	 */
+	int getCategoryProductCount(Integer sunCategoryId);
 	
 }

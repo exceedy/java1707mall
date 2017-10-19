@@ -156,9 +156,9 @@
   		</update>
   		
   		<!-- 根据分类id查询商品 -->
-  		<select id="getCategoryProduct" parameterType="int" resultMap="ProductMap">
+  		<select id="getCategoryProduct"  resultMap="ProductMap">
   			SELECT product.id,category.name AS category_name,product.name,product.subtitle,main_image,product.sub_images,detail,price,stock,product.status,product.create_time,product.update_time
-  			FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{categoryId};
+  			FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{categoryId} limit #{pageIndex},#{pageSize};
   		</select>
   		<select id="getCategoryProductCount" resultType="int" parameterType="int">
   			SELECT COUNT(*) FROM product INNER JOIN category ON product.category_id = category.id where product.category_id = #{categoryId};

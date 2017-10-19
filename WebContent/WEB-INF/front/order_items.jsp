@@ -24,30 +24,7 @@
 			<article>
 				<div class="mt-logo">
 					<!--顶部导航条 -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
-									<a href="#" target="_top">免费注册</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-						</ul>
-						</div>
-
+						<%@include file="../common/front_top_logo.jsp" %>
 						<!--悬浮搜索框-->
 
 						<div class="nav white">
@@ -151,7 +128,7 @@
 													<ul class="item-list">
 															<li class="td td-item">
 																<div class="item-pic">
-																	<img alt="" src="${orderItem.productImage}">
+																	<a  href="${path}/category/toProduct.shtml?id=${orderItem.productId}"><img alt="" src="${orderItem.productImage}"></a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
@@ -259,15 +236,16 @@
 			</div>
 		</div>
 
-	</body>
 <script type="text/javascript">
 	function deleteOrder (orderNo) {
+		var li = layer.load();
 		var option = {
 				url:"${path}/order/deleteOrder.shtml",
 				data:"orderNo="+orderNo,
 				dataType:"json",
 				success:function (data) {
-					if (data.statua == 0 ) {
+					if (data.status == 0 ) {
+						window.parent.location.reload();
 						layer.msg(data.msg);
 					} else {
 						layer.msg(data.msg);
@@ -277,9 +255,9 @@
 		layer.confirm("确定删除？",{
 			btu:["yes","no"]},
 			function () {
-						window.location.reload();
-				$.ajax(option);
+			$.ajax(option);
 		})
 	}
 </script>
+	</body>
 </html>

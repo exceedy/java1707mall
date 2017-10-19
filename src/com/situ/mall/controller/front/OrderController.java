@@ -99,7 +99,7 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="addOrder.shtml")
-	public String addOrder(Model model, Integer shippingId, Integer paymentType, HttpServletRequest req, HttpServletResponse resp, BigDecimal currentUnitPrice) {
+	public String addOrder(Model model, Integer shippingId, Integer paymentType, HttpServletRequest req, HttpServletResponse resp, BigDecimal[] currentUnitPrice) {
 		Order order = new Order();
 		
 		order.setShippingId(shippingId);
@@ -140,7 +140,9 @@ public class OrderController {
 		
 		if (null != cart) {
 			List<CartItemsVo> items = cart.getItemsList();
+			int num = 0;
 			for (CartItemsVo item : items) {
+				
 				OrderItem orderItem = new OrderItem();
 				Integer productId = item.getProduct().getId();
 				orderItem.setProductId(productId);//商品id
@@ -153,8 +155,8 @@ public class OrderController {
 				String productImage = productTemp.getMainImage();
 				orderItem.setProductImage(productImage);//商品主图
 				
-				orderItem.setCurrentUnitPrice((double)currentUnitPrice.intValue());
-				Integer totalPrice = currentUnitPrice.intValue() * item.getAmount();
+				orderItem.setCurrentUnitPrice((double)currentUnitPrice[num].intValue());
+				Integer totalPrice = currentUnitPrice[num].intValue() * item.getAmount();
 				orderItem.setTotalPrice(totalPrice);//商品总价
 				
 				orderItem.setQuantity(item.getAmount());//商品数量
@@ -164,8 +166,9 @@ public class OrderController {
 				orderItem.setOrderNo(orderNo);
 				
 				boolean resultItem = orderService.addOrderItem(orderItem);
+				num ++;
+				}
 			}
-		}
 		
 		
 				//清除购物车

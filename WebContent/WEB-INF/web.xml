@@ -34,7 +34,7 @@
     </filter>
     <filter-mapping>
        <filter-name>Order</filter-name>
-       <url-pattern>/order/*</url-pattern>
+       <url-pattern>/*</url-pattern>
     </filter-mapping>
     
     <!-- 配置spring -->

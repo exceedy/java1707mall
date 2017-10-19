@@ -35,7 +35,7 @@
 	<div class="div2">
     <ul>
     	<li class="li1">用户注册</li>
-    	<li>已有账号<a class="a1" href="denglu.html">在此登录</a></li>
+    	<li>已有账号<a class="a1" href="${path}/login/toLogin.shtml">在此登录</a></li>
     </ul>
     <form action="${path}/login/register.shtml">
     <input class="in1" name="userName" placeholder="账户" type="text">

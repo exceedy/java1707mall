@@ -91,8 +91,22 @@ public class ProductServiceImpl implements IProductService{
 		return result > 0 ? true : false ;
 	}
 
-	public List<Product> getCategoryProduct(Integer categoryId) {
+	/*public List<Product> getCategoryProduct(Integer categoryId) {
 		return productDao.getCategoryProduct(categoryId);
+	}*/
+
+	public PageBean<Product> getPageBean(Integer pageIndex, Integer sunCategoryId, Integer pageSize) {
+		PageBean<Product> pageBean = new PageBean<Product>();
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
+		int totalCount = productDao.getCategoryProductCount(sunCategoryId);
+		pageBean.setTotalCount(totalCount);
+		int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+		pageBean.setTotalPage(totalPage);
+		int index = (pageIndex - 1) * pageSize;
+		List<Product> list = productDao.getCategoryProduct(index, sunCategoryId, pageSize);
+		pageBean.setList(list);
+		return pageBean;
 	}
 
 }

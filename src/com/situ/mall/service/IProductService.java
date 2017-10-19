@@ -23,6 +23,8 @@ public interface IProductService {
 
 	boolean updateStatus(Integer id, int status);
 
-	List<Product> getCategoryProduct(Integer sunCategoryId);
+	/*List<Product> getCategoryProduct(Integer sunCategoryId);*/
+
+	PageBean<Product> getPageBean(Integer pageIndex, Integer pageSize,Integer sunCategoryId);
 
 }

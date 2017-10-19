@@ -11,7 +11,7 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>云购物商城-巴黎欧莱雅官方旗舰店</title>
+	<title>靓淘网商城-巴黎欧莱雅官方旗舰店</title>
 	
 	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${path}/thirds/css/base.css">
@@ -136,7 +136,7 @@
 <header id="pc-header">
 	<div class="pc-header-nav">
 		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
+			<div class="fl pc-header-link" >您好！，欢迎来靓淘网 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
 			<div class="fr pc-header-list top-nav">
 				<ul>
 					<li>
@@ -161,7 +161,7 @@
 							</dl>
 						</div>
 					</li>
-					<li><a href="#">我的云购</a></li>
+					<li><a href="#">我的靓淘</a></li>
 					<li><a href="#">我的收藏</a></li>
 					<li><a href="#">会员中心</a></li>
 					<li><a href="#">客户服务</a></li>
@@ -204,7 +204,7 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="" target="_blank">云购首页</a></li>
+				<li style="background:#d1201e"><a href="${path}/index.shtml" target="_blank">靓淘首页</a></li>
 				<li><a href="" target="_blank">女士护肤 </a></li>
 				<li><a href="" target="_blank">男士护肤</a></li>
 				<li><a href="" target="_blank">洗护染发</a></li>
@@ -260,8 +260,8 @@
 			</div>
 			<div class="Xcontent26">
 				<p class="Xcontent27">颜色</p>
-				<div class="Xcontent28"><img  src="${path}/thirds/image/shangpinxiangqing/X14.png"></div>
-				<div class="Xcontent29"><img  src="${path}/thirds/image/shangpinxiangqing/X1.png"></div>
+				<%-- <div class="Xcontent28"><img  src="${path}/thirds/image/shangpinxiangqing/X14.png"></div>
+				<div class="Xcontent29"><img  src="${path}/thirds/image/shangpinxiangqing/X1.png"></div> --%>
 			</div>
 			<div class="Xcontent30">
 				<p class="Xcontent31">数量</p>
@@ -986,7 +986,7 @@
 					<div class="clearfix lss-pa">
 						<div class="fl lss-img"><img src="img/icon/code.png" alt=""></div>
 						<div class="fl" style="padding-left:20px">
-							<h4>扫描下载云购APP</h4>
+							<h4>扫描下载靓淘APP</h4>
 							<p>把优惠握在手心</p>
 							<P>把潮流带在身边</P>
 							<P></P>

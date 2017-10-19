@@ -13,7 +13,7 @@
 <%@include file="../common/front_top_logo.jsp" %>
 <div class="logo-box">
 	<div class="box1">
-    	<%-- <img src="${path}/thirds/image/LOGO.png"> --%>
+    	 <img src="${path}/thirds/image/LOGO.png">
     </div>
 	<div class="box2">
     	<input class="btn1" type="text">
