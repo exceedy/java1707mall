@@ -12,6 +12,9 @@
 	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="/Java1707Mall/thirds/css/base.css">
 	<link rel="stylesheet" type="text/css" href="/Java1707Mall/thirds/css/home.css">
+	<script type="text/javascript" src="/Java1707Mall/thirds/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="/Java1707Mall/thirds/js/jquery.form.js"></script>
+<script type="text/javascript" charset="utf-8" src="/Java1707Mall/thirds/js/layer/layer.js"></script>
 	<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
 	<script type="text/javascript">
@@ -79,7 +82,7 @@
 	
 	function toShop(productId) {
 		var amount = $("#amount").val();
-		window.location.href="/Java1707Mal/cart/addCartItems.shtml?productId="+productId+"&amount="+amount;
+		window.location.href="/Java1707Mall/cart/addCartItems.shtml?productId="+productId+"&amount="+amount;
 	}
 	</script>
 	<script type="text/javascript">

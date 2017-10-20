@@ -36,16 +36,10 @@
 									data:$("#add-form").serialize(),
 									success:function (data) {
 										if (data.status == 0) {
-											layer.confirm(
-												'添加成功',
-												{btn:['关闭','返回订单']},
-												function (index) {
-													layer.close(index);
-												},
-												function() {
-													location.href="${path}/order/toAddOrder.shtml";
-												}
-											);
+											layer.msg(
+													data.msg
+													);
+											window.parent.location.reload();
 										} else {
 											layer.msg('添加失败');
 										}
