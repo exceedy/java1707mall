@@ -32,7 +32,7 @@ public class StaticPageServiceImpl implements IStaticPageService,ServletContextA
 		Writer out = null;
 		try {
 			Template template = conf.getTemplate("product_details.ftl");
-			String path = getPath("/html/" + id +  ".html");
+			String path = getPath("/resources/html/" + id +  ".html");
 			File file = new File(path);
 			File parentFile = file.getParentFile();
 			if (!parentFile.exists()) {

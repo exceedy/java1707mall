@@ -10,11 +10,15 @@
 	<meta name="Description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
-	<title>靓淘网商城-巴黎欧莱雅官方旗舰店</title>
+	<title>云购物商城-巴黎欧莱雅官方旗舰店</title>
 	<%@include file="../common/front.jsp" %>
 	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${path}/thirds/css/base.css">
 	<link rel="stylesheet" type="text/css" href="${path}/thirds/css/home.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
 	<script type="text/javascript">
 
         var intDiff = parseInt(90000);//倒计时总秒数量
@@ -115,21 +119,41 @@
 
 <header id="pc-header">
 	<div class="pc-header-nav">
-	<div class="box2">
-    	<input class="btn1" type="text">
-        <input class="btn2" type="button" value="搜索">
-        <ul class="nav">
-        	<li><a style="color:rgba(244,6,94,1.00)" href="">保湿|</a></li>
-        	<li><a href="">面膜|</a></li>
-        	<li><a href="">洗面奶|</a></li>
-        	<li><a href="">补水|</a></li>
-        	<li><a href="">香水|</a></li>
-        	<li><a href="">眼霜|</a></li>
-        	<li><a href="">口红|</a></li>
-        	<li><a href="">护肤套装|</a></li>
-        	<li><a href="">BB霜</a></li>
-        </ul>
-    </div>
+		<div class="pc-header-con">
+			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="login.html" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
+			<div class="fr pc-header-list top-nav">
+				<ul>
+					<li>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
+						<div class="con">
+							<dl>
+								<dt><a href="">批发进货</a></dt>
+								<dd><a href="">已买到货品</a></dd>
+								<dd><a href="">优惠券</a></dd>
+								<dd><a href="">店铺动态</a></dd>
+							</dl>
+						</div>
+					</li>
+					<li>
+						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
+						<div class="con">
+							<dl>
+								<dt><a href="">批发进货</a></dt>
+								<dd><a href="">已买到货品</a></dd>
+								<dd><a href="">优惠券</a></dd>
+								<dd><a href="">店铺动态</a></dd>
+							</dl>
+						</div>
+					</li>
+					<li><a href="#">我的云购</a></li>
+					<li><a href="#">我的收藏</a></li>
+					<li><a href="#">会员中心</a></li>
+					<li><a href="#">客户服务</a></li>
+					<li><a href="#">帮助中心</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
@@ -164,7 +188,7 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="${path}/index.shtml" target="_blank">靓淘首页</a></li>
+				<li style="background:#d1201e"><a href="" target="_blank">云购首页</a></li>
 				<li><a href="" target="_blank">女士护肤 </a></li>
 				<li><a href="" target="_blank">男士护肤</a></li>
 				<li><a href="" target="_blank">洗护染发</a></li>
@@ -196,20 +220,6 @@
 							</c:forEach>
 						</div>
 					</c:forEach>
-					<!-- <h3 class="menu_head">营养健康</h3>
-					<div style="display:none" class="menu_body">
-						<a href="#">营养健康</a>
-						<a href="#">营养健康</a>
-						<a href="#">营养健康</a>
-					</div>
-
-					<h3 class="menu_head">粮油调味</h3>
-					<div style="display:none" class="menu_body">
-						<a href="#">粮油调味</a>
-						<a href="#">粮油调味</a>
-						<a href="#">粮油调味</a>
-						<a href="#">粮油调味</a>
-					</div> -->
 				</div>
 			</div>
 			<div class="pc-info fr" style="width:955px">
@@ -290,37 +300,15 @@
 				<div class="time-border-list pc-search-list clearfix">
 					<ul class="clearfix">
 						<c:forEach items="${pageBean.list}" var="product">
-							<li>
-								<a href="${path}/html/${product.id}.html?id=${product.id}"> <img src="${product.mainImage}" width=100%></a>
-								<p class="head-name"><a href="${path}/html/${product.id}.html?id=${product.id}">${product.name}</a> </p>
-								<p><span class="price">￥${product.price}</span></p>
-								<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-							</li>
-						</c:forEach>
-						<!-- <li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li>
-						<li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li>
-						<li>
-							<a href="#"> <img src="images/shangpinxiangqing/X-1.png" width=100%></a>
-							<p class="head-name"><a href="#">小米 4 2GB内存版 白色 移动4G手机不锈钢金属边框</a> </p>
-							<p><span class="price">￥138.00</span></p>
-							<p class="head-futi clearfix"><span class="fl">好评度：90% </span> <span class="fr">100人购买</span></p>
-							<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
-						</li> -->
-
+								<li>
+									<a href="${path}/resources/html/${product.id}.html?id=${product.id}"> <img src="${product.mainImage}" width=100%></a>
+									<p class="head-name"><a href="${path}/resources/html/${product.id}.html?id=${product.id}">${product.name}</a> </p>
+									<p><span class="price">￥${product.price}</span></p>
+									<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
+								</li>
+							</c:forEach>
 					</ul>
-					<div class="clearfix">
+				
 						<div class="fr pc-search-g">
 						<c:if test="${pageBean.pageIndex > 1}">
 								<a class="fl pc-search-f" href="${path}/category/tofindAllProduct.shtml?pageIndex=${pageBean.pageIndex - 1}">上一页</a>

@@ -51,16 +51,15 @@ function status() {
 		}
 	}
 	function updateStatusUp(id) {
+		
 			var option = {
 					url:"${path}/product/show.action",
 					data:"id="+id,
 					dataType:"json",
 					success:function (data) {
 						if (data.status == 0) {
-							layer.msg(
-									data.msg
-									);
-							//window.parent.location.reload();
+							layer.msg(data.msg);
+							window.parent.location.reload();
 						}
 						else {
 							layer.msg(data.msg);

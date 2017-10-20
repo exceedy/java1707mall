@@ -63,7 +63,7 @@ public class UploadController {
 		Map result = new HashMap<Object, Object>();
 		result.put("error", 0);
 		//result.put("url", filePath);
-		result.put("url", MallConstant.SERVER_ADDRES + fileName);
+		result.put("url",  fileName);
 		//将object转换成json
 		return JsonUtils.objectToJson(result);
 	} catch (Exception e) {

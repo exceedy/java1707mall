@@ -10,8 +10,8 @@
 	<title>靓淘网商城-巴黎欧莱雅官方旗舰店</title>
 	
 	<link rel="shortcut icon" type="image/x-icon" href="img/icon/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="/thirds/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/thirds/css/home.css">
+	<link rel="stylesheet" type="text/css" href="/Java1707Mall/thirds/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/Java1707Mall/thirds/css/home.css">
 	<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.SuperSlide.js"></script>
 	<script type="text/javascript">
@@ -73,13 +73,13 @@
 		var subImg = subImages.split(",");
 		var num = 0;
 		for (num = 0; num < subImg.length; num++) {
-			$("#subImg").append("<div class='Xcontent09'><img src=" + subImg[num] + "></div>");
+			$("#subImg").append("<div class='Xcontent09'><img src= http://owyy75gow.bkt.clouddn.com/" + subImg[num] + "></div>");
 		}
 	});
 	
 	function toShop(productId) {
 		var amount = $("#amount").val();
-		window.location.href="/cart/addCartItems.shtml?productId="+productId+"&amount="+amount;
+		window.location.href="/Java1707Mal/cart/addCartItems.shtml?productId="+productId+"&amount="+amount;
 	}
 	</script>
 	<script type="text/javascript">
@@ -230,11 +230,11 @@
 
 		<div class="Xcontent06"><img src="${product.mainImage}"></div>
 		<ol class="Xcontent08" id="subImg">
-			<!-- <div class="Xcontent09"><img src="/thirds/image/shangpinxiangqing/X1.png"></div>
-			<div class="Xcontent09"><img src="/thirds/image/shangpinxiangqing/X7.png"></div>
-			<div class="Xcontent09"><img src="/thirds/image/shangpinxiangqing/X8.png"></div>
-			<div class="Xcontent09"><img src="/thirds/image/shangpinxiangqing/X9.png"></div>
-			<div class="Xcontent09"><img src="/thirds/image/shangpinxiangqing/X10.png"></div> -->
+			<!-- <div class="Xcontent09"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/X1.png"></div>
+			<div class="Xcontent09"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/X7.png"></div>
+			<div class="Xcontent09"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/X8.png"></div>
+			<div class="Xcontent09"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/X9.png"></div>
+			<div class="Xcontent09"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/X10.png"></div> -->
 		</ol>
 		<ol class="Xcontent13 clearfix">
 			<div class="Xcontent14 clearfix"><a href="#"><p>${product.name}</p></a></div>
@@ -245,7 +245,7 @@
 				<p class="Xcontent19">￥<span>${product.price}</span></p>
 				<div class="Xcontent20">
 					<p class="Xcontent21">促销</p>
-					<img src="/thirds/image/shangpinxiangqing/X12.png">
+					<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X12.png">
 					<p class="Xcontent22">领610元新年礼券，满再赠好礼</p>
 				</div>
 				<div class="Xcontent23">
@@ -256,15 +256,15 @@
 			</div>
 			<div class="Xcontent26">
 				<p class="Xcontent27">颜色</p>
-				<%-- <div class="Xcontent28"><img  src="/thirds/image/shangpinxiangqing/X14.png"></div>
-				<div class="Xcontent29"><img  src="/thirds/image/shangpinxiangqing/X1.png"></div> --%>
+				<%-- <div class="Xcontent28"><img  src="/Java1707Mall/thirds/image/shangpinxiangqing/X14.png"></div>
+				<div class="Xcontent29"><img  src="/Java1707Mall/thirds/image/shangpinxiangqing/X1.png"></div> --%>
 			</div>
 			<div class="Xcontent30">
 				<p class="Xcontent31">数量</p>
-				<div class="Xcontent32"><img src="/thirds/image/shangpinxiangqing/X15.png"></div>
+				<div class="Xcontent32"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/X15.png"></div>
 				<form>
 					<input class="input" name="amount" id="amount" value="1"></form>
-				<div class="Xcontent33"><img src="/thirds/image/shangpinxiangqing/16.png"></div>
+				<div class="Xcontent33"><img src="/Java1707Mall/thirds/image/shangpinxiangqing/16.png"></div>
 
 			</div>
 			<div class="Xcontent34"><a href="#">立即购买</a></div>
@@ -291,7 +291,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="">
-							<img src="/thirds/image/shangpinxiangqing/X-1.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X-1.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">艾家纺全棉加厚磨毛四件套</a></div>
@@ -301,7 +301,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X-1.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X-1.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">优曼真丝提花奢华四件套</a></div>
@@ -311,7 +311,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X1.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X1.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">3999！大金1.5匹变频空调更安静！</a></div>
@@ -321,7 +321,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X2.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X2.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">爸爸爱喜禾（犬子在，不远游！感动无数读者的电子书</a></div>
@@ -331,7 +331,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X3.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X3.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">【超值】飞利浦21.5英寸LED背光宽屏液晶显示</a></div>
@@ -341,7 +341,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X4.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X4.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">爸爸爱喜禾（犬子在，不远游！感动无数读者的电子书</a></div>
@@ -351,7 +351,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X5.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X5.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">【超值】飞利浦21.5英寸LED背光宽屏液晶显示</a></div>
@@ -363,7 +363,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/shangpinxiangqing/X-1.png"></a>
+							<img src="/Java1707Mall/thirds/image/shangpinxiangqing/X-1.png"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">安钛克（Antec）VP 550P 额定550W 120mm静音风扇 主动PFC 黑化外型设计电源</a></div>
@@ -373,7 +373,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.2.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.2.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">G.SKILL（芝奇）RipjawsX DDR3 1600 8G(4G×2条)台式机内存(F3-12800CL9D-8GBXL )</a></div>
@@ -383,7 +383,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
@@ -393,7 +393,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.4.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.4.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">华硕(ASUS)P8Z77-V LK主板(Intel Z77/LGA 1155)</a></div>
@@ -403,7 +403,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
@@ -415,7 +415,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/3.1.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/3.1.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">冬季健身TOP1！瑞亚特仰卧板加送俯卧撑架</a></div>
@@ -425,7 +425,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/3.2.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/3.2.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">HTC Z715e!双核！魔音耳机！</a></div>
@@ -435,7 +435,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/3.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/3.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">下单返现150元！格力9片电油汀</a></div>
@@ -445,7 +445,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/3.4.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/3.4.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">绿之源净味宝2居室除味超值套装 4000克</a></div>
@@ -455,7 +455,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/3.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/3.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">宏碁i5 4G GT630M 1G独显 月销量破</a></div>
@@ -467,7 +467,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
@@ -477,7 +477,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
@@ -487,7 +487,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
@@ -497,7 +497,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
@@ -507,7 +507,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.3.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.3.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">希捷（Seagate）1TB ST1000DM003 7200转64M SATA 6Gb/秒 台式机硬盘 建达蓝德 盒装正品</a></div>
@@ -519,7 +519,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
@@ -529,7 +529,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
@@ -539,7 +539,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
@@ -549,7 +549,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>
@@ -559,7 +559,7 @@
 				<li>
 					<div class="p-img ld">
 						<a href="#">
-							<img src="/thirds/image/2.5.jpg"></a>
+							<img src="/Java1707Mall/thirds/image/2.5.jpg"></a>
 					</div>
 					<div class="p-name">
 						<a href="#">大水牛（BUBALUS）电脑机箱 经典-A1008 灰黑色（不含电源）</a></div>

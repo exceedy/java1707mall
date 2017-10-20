@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.situ.mall.constans.MallConstant;
+
 public class Product implements Serializable {
 		private Integer id;//商品id
 		
@@ -232,7 +234,7 @@ public class Product implements Serializable {
 		}
 
 		public String getMainImage() {
-			return mainImage;
+			return MallConstant.SERVER_ADDRES+mainImage;
 		}
 
 		public void setMainImage(String mainImage) {
