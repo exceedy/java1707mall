@@ -245,8 +245,8 @@
 				dataType:"json",
 				success:function (data) {
 					if (data.status == 0 ) {
-						window.parent.location.reload();
 						layer.msg(data.msg);
+						window.parent.location.reload();
 					} else {
 						layer.msg(data.msg);
 					}

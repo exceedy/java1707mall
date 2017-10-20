@@ -77,7 +77,7 @@
 <div class="sp-jz">
     	<div class="top-left">
     		<ul>
-    			<li><a href="">全部商品</a></li>
+    			<li><a href="${path}/">商城首页</a></li>
     			<li><a href="">降价商品</a></li>
     			<li><a href="">库存紧张</a></li>
     		</ul>
@@ -219,7 +219,7 @@
 
 <script type="text/javascript">
 	function login () {
-		var path =  "cart/addCartItems.shtml";
+		var path =  "/cart/addCartItems.shtml";
 				location.href="${path}/login/toLogin.shtml?returnUrl="+path;
 				
 	}

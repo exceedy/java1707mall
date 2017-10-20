@@ -27,4 +27,6 @@ public interface IProductService {
 
 	PageBean<Product> getPageBean(Integer pageIndex, Integer pageSize,Integer sunCategoryId);
 
+	ServletRespone show(Integer id);
+
 }

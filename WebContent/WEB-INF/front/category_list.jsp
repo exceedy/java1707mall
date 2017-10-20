@@ -115,41 +115,21 @@
 
 <header id="pc-header">
 	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >主人好！，欢迎来靓淘网 <a href="${path}/login/toLogin.sthml" target="_blank">请登录</a> <a href="${path}/login/toRegister.shtml" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<div class="box2">
+    	<input class="btn1" type="text">
+        <input class="btn2" type="button" value="搜索">
+        <ul class="nav">
+        	<li><a style="color:rgba(244,6,94,1.00)" href="">保湿|</a></li>
+        	<li><a href="">面膜|</a></li>
+        	<li><a href="">洗面奶|</a></li>
+        	<li><a href="">补水|</a></li>
+        	<li><a href="">香水|</a></li>
+        	<li><a href="">眼霜|</a></li>
+        	<li><a href="">口红|</a></li>
+        	<li><a href="">护肤套装|</a></li>
+        	<li><a href="">BB霜</a></li>
+        </ul>
+    </div>
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
@@ -311,8 +291,8 @@
 					<ul class="clearfix">
 						<c:forEach items="${pageBean.list}" var="product">
 							<li>
-								<a href="${path}/category/toProduct.shtml?id=${product.id}"> <img src="${product.mainImage}" width=100%></a>
-								<p class="head-name"><a href="${path}/category/toProduct.shtml?id=${product.id}">${product.name}</a> </p>
+								<a href="${path}/html/${product.id}.html?id=${product.id}"> <img src="${product.mainImage}" width=100%></a>
+								<p class="head-name"><a href="${path}/html/${product.id}.html?id=${product.id}">${product.name}</a> </p>
 								<p><span class="price">￥${product.price}</span></p>
 								<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
 							</li>

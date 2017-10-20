@@ -27,6 +27,7 @@ public class LoginFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		String uri = req.getRequestURI();
+		System.out.println(uri);
 		if (uri != null && uri.startsWith("/Java1707Mall/order")) {
 			HttpSession session = req.getSession(false);
 			String returnUrl = req.getServletPath();

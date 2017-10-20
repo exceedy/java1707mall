@@ -22,42 +22,7 @@
 <body>
 
 <header id="pc-header">
-	<div class="pc-header-nav">
-		<div class="pc-header-con">
-			<div class="fl pc-header-link" >您好！，欢迎来云购物 <a href="${path}/login/toLogin.shtml" target="_blank">请登录</a> <a href="register.html" target="_blank"> 免费注册</a></div>
-			<div class="fr pc-header-list top-nav">
-				<ul>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的订单</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li>
-						<div class="nav"><i class="pc-top-icon"></i><a href="#">我的商城</a></div>
-						<div class="con">
-							<dl>
-								<dt><a href="">批发进货</a></dt>
-								<dd><a href="">已买到货品</a></dd>
-								<dd><a href="">优惠券</a></dd>
-								<dd><a href="">店铺动态</a></dd>
-							</dl>
-						</div>
-					</li>
-					<li><a href="#">我的云购</a></li>
-					<li><a href="#">我的收藏</a></li>
-					<li><a href="#">会员中心</a></li>
-					<li><a href="#">客户服务</a></li>
-					<li><a href="#">帮助中心</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<%@include file="../common/front_top_logo.jsp" %>
 	<div class="pc-header-logo clearfix">
 		<div class="pc-fl-logo fl">
 			<h1>
@@ -140,7 +105,7 @@
             		 maxmin: true,
            		     shadeClose: true, //点击遮罩关闭层
            		     area : ['800px' , '520px'],
-           		     content: 'order/toAddShipping.shtml'
+           		     content: '${path}/shipping/toAddShipping.shtml'
             	});
             }
 		</script>

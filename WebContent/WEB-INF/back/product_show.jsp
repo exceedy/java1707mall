@@ -35,30 +35,40 @@ function status() {
 	function deleteProduct(id) {
 		var isDel = confirm("确定删除？");
 		if(isDel) {
-			location.href = "${path}/product/deleteProduct.action?id="+id;
+			var option = {
+					url:"${path}/product/deleteProduct.action",
+					data:"id="+id,
+					dataType:"json",
+					success:function (data) {
+						if (data.status == 0) {
+							layer.msg(data.msg);
+						} else {
+							layer.msg(data.msg);
+						} 
+					}
+			};
+			$.ajax(option);
 		}
 	}
 	function updateStatusUp(id) {
-		var isDel = confirm("确定上架？");
-		if(isDel) {
 			var option = {
-					url:"${path}/product/updateStatusUp.action",
+					url:"${path}/product/show.action",
 					data:"id="+id,
 					dataType:"json",
 					success:function (data) {
 						if (data.status == 0) {
 							layer.msg(
-									'删除成功'
+									data.msg
 									);
+							//window.parent.location.reload();
 						}
 						else {
-							layer.msg('删除失败');
+							layer.msg(data.msg);
 						}
 						
 					}
-					
-			}
-		}
+			};
+				$.ajax(option);
 	}
 	function updateStatusDown(id) {
 		var isDel = confirm("确定下架？");
@@ -72,7 +82,7 @@ function status() {
 			$("#mainform").attr("action","${path}/product/updateAllStatusUp.action");
 			$("#mainform").submit();
 		}
-	}
+	} 
 	function updateAllStatusDown() {
 		var isDel = confirm("确定下架？");
 		if(isDel) {

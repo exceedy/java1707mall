@@ -1,6 +1,8 @@
 package com.situ.mall.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import com.situ.mall.common.ServletRespone;
 import com.situ.mall.dao.ProductDao;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
+import com.situ.mall.service.IStaticPageService;
 import com.situ.mall.vo.PageBean;
 import com.situ.mall.vo.SearchCondition;
 
@@ -18,6 +21,9 @@ public class ProductServiceImpl implements IProductService{
 	@Autowired
 	private ProductDao productDao;
 
+	@Autowired
+	private IStaticPageService staticPageService;
+	
 	public PageBean<Product> pageList(int pageIndex, int pageSize) {
 		PageBean<Product> pageBean = new PageBean<Product>();
 		pageBean.setPageIndex(pageIndex);
@@ -107,6 +113,27 @@ public class ProductServiceImpl implements IProductService{
 		List<Product> list = productDao.getCategoryProduct(index, sunCategoryId, pageSize);
 		pageBean.setList(list);
 		return pageBean;
+	}
+
+	public ServletRespone show(Integer id) {
+		
+			if (null == id) {
+				return ServletRespone.creatError("id不能为空");
+			}
+			Product product = productDao.findById(id);
+			
+			if (null == product) {
+				return ServletRespone.creatError("没有该商品");
+			}
+		
+			Map<String, Object> root = new HashMap<String, Object>();
+			
+			root.put("product", product);
+			productDao.updateStatus(id,1);
+			if (staticPageService.productIndex(root, id)) {
+				return ServletRespone.creatSuccess("静态成功");
+			}
+		return ServletRespone.creatError("静态失败");
 	}
 
 }

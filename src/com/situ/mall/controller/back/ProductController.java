@@ -154,4 +154,11 @@ public class ProductController {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping(value="show")
+	@ResponseBody
+	public ServletRespone show (Integer id) {
+		return  productService.show(id);
+	}
+	
 }

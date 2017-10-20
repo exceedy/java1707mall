@@ -39,7 +39,7 @@
 <div class="daoh">
 	<div class="boxb">
     	<ul>
-			<li><a class="dangqian" href="">商城首页</a></li>
+			<li><a class="dangqian" href="${path}/">商城首页</a></li>
 			<li><a href="">美妆商城</a></li>
 			<li><a href="">服装商城</a></li>
 			<li><a href="">家电数据</a></li>
@@ -124,7 +124,7 @@ var a = 0;
 
 <div class="fixed">
 	<div class="gw">
-    	<a href="">
+    	<a href="${path}/cart/addCartItems.shtml">
         <img class="img1" src="${path}/thirds/image/gouwuche.png">
         购<br>物<br>车
         </a>
