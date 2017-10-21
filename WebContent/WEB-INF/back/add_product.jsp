@@ -41,7 +41,7 @@
 					dataType:"json",
 					type:"post",
 					success : function (data) {
-						$("#imgId").attr("src",data.url);
+						$("#imgId").attr("src","http://owyy75gow.bkt.clouddn.com/"+data.url);
 						$("#mainImage").val(data.url);
 					}
 			};
@@ -99,7 +99,7 @@
 							div.html('');
 							K.each(urlList, function(i, data) {
 								imgArray.push(data.url);
-								div.append('<img src="' + data.url + '" width="80" height="50">');
+								div.append('<img src=http://owyy75gow.bkt.clouddn.com/"' + data.url + '" width="80" height="50">');
 							});
 							$("#subImages").val(imgArray.join(","));
 							editor.hideDialog();

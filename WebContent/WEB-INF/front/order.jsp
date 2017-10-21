@@ -9,6 +9,7 @@
 	<meta name="Author" content="">
 	<meta name="Keywords" content="">
 	<meta name="Description" content="">
+	 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 	<meta name="renderer" content="webkit">
 	<title>确认订单-云购物商城</title>
@@ -48,7 +49,7 @@
 		</div>
 		<div class="fr pc-head-car">
 			<i class="icon-car"></i>
-			<a href="#">我的购物车</a>
+			<a href="${path}/cart/addCartItems.shtml">我的购物车</a>
 		</div>
 	</div>
 	<!--  顶部    start-->
@@ -56,7 +57,7 @@
 		<!-- 导航   start  -->
 		<div class="yNavIndex">
 			<ul class="yMenuIndex" style="margin-left:0">
-				<li style="background:#d1201e"><a href="" target="_blank">云购首页</a></li>
+				<li style="background:#d1201e"><a href="${path}/" target="_blank">靓淘首页</a></li>
 				<li><a href="" target="_blank">女士护肤 </a></li>
 				<li><a href="" target="_blank">男士护肤</a></li>
 				<li><a href="" target="_blank">洗护染发</a></li>
@@ -98,7 +99,6 @@
             var miniCartDisable=true;
             
             function addShipping () {
-            	var li = layer.load();
             	layer.open({
             		type:2,
             		title:"添加地址",
@@ -129,7 +129,7 @@
 										<dt>
 										<input type="checkbox" value="${shipping.id}" name="shippingId">
 												<strong class="itemConsignee">${shipping.receiverName}</strong>
-												<span class="itemTag tag"></span>
+												<span class="itemTag "><a href="javascript:deleteShipping(${shipping.id})"><img src="/Java1707Mall/thirds/image/166.png"></a></span>
 											</dt>
 											<dd>
 												<p class="tel itemTel">${shipping.receiverPhone}</p>
@@ -477,6 +477,30 @@
         $(this).removeClass("hover");
         $(this).find(".nav a").removeClass("hover");
     })
+    
+    function deleteShipping (id) {
+    	
+    	var option = {
+    			url:"${path}/shipping/deleteShipping.shtml",
+    			data:"shippingId="+id,
+    			dataType:"json",
+    			success:function (data) {
+    				if (data.status == 0) {
+    					layer.msg(data.msg);
+    					window.parent.location.reload();
+    				} else {
+    					layer.msg(data.msg);
+    				}
+    			}
+    	};
+    	layer.confirm(
+    			"确定删除？",
+    			{btn:["yes","no"]},
+    			function () {
+    				$.ajax(option);
+    			}
+    			);
+    }
 </script>
 
 

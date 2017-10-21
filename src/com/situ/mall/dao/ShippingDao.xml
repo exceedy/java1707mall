@@ -28,4 +28,7 @@
  	INSERT INTO shipping(user_id,receiver_name,receiver_phone,receiver_mobile,receiver_province,receiver_city,receiver_district,receiver_zip,create_time,update_time,receiver_address) 
  		VALUES (#{userId}, #{receiverName},#{receiverPhone}, #{receiverMobile},#{receiverProvince} ,#{receiverCity} , #{receiverDistrict}, #{receiverZip}, now(),now(),#{receiverAddress});
  	</insert>
+ 	<delete id="deleteShipping" parameterType="int">
+ 		delete from shipping where id = #{id};
+ 	</delete>
  </mapper>

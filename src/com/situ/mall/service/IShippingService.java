@@ -11,5 +11,7 @@ public interface IShippingService {
 
 	ServletRespone addShipping(Shipping shipping);
 
+	ServletRespone deleteShipping(Integer shippingId);
+
 	
 }

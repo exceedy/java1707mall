@@ -30,5 +30,12 @@ public class ShippingServiceImpl implements IShippingService {
 			return ServletRespone.creatError("添加地址失败");
 		}
 	}
+	public ServletRespone deleteShipping(Integer shippingId) {
+		int result = shippingDao.deleteShipping(shippingId);
+		if (result > 0) {
+			return ServletRespone.creatSuccess("删除成功");
+		}
+		return ServletRespone.creatError("删除失败");
+	}
 
 }

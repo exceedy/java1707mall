@@ -53,4 +53,10 @@ public class ShippingController {
 		}
 		return shippingService.addShipping(shipping);
 	}
+	
+	@RequestMapping(value="deleteShipping")
+	@ResponseBody
+	public ServletRespone deleteShipping(Integer shippingId) {
+		return shippingService.deleteShipping(shippingId);
+	}
 }
