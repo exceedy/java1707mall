@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.situ.mall.constans.MallConstant;
 
 public class Product implements Serializable {
@@ -234,7 +234,7 @@ public class Product implements Serializable {
 			this.subtitle = subtitle;
 		}
 		
-		@JsonInclude
+		 @JsonIgnore
 		public String getMainImage() {
 			return MallConstant.SERVER_ADDRES+mainImage;
 		}

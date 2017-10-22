@@ -205,7 +205,7 @@
 											<span class="col col-4">小计（元）</span>
 										</dt>
 										<c:forEach items="${cart.itemsList}" var="items">
-										
+										<c:if test="${items.checked == 1 }">
 										<dd class="item clearfix">
 											<div class="item-row">
 												<div class="col col-1">
@@ -224,6 +224,7 @@
 												<div class="col col-4">${items.product.price * items.amount}元</div>
 											</div>
 										</dd>
+										</c:if>
 										</c:forEach>
 									</dl>
 									<div class="checkout-count clearfix">

@@ -1,6 +1,7 @@
 package com.situ.mall.controller.front;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.situ.mall.common.ServletRespone;
 import com.situ.mall.pojo.Order;
@@ -61,7 +64,6 @@ public class OrderController {
 		List<Shipping> shippingList = new ArrayList<Shipping>();
 		if (session != null) {
 			User user = (User) session.getAttribute("user");
-			System.out.println(user);
 			shippingList =  shippingService.findById(user.getId());
 		}
 		
@@ -87,8 +89,10 @@ public class OrderController {
 		if (null != cart) {
 			List<CartItemsVo> cartItemsList = cart.getItemsList();
 			for (CartItemsVo cartItems : cartItemsList) {
-				Product product = productService.findById(cartItems.getProduct().getId());
-				cartItems.setProduct(product);
+				if (cartItems.getChecked() == 1) {
+					Product product = productService.findById(cartItems.getProduct().getId());
+					cartItems.setProduct(product);
+				}
 			}
 			cart.setItemsList(cartItemsList);
 		}
@@ -142,6 +146,7 @@ public class OrderController {
 			List<CartItemsVo> items = cart.getItemsList();
 			int num = 0;
 			for (CartItemsVo item : items) {
+				if (item.getChecked() == 1) { 
 				
 				OrderItem orderItem = new OrderItem();
 				Integer productId = item.getProduct().getId();
@@ -166,13 +171,20 @@ public class OrderController {
 				orderItem.setOrderNo(orderNo);
 				
 				boolean resultItem = orderService.addOrderItem(orderItem);
+				cart.delteItems(productId);
 				num ++;
 				}
 			}
+		}
 		
-		
+				StringWriter stringWriter = new StringWriter();
+				try {
+					objectMapper.writeValue(stringWriter, cart);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				//清除购物车
-				Cookie cookie = new Cookie("cart_items_list",null);
+				Cookie cookie = new Cookie("cart_items_list",stringWriter.toString());
 				cookie.setPath("/");
 				cookie.setMaxAge(60 * 60 * 24 * 7);
 				

@@ -43,7 +43,9 @@ public class CartVo {
 	public double getTotalPrice() {
 		Double totalPrice = 0.0;
 		for (CartItemsVo item : itemsList) {
-			totalPrice += item.getAmount() * item.getProduct().getPrice().doubleValue();
+			if (item.getChecked() == 1) {
+				totalPrice += item.getAmount() * item.getProduct().getPrice().doubleValue();
+			}
 		}
 		return totalPrice;
 	}

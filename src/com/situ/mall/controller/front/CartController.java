@@ -2,6 +2,7 @@ package com.situ.mall.controller.front;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
@@ -76,6 +74,7 @@ public class CartController {
 			//将商品和商品 数量存入到购物项
 			items.setProduct(product);
 			items.setAmount(amount);
+			items.setChecked(0);
 			
 			//将购物项添加到购物车，在购物车内进行添加判断
 			cart.addItems(items);
@@ -181,24 +180,55 @@ public class CartController {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					if (null != selectIds) {
-						//判断被选中的id和购物项id是否相等
-						for (Integer id : selectIds) {
-							for (CartItemsVo cartItems : cart.getItemsList()) {
-								if (id == cartItems.getProduct().getId()) {
-									//相等就计算该商品的数量与价格的总和
-									Product productTemp = productService.findById(id);
-									totalPrice += (cartItems.getAmount() * productTemp.getPrice().intValue());
-							}
-						}
-					}
-				}
+					
 			}
 		}
 			
 		}
-		
-		//将计算好的总价放入map 
+		List<CartItemsVo> itemsList = cart.getItemsList();
+		List<Integer> removeList = new ArrayList<Integer>();
+		if (null != selectIds) {
+			//判断被选中的id和购物项id是否相等
+			for (CartItemsVo cartItems : itemsList) {
+				removeList.add(cartItems.getProduct().getId());
+				for (Integer id : selectIds) {
+					if (id == cartItems.getProduct().getId()) {
+						//相等就计算该商品的数量与价格的总和
+						Product productTemp = productService.findById(id);
+						totalPrice += (cartItems.getAmount() * productTemp.getPrice().intValue());
+						cartItems.setChecked(1);
+					} 
+				}
+			}
+			//获取没有被选中的id
+			for (int x = 0; x < selectIds.length; x++) {
+				for (int y = 0; y < removeList.size(); y++) {
+					if (selectIds[x] == removeList.get(y)) {
+						removeList.remove(y);
+					}
+				}
+			}
+			//将未被选中的id状态修改为未选中
+			for (Integer id : removeList) {
+				for (CartItemsVo cartItems : itemsList) {
+					if (id == cartItems.getProduct().getId()) {
+						cartItems.setChecked(0);
+					} 
+				}
+			}
+		}
+		cart.setItemsList(itemsList);
+		StringWriter stringWriter = new StringWriter();
+		try {
+			objectMapper.writeValue(stringWriter, cart);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Cookie cookie = new Cookie("cart_items_list",stringWriter.toString());
+		//为了覆盖原cookie所以要让路径和cookie存活时间一致
+		cookie.setPath("/");
+		cookie.setMaxAge(60 * 60 *24 * 7 );
+		resp.addCookie(cookie);
 		map.put("totalPrive", totalPrice);
 		return map;
 	}

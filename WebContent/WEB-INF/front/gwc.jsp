@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+ <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@include file="../common/front.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,6 +57,11 @@
  		}
  		
  		function toOrder () {
+ 			var selectIds = $("input[name='selectIds']:checked").val();
+ 			if (null == selectIds) {
+ 				layer.msg('还没有选中商品');
+ 				return;
+ 			}
  			location.href="${path}/order/toAddOrder.shtml";
  		}
 	</script> 
