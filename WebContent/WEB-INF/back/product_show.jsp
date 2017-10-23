@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<%@include file="../common/use.jsp" %> 
 
 <title>Insert title here</title>
-	<%@include file="../common/use.jsp" %> 
 <script type="text/javascript">
 $(function() {
 	$("#categoryId option[value='${searchCondition.product.categoryId}']").prop("selected",true);
@@ -94,7 +94,8 @@ function status() {
 </script>
 </head>
 <body >
-	<div class="container">
+<div class="  animated fadeInRight">
+	<div class="container ">
 		    <div class="row">
 		        <div class="col-md-10">
 		            <!-- 高级搜索 -->
@@ -225,6 +226,7 @@ function status() {
 				  </ul>
 				</div>
 			</div>
+		</div>
 		</div>
 </body>
 </html>

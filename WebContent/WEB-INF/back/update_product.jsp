@@ -63,7 +63,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		
+		<div class="  animated fadeInRight">
 	<div class="container">
 		    <div class="row">
 		        </div>
@@ -138,6 +138,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

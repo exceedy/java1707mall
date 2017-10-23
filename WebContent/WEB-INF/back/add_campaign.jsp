@@ -120,6 +120,7 @@
 </head>
 
 <body>
+<div class="  animated fadeInRight">
 	<div class="container">
 		    <div class="row">
 		        <div class="col-md-10">
@@ -146,6 +147,7 @@
 				</form>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -63,7 +63,7 @@
 </head>
 <body>
 		
-		<%@include file="../common/logn.jsp" %>
+		<div class="  animated fadeInRight">
 	<div class="container">
 		    <div class="row">
 		        <div class="col-md-2">
@@ -106,6 +106,6 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

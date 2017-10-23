@@ -69,6 +69,7 @@ function status() {
 </script>
 </head>
 <body>
+<div class="  animated fadeInRight">
 	<div class="container">
 		
 		    <div class="row">

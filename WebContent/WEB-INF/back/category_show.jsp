@@ -42,6 +42,7 @@
 </head>
 <body>
 			<%@include file = "../common/use.jsp" %>
+			<div class="  animated fadeInRight">
 	<div class="container">
 		    <div class="row">
 		        <div class="col-md-10">
@@ -130,5 +131,6 @@
 				</div>
 			</div>
 		</div> --%>
+		</div>
 </body>
 </html>

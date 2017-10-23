@@ -35,6 +35,7 @@
 
 <body>
 	<%@include file="../common/category_logo.jsp" %>
+	<div class="  animated fadeInRight">
 	<div class="container">
 		    <div class="row">
 		        <div class="col-md-2">
@@ -72,6 +73,7 @@
 				</form>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -89,6 +89,7 @@ function status() {
 </script>
 </head>
 <body>
+<div class="  animated fadeInRight">
 	<div class="container">
 		
 		    <div class="row">
@@ -185,6 +186,7 @@ function status() {
 				  </ul>
 				</div>
 			</div>
+			
 		</div> --%>
 </body>
 </html>
