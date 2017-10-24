@@ -75,4 +75,13 @@
         <servlet-name>springmvc-front</servlet-name>
        <url-pattern>*.shtml</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>CheckImg</servlet-name>
+    	<servlet-class>com.situ.mall.controller.back.CheckImgServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>CheckImg</servlet-name>
+    	<url-pattern>/checkImg</url-pattern>
+    </servlet-mapping>
 </web-app>

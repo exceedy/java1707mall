@@ -37,12 +37,17 @@
 
             <form id="from-add" class="m-t" role="form" action="">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="用户名" required="">
+                    <input type="email" class="form-control" name="userName" placeholder="用户名" required="">
+                </div> 
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="密码" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="密码" required="">
+                    <input type="text" name="checkImg" onblur="isImg()" class="form-control" placeholder="验证码" id="isCheckImg"  required="">
+                    <img alt="" id="checkImg" src="${path}/checkImg" onclick="toCheckImg()">
                 </div>
-                <button type="button" onclick="toLogin()" class="btn btn-primary block full-width m-b">登 录</button>
+                
+                <button type="button" onclick="toLogin()"  class="btn btn-primary block full-width m-b">登 录</button>
 
 
                 <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
@@ -64,17 +69,37 @@
 	function toLogin () {
 		var option = {
 				url:"${path}/loginBack/login.action",
-				data:$("#fron-add").serialize(),
+				data:$("#from-add").serialize(),
 				dataType:"json",
 				success:function (data) {
 					if (data.status == 0) {
 						layer.msg(data.msg);
-						loction.href="${path}/product/index.action";
+						location.href="${path}/product/index.action";
 					} else {
 						layer.msg(data.msg);
 					}
 				}
-		}
+		};
+		$.ajax(option);
 	}
+	function toCheckImg () {
+		$("#checkImg").attr("src","${path}/checkImg?"+Math.random());
+	}
+	function isImg() {
+		var option = {
+				url:"${path}/loginBack/isCheckImg.action",
+				data:$("#from-add").serialize(),
+				dataType:"json",
+				success:function (data) {
+					if (data.status == 0) {
+						layer.msg(data.msg);
+					} else {
+						layer.msg(data.msg);
+					}
+				}
+		};
+			$.ajax(option);
+	}
+	
 </script>
 </html>

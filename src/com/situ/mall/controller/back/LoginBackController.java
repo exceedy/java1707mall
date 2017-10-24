@@ -1,13 +1,19 @@
 package com.situ.mall.controller.back;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.mall.common.ServletRespone;
+import com.situ.mall.pojo.User;
 import com.situ.mall.service.ILoginService;
 
 @Service
+@RequestMapping(value="loginBack")
 public class LoginBackController {
 	
 	@Autowired
@@ -18,7 +24,31 @@ public class LoginBackController {
 		return "login";
 	}
 	
-	public ServletRespone login() {
-		return null;
+	@RequestMapping(value="login")
+	@ResponseBody
+	public ServletRespone login(HttpServletRequest req,String checkImg,User user) {
+		HttpSession session = req.getSession();
+		String checkImgSe  = (String) session.getAttribute("checkCodeSession");
+		if (checkImg != null && checkImgSe != null) {
+			if (!checkImg.equals(checkImgSe)) {
+				return ServletRespone.creatError("验证码错误");
+			}
+		}
+		return loginService.isUser(user);
+	}
+	@RequestMapping(value="isCheckImg")
+	@ResponseBody
+	public ServletRespone isCheckImg(HttpServletRequest req,String checkImg) {
+		HttpSession session = req.getSession();
+		String checkImgSe  = (String) session.getAttribute("checkCodeSession");
+		if (checkImg != null && checkImgSe != null) {
+			if (checkImg.equals(checkImgSe)) {
+				return ServletRespone.creatSuccess("验证成功");
+			} else {
+				return ServletRespone.creatError("验证码输入错误");
+			}
+		} else {
+			return ServletRespone.creatError("验证码不能为空");
+		}
 	}
 }
