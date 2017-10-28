@@ -27,7 +27,7 @@ public class LoginFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		String uri = req.getRequestURI();
-		System.out.println(uri);
+		//前端登录拦截
 		if (uri != null && uri.startsWith("/Java1707Mall/order")) {
 			HttpSession session = req.getSession(false);
 			String returnUrl = req.getServletPath();
@@ -47,6 +47,28 @@ public class LoginFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		
+		//后台登录拦截
+		String path = uri.substring(uri.lastIndexOf("/") + 1, uri.length());
+		if ("toLogoin.action".equals(path) || "login.action".equals(path) 
+				|| "login.jsp".equals(path) || "checkImg".equals(path)) {
+			chain.doFilter(request, response);
+		}
+		if (uri != null && uri.endsWith(".action")) {
+			HttpSession session = req.getSession(false);
+			if (session != null) {
+				User user = (User) session.getAttribute("user");
+				if (user == null) {
+					resp.sendRedirect(req.getContextPath() + "/login/toLogin.action");
+					return;
+				} else {
+					chain.doFilter(request, response);
+				}
+			} else {
+				chain.doFilter(request, response);
+			}
+		} else {
+			chain.doFilter(request, response);
+		}
 	}
 
 	public void destroy() {

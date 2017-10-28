@@ -1,5 +1,7 @@
 package com.situ.mall.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.situ.mall.common.ServletRespone;
 import com.situ.mall.pojo.User;
 
@@ -9,6 +11,6 @@ public interface ILoginService {
 
 	boolean addUser(User user);
 
-	ServletRespone isUser(User user);
+	ServletRespone isUser(HttpServletRequest req,User user);
 
 }

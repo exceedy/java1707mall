@@ -27,14 +27,16 @@ public class LoginBackController {
 	@RequestMapping(value="login")
 	@ResponseBody
 	public ServletRespone login(HttpServletRequest req,String checkImg,User user) {
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 		String checkImgSe  = (String) session.getAttribute("checkCodeSession");
-		if (checkImg != null && checkImgSe != null) {
-			if (!checkImg.equals(checkImgSe)) {
-				return ServletRespone.creatError("验证码错误");
+		if (session != null) {
+			if (checkImg != null && checkImgSe != null) {
+				if (!checkImg.equals(checkImgSe)) {
+					return ServletRespone.creatError("验证码错误");
+				}
 			}
 		}
-		return loginService.isUser(user);
+		return loginService.isUser(req, user);
 	}
 	@RequestMapping(value="isCheckImg")
 	@ResponseBody

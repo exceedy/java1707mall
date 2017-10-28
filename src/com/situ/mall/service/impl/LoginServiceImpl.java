@@ -1,5 +1,8 @@
 package com.situ.mall.service.impl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +24,13 @@ public class LoginServiceImpl implements ILoginService {
 		return false;
 	}
 	
-	public ServletRespone isUser(User user) {
+	public ServletRespone isUser(HttpServletRequest req,User user) {
 		User resultUser = loginDao.getUser(user);
 		if (null != user && null != resultUser) {
 			if (user.getUserName().equals(resultUser.getUserName()) && user.getPassword().equals(resultUser.getPassword())) {
 				if (resultUser.getRole() == 0) {
+					HttpSession session = req.getSession();
+					session.setAttribute("user", resultUser);
 					return ServletRespone.creatSuccess("登录成功");
 				} else {
 					return ServletRespone.creatError("权限不足");
