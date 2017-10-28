@@ -38,16 +38,16 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
-                                        <strong class="font-bold">hAdmin</strong>
+                                        <strong class="font-bold">欢迎您${user.userName}</strong>
                                     </span>
                                 </span>
                             </a>
                         </div>
-                        <div class="logo-element">hAdmin
+                        <div class="logo-element">
                         </div>
                     </li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                        <span class="ng-scope">分类</span>
+                        <span class="ng-scope"><a href="${path}/loginBack/out,action">退出</a></span>
                     </li>
                     <li>
                         <a class="J_menuItem" href="index_v1.html">

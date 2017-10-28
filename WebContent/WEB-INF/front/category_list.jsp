@@ -302,7 +302,8 @@
 						<c:forEach items="${pageBean.list}" var="product">
 								<li>
 									<a href="${path}/resources/html/${product.id}.html?id=${product.id}"> <img src="${product.mainImage}" width=100%></a>
-									<p class="head-name"><a href="${path}/resources/html/${product.id}.html?id=${product.id}">${product.name}</a> </p>
+									<%-- <p class="head-name"><a href="${path}/resources/html/${product.id}.html?id=${product.id}">${product.name}</a> </p> --%>
+									 <p class="head-name"><a href="${path}/category/toProduct.shtml?id=${product.id}">${product.name}</a> </p> 
 									<p><span class="price">￥${product.price}</span></p>
 									<p class="clearfix"><span class="label-default fl">抢购</span> <a href="#" class="fr pc-search-c">收藏</a> </p>
 								</li>

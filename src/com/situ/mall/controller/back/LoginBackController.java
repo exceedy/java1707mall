@@ -53,4 +53,13 @@ public class LoginBackController {
 			return ServletRespone.creatError("验证码不能为空");
 		}
 	}
+	
+	@RequestMapping(value="out")
+	public String out (HttpServletRequest req) {
+		HttpSession session = req.getSession(false);
+		if (null != session) {
+			session.removeAttribute("user");
+		}
+		return "login";
+	}
 }
