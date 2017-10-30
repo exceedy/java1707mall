@@ -62,4 +62,15 @@ public class LoginBackController {
 		}
 		return "login";
 	}
+	
+	@RequestMapping(value="toRegister")
+	public String toRegister() {
+		return "register";
+	}
+	
+	@RequestMapping(value="register")
+	@ResponseBody
+	public ServletRespone register (User user) {
+		return loginService.addUser(user);
+	}
 }

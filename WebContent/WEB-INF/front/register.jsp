@@ -16,6 +16,30 @@
 				$("#update").attr("placeholder","密码不相同，请重新输入");
 			}
 		}
+		function register() {
+			var options = {
+					url:'${path}/login/register.shtml',
+					data:$("#form-add").serialize(),
+					dataType:'json',
+					success:function (data) {
+						if (data.status == 0) {
+							layer.confirm(
+								data.msg,
+								{btn:['关闭','前往登录']},
+								function (index) {
+									layer.close(index);
+								},
+								function () {
+									location.herf="${path}/longin/toLogin.action";
+								}
+							);
+						} else {
+							layer.msg(data.msg);
+						}
+					}
+			};
+			$.ajax(options);
+		}
 	</script>
 <body>
 <div class="top">
@@ -37,17 +61,18 @@
     	<li class="li1">用户注册</li>
     	<li>已有账号<a class="a1" href="${path}/login/toLogin.shtml">在此登录</a></li>
     </ul>
-    <form action="${path}/login/register.shtml">
+    <form action="" id="form-add">
     <input class="in1" name="userName" placeholder="账户" type="text">
     <input class="in4"  name="password" placeholder="密码" id="password" type="text">
     <input class="in2" placeholder="手机号" name="phone" type="text">
     <!-- <input class="in3" type="button" value="获取短信验证吗"> -->
     <input class="in4" name="email" placeholder="email" id="password" type="text">
+    <input type="hidden" name="status" value="1"/>
     <!-- <input class="in5" id="twoPassword" onblur="twoPassword()" placeholder="重复密码" type="text"> -->
     <!-- <input  class="in7"  id="update"  placeholder="" type="text" readonly> -->
-    <input class="in6" type="submit" value="同意协议并注册">
     <a class="a2">《获取优选用户协议》</a>
     </form>
+    <a class="in6" href="javascript:register()" >注册</a>
 </div>
 </div>
 </div>

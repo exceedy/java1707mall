@@ -50,7 +50,7 @@
                 <button type="button" onclick="toLogin()"  class="btn btn-primary block full-width m-b">登 录</button>
 
 
-                <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+                <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="${path}/loginBack/toRegister.action">注册一个新账号</a>
                 </p>
 
             </form>

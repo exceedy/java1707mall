@@ -19,9 +19,12 @@ public class LoginServiceImpl implements ILoginService {
 	public User getUser(User user) {
 		return loginDao.getUser(user);
 	}
-	public boolean addUser(User user) {
+	public ServletRespone addUser(User user) {
 		int result = loginDao.addUser(user);
-		return false;
+		if (result > 0) {
+			return ServletRespone.creatSuccess("注册成功");
+		}
+		return ServletRespone.creatError("注册失败");
 	}
 	
 	public ServletRespone isUser(HttpServletRequest req,User user) {

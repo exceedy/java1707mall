@@ -30,6 +30,7 @@ public class LoginController {
 	public String login(Model model, HttpServletRequest req, User user,String returnUrl) {
 		String path = null;
 		User resultUser = loginService.getUser(user);
+		System.out.println(returnUrl);
 		if (user != null && resultUser != null) {
 			if (user.getUserName().equals(resultUser.getUserName()) && user.getPassword().equals(resultUser.getPassword())) {
 				HttpSession session = req.getSession();
@@ -50,9 +51,9 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="register.shtml")
-	public String register(User user) {
-		boolean result = loginService.addUser(user);
-		return "redirect:/login/toLogin.shtml";
+	@ResponseBody
+	public ServletRespone register(User user) {
+		return  loginService.addUser(user);
 	}
 	
 	@RequestMapping(value="login.shtml")
@@ -81,8 +82,10 @@ public class LoginController {
 	@ResponseBody
 	public ServletRespone out(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
+		System.out.println(session);
 		if (session != null) {
 			session.removeAttribute("user");
+			System.out.println(session);
 		}
 		return ServletRespone.creatSuccess();
 	}

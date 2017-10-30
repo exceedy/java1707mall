@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.situ.mall.pojo.User;
 
-public class LoginFilter implements Filter {
+public class LoginBackFilter implements Filter {
 
 	public void init(FilterConfig filterConfig) throws ServletException {
 		
@@ -27,24 +27,27 @@ public class LoginFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		String uri = req.getRequestURI();
-		
+		String path = uri.substring(uri.lastIndexOf("/") + 1, uri.length());
+		if ("toLogin.action".equals(path) || "login.action".equals(path) 
+				|| "login.jsp".equals(path) || "checkImg".equals(path)
+				|| "register".equals(path) || "toRegister".equals(path)) {
+			chain.doFilter(request, response);
+			return;
+		}
 		//前端登录拦截
-		if (uri != null && uri.startsWith("/Java1707Mall/order")) {
+		 if (uri != null && uri.endsWith(".action")) {
 			HttpSession session = req.getSession(false);
-			String returnUrl = req.getServletPath();
 			if (session != null) {
 				User user = (User) session.getAttribute("user");
 				if (user == null) {
-					session.setAttribute("returnUrl", returnUrl);
-					resp.sendRedirect(req.getContextPath() + "/login/toLogin.shtml");
-					return;
+					resp.sendRedirect(req.getContextPath() + "/loginBack/toLogin.action");
 				} else {
 					chain.doFilter(request, response);
 				}
 			} else {
 				chain.doFilter(request, response);
 			}
-		} else  {
+		} else {
 			chain.doFilter(request, response);
 		}
 		 

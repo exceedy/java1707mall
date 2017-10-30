@@ -9,7 +9,7 @@ public interface ILoginService {
 
 	User getUser(User user);
 
-	boolean addUser(User user);
+	ServletRespone addUser(User user);
 
 	ServletRespone isUser(HttpServletRequest req,User user);
 
